@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MijnProject
 {
-    class Status
+   public class Status
     {
         public int StatusId { get; set; }
         public string Naam { get; set; }

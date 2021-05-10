@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MijnProject
 {
-    class Bezorger
+   public class Bezorger
     {
         public int BezorgerId { get; set; }
         public string Naam { get; set; }
