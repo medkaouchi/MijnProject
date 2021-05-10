@@ -25,5 +25,11 @@ namespace MijnProject
             login.Show();
             this.Close();
         }
+
+        private void btnDatabeheer_Click(object sender, EventArgs e)
+        {
+            Databeheer databeheer = new Databeheer();
+            databeheer.ShowDialog();
+        }
     }
 }

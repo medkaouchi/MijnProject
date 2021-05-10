@@ -38,27 +38,28 @@ namespace MijnProject
             // 
             // btnDatabeheer
             // 
-            this.btnDatabeheer.Location = new System.Drawing.Point(26, 71);
+            this.btnDatabeheer.Location = new System.Drawing.Point(43, 76);
             this.btnDatabeheer.Name = "btnDatabeheer";
-            this.btnDatabeheer.Size = new System.Drawing.Size(126, 37);
+            this.btnDatabeheer.Size = new System.Drawing.Size(126, 50);
             this.btnDatabeheer.TabIndex = 0;
             this.btnDatabeheer.Text = "Databeheer";
             this.btnDatabeheer.UseVisualStyleBackColor = true;
+            this.btnDatabeheer.Click += new System.EventHandler(this.btnDatabeheer_Click);
             // 
             // btnOverzicht
             // 
-            this.btnOverzicht.Location = new System.Drawing.Point(180, 71);
+            this.btnOverzicht.Location = new System.Drawing.Point(197, 76);
             this.btnOverzicht.Name = "btnOverzicht";
-            this.btnOverzicht.Size = new System.Drawing.Size(126, 37);
+            this.btnOverzicht.Size = new System.Drawing.Size(126, 50);
             this.btnOverzicht.TabIndex = 1;
             this.btnOverzicht.Text = "Overzicht";
             this.btnOverzicht.UseVisualStyleBackColor = true;
             // 
             // btnBestelling
             // 
-            this.btnBestelling.Location = new System.Drawing.Point(334, 71);
+            this.btnBestelling.Location = new System.Drawing.Point(351, 76);
             this.btnBestelling.Name = "btnBestelling";
-            this.btnBestelling.Size = new System.Drawing.Size(126, 37);
+            this.btnBestelling.Size = new System.Drawing.Size(126, 50);
             this.btnBestelling.TabIndex = 2;
             this.btnBestelling.Text = "Bestelling";
             this.btnBestelling.UseVisualStyleBackColor = true;
@@ -66,7 +67,7 @@ namespace MijnProject
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(294, 9);
+            this.lblUser.Location = new System.Drawing.Point(302, 28);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(38, 17);
             this.lblUser.TabIndex = 3;
@@ -75,7 +76,7 @@ namespace MijnProject
             // llblLogOut
             // 
             this.llblLogOut.AutoSize = true;
-            this.llblLogOut.Location = new System.Drawing.Point(409, 9);
+            this.llblLogOut.Location = new System.Drawing.Point(417, 28);
             this.llblLogOut.Name = "llblLogOut";
             this.llblLogOut.Size = new System.Drawing.Size(56, 17);
             this.llblLogOut.TabIndex = 4;

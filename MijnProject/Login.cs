@@ -20,7 +20,7 @@ namespace MijnProject
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             User user=new User();
-            if(txtUsername.Text!="" && txtWachtwoord.Text!="")
+            //if(txtUsername.Text!="" && txtWachtwoord.Text!="")
             using (var ctx=new ProjectContext())
             {
                     user = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text && u.Wachtwoord == txtWachtwoord.Text);
@@ -29,8 +29,7 @@ namespace MijnProject
             {
                 Program.user = user;
                 Main main = new Main();
-                main.Show();
-                this.Close();
+                main.ShowDialog();
             }
 
         }

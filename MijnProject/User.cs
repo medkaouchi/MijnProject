@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MijnProject
 {
-    class User
+    public class User
     {
         public int UserId { get; set; }
         public string Voornaam { get; set; }
