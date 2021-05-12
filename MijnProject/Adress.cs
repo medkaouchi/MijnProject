@@ -14,5 +14,9 @@ namespace MijnProject
         public string Gemeente { get; set; }
         public string Postcode { get; set; }
         public string Land { get; set; }
+        public override string ToString()
+        {
+            return Straat+" "+Huisnummer+" "+Gemeente + " " +Postcode + " " +Land;
+        }
     }
 }

@@ -35,8 +35,8 @@ namespace MijnProject
             this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlUsers = new System.Windows.Forms.Panel();
-            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.llblNewUser = new System.Windows.Forms.LinkLabel();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -52,7 +52,7 @@ namespace MijnProject
             this.orderToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(805, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,9 +90,23 @@ namespace MijnProject
             this.pnlUsers.Controls.Add(this.dgvUsers);
             this.pnlUsers.Location = new System.Drawing.Point(0, 31);
             this.pnlUsers.Name = "pnlUsers";
-            this.pnlUsers.Size = new System.Drawing.Size(800, 418);
+            this.pnlUsers.Size = new System.Drawing.Size(805, 418);
             this.pnlUsers.TabIndex = 1;
             this.pnlUsers.Visible = false;
+            // 
+            // llblNewUser
+            // 
+            this.llblNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.llblNewUser.AutoSize = true;
+            this.llblNewUser.Location = new System.Drawing.Point(4, 287);
+            this.llblNewUser.Name = "llblNewUser";
+            this.llblNewUser.Size = new System.Drawing.Size(151, 17);
+            this.llblNewUser.TabIndex = 1;
+            this.llblNewUser.TabStop = true;
+            this.llblNewUser.Text = "Nieuw User toevoegen";
+            this.llblNewUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewUser_LinkClicked);
             // 
             // dgvUsers
             // 
@@ -110,31 +124,21 @@ namespace MijnProject
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
-            this.dgvUsers.Size = new System.Drawing.Size(794, 277);
+            this.dgvUsers.Size = new System.Drawing.Size(799, 277);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
-            // 
-            // llblNewUser
-            // 
-            this.llblNewUser.AutoSize = true;
-            this.llblNewUser.Location = new System.Drawing.Point(4, 287);
-            this.llblNewUser.Name = "llblNewUser";
-            this.llblNewUser.Size = new System.Drawing.Size(151, 17);
-            this.llblNewUser.TabIndex = 1;
-            this.llblNewUser.TabStop = true;
-            this.llblNewUser.Text = "Nieuw User toevoegen";
-            this.llblNewUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewUser_LinkClicked);
             // 
             // Databeheer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(805, 450);
             this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Databeheer";
             this.Text = "Databeheer";
+            this.Load += new System.EventHandler(this.Databeheer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.pnlUsers.ResumeLayout(false);

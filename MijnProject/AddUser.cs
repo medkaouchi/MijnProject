@@ -16,9 +16,13 @@ namespace MijnProject
         public AddUser()
         {
             InitializeComponent();
+            List<Adress> Adresses = new List<Adress>();
             cmbRoles.DataSource = Enum.GetValues(typeof(RoleUser));
+            using (var ctx = new ProjectContext())
+                Adresses = ctx.Adressen.ToList();
+            cmbAdress.DataSource = Adresses;
         }
-
+        bool newAd = false;
         private void button1_Click(object sender, EventArgs e)
         {
             User us = new User();
@@ -38,7 +42,7 @@ namespace MijnProject
                 us.Geboortdatum = dtpGD.Value;
             else
                 s += "Geboortdatum ? ";
-            if (txtTel.Text != "" && txtVnaam.Text.ToCharArray().All(c => char.IsDigit(c)))
+            if (txtTel.Text != "" && txtTel.Text.ToCharArray().All(c => char.IsDigit(c)))
                 us.Voornaam = txtVnaam.Text;
             else
                 s += "Telefoon ? ";
@@ -49,23 +53,26 @@ namespace MijnProject
             if (txtStraat.Text != "" && txtStraat.Text.ToCharArray().All(c => char.IsLetter(c)))
                 ad.Straat = txtStraat.Text;
             else
+                if (newAd)
+            {
                 s += "Adress: Straat ? ";
-            if (txtHuisNr.Text != "" && txtHuisNr.Text.ToCharArray().All(c => char.IsLetterOrDigit(c)))
-                ad.Huisnummer =Convert.ToInt32( txtHuisNr.Text);
-            else
-                s += "Adress: Huisnummer ? ";
-            if (txttGem.Text != "" && txttGem.Text.ToCharArray().All(c => char.IsLetter(c)))
-                ad.Gemeente = txttGem.Text;
-            else
-                s += "Adress: Gemeente ? ";
-            if (txtPC.Text != "" && txtHuisNr.Text.ToCharArray().All(c => char.IsDigit(c)))
-                ad.Postcode = txtHuisNr.Text;
-            else
-                s += "Adress: Postcode ? ";
-            if (txtLand.Text != "" && txtLand.Text.ToCharArray().All(c => char.IsLetterOrDigit(c)))
-                ad.Land = txtLand.Text;
-            else
-                s += "Adress: Land ? ";
+                if (txtHuisNr.Text != "" && txtHuisNr.Text.ToCharArray().All(c => char.IsLetterOrDigit(c)))
+                    ad.Huisnummer = Convert.ToInt32(txtHuisNr.Text);
+                else
+                    s += "Adress: Huisnummer ? ";
+                if (txttGem.Text != "" && txttGem.Text.ToCharArray().All(c => char.IsLetter(c)))
+                    ad.Gemeente = txttGem.Text;
+                else
+                    s += "Adress: Gemeente ? ";
+                if (txtPC.Text != "" && txtHuisNr.Text.ToCharArray().All(c => char.IsDigit(c)))
+                    ad.Postcode = txtHuisNr.Text;
+                else
+                    s += "Adress: Postcode ? ";
+                if (txtLand.Text != "" && txtLand.Text.ToCharArray().All(c => char.IsLetterOrDigit(c)))
+                    ad.Land = txtLand.Text;
+                else
+                    s += "Adress: Land ? ";
+            }
             User u=null;
             using(var ctx=new ProjectContext())
             {
@@ -80,20 +87,61 @@ namespace MijnProject
             else
                 s += "Wachtwoord ? ";
             us.Role =(RoleUser) cmbRoles.SelectedItem;
-            if(s!="")
+            if (s == "")
             {
-                using (var ctx=new ProjectContext())
+                using (var ctx = new ProjectContext())
                 {
+                    if(newAd)
                     ctx.Adressen.Add(ad);
                     ctx.SaveChanges();
-                    us.adress = ad;
+                    if (newAd)
+                        us.adress = ad;
+                    else
+                        us.adress = (Adress)cmbAdress.SelectedItem;
                     ctx.Users.Add(us);
                     ctx.SaveChanges();
                     Databeheer.Users = ctx.Users.ToList();
                 }
-                Databeheer.dgv_users.DataSource = null;
-                Databeheer.dgv_users.DataSource = Databeheer.Users;
-            }    
+                Databeheer.loaddgvusers();
+                txtVnaam.Text = "";
+                txtAnaam.Text = "";
+                dtpGD.Value = DateTime.Now;
+                txtTel.Text = "";
+                txtEmail.Text = "";
+                txtStraat.Text = "";
+                txtHuisNr.Text = "";
+                txttGem.Text = "";
+                txtPC.Text = "";
+                txtLand.Text = "";
+                txtUsername.Text = "";
+                txtWachtwoord1.Text = "";
+                txtWachtwoord2.Text = "";
+                cmbRoles.SelectedIndex = 0;
+                cmbAdress.SelectedIndex = 0;
+                pnlAdress.Visible = false;
+                cmbAdress.Enabled = true;
+                newAd = false;
+            }
+            else
+            { 
+                MessageBox.Show(s);
+                s = "";
+                
+            }
+        }
+
+        private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pnlAdress.Visible = true;
+            cmbAdress.Enabled = false;
+            newAd = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            pnlAdress.Visible = false;
+            cmbAdress.Enabled = true;
+            newAd = false;
         }
     }
 }

@@ -51,7 +51,7 @@ namespace MijnProject
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlAdress = new System.Windows.Forms.Panel();
             this.txtLand = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtPC = new System.Windows.Forms.TextBox();
@@ -62,7 +62,10 @@ namespace MijnProject
             this.label13 = new System.Windows.Forms.Label();
             this.txtStraat = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.llblAddAdress = new System.Windows.Forms.LinkLabel();
+            this.cmbAdress = new System.Windows.Forms.ComboBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.pnlAdress.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -157,7 +160,7 @@ namespace MijnProject
             // 
             // txtWachtwoord1
             // 
-            this.txtWachtwoord1.Location = new System.Drawing.Point(211, 415);
+            this.txtWachtwoord1.Location = new System.Drawing.Point(211, 461);
             this.txtWachtwoord1.Name = "txtWachtwoord1";
             this.txtWachtwoord1.Size = new System.Drawing.Size(235, 22);
             this.txtWachtwoord1.TabIndex = 14;
@@ -165,7 +168,7 @@ namespace MijnProject
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(56, 415);
+            this.label6.Location = new System.Drawing.Point(56, 461);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 17);
             this.label6.TabIndex = 13;
@@ -173,7 +176,7 @@ namespace MijnProject
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(211, 376);
+            this.txtUsername.Location = new System.Drawing.Point(211, 422);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(235, 22);
             this.txtUsername.TabIndex = 12;
@@ -181,7 +184,7 @@ namespace MijnProject
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(56, 376);
+            this.label7.Location = new System.Drawing.Point(56, 422);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 17);
             this.label7.TabIndex = 11;
@@ -189,7 +192,7 @@ namespace MijnProject
             // 
             // txtWachtwoord2
             // 
-            this.txtWachtwoord2.Location = new System.Drawing.Point(211, 452);
+            this.txtWachtwoord2.Location = new System.Drawing.Point(211, 498);
             this.txtWachtwoord2.Name = "txtWachtwoord2";
             this.txtWachtwoord2.Size = new System.Drawing.Size(235, 22);
             this.txtWachtwoord2.TabIndex = 16;
@@ -197,7 +200,7 @@ namespace MijnProject
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(56, 452);
+            this.label8.Location = new System.Drawing.Point(56, 498);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(152, 17);
             this.label8.TabIndex = 15;
@@ -206,7 +209,7 @@ namespace MijnProject
             // cmbRoles
             // 
             this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(211, 486);
+            this.cmbRoles.Location = new System.Drawing.Point(211, 532);
             this.cmbRoles.Name = "cmbRoles";
             this.cmbRoles.Size = new System.Drawing.Size(121, 24);
             this.cmbRoles.TabIndex = 17;
@@ -214,7 +217,7 @@ namespace MijnProject
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(56, 489);
+            this.label10.Location = new System.Drawing.Point(56, 535);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 17);
             this.label10.TabIndex = 20;
@@ -232,7 +235,7 @@ namespace MijnProject
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(452, 415);
+            this.label12.Location = new System.Drawing.Point(452, 461);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(23, 17);
             this.label12.TabIndex = 22;
@@ -241,32 +244,35 @@ namespace MijnProject
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(56, 238);
+            this.label17.Location = new System.Drawing.Point(57, 235);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(56, 17);
             this.label17.TabIndex = 31;
             this.label17.Text = "Adress:";
             // 
-            // panel1
+            // pnlAdress
             // 
-            this.panel1.Controls.Add(this.txtLand);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.txtPC);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.txttGem);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.txtHuisNr);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.txtStraat);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Location = new System.Drawing.Point(203, 238);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(254, 122);
-            this.panel1.TabIndex = 32;
+            this.pnlAdress.AllowDrop = true;
+            this.pnlAdress.Controls.Add(this.btnCancel);
+            this.pnlAdress.Controls.Add(this.txtLand);
+            this.pnlAdress.Controls.Add(this.label16);
+            this.pnlAdress.Controls.Add(this.txtPC);
+            this.pnlAdress.Controls.Add(this.label14);
+            this.pnlAdress.Controls.Add(this.txttGem);
+            this.pnlAdress.Controls.Add(this.label15);
+            this.pnlAdress.Controls.Add(this.txtHuisNr);
+            this.pnlAdress.Controls.Add(this.label13);
+            this.pnlAdress.Controls.Add(this.txtStraat);
+            this.pnlAdress.Controls.Add(this.label9);
+            this.pnlAdress.Location = new System.Drawing.Point(203, 284);
+            this.pnlAdress.Name = "pnlAdress";
+            this.pnlAdress.Size = new System.Drawing.Size(254, 122);
+            this.pnlAdress.TabIndex = 32;
+            this.pnlAdress.Visible = false;
             // 
             // txtLand
             // 
-            this.txtLand.Location = new System.Drawing.Point(57, 88);
+            this.txtLand.Location = new System.Drawing.Point(46, 88);
             this.txtLand.Name = "txtLand";
             this.txtLand.Size = new System.Drawing.Size(115, 22);
             this.txtLand.TabIndex = 40;
@@ -344,12 +350,43 @@ namespace MijnProject
             this.label9.TabIndex = 31;
             this.label9.Text = "str:";
             // 
+            // llblAddAdress
+            // 
+            this.llblAddAdress.AutoSize = true;
+            this.llblAddAdress.Location = new System.Drawing.Point(211, 261);
+            this.llblAddAdress.Name = "llblAddAdress";
+            this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
+            this.llblAddAdress.TabIndex = 34;
+            this.llblAddAdress.TabStop = true;
+            this.llblAddAdress.Text = "Nieuw adress";
+            this.llblAddAdress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddAdress_LinkClicked);
+            // 
+            // cmbAdress
+            // 
+            this.cmbAdress.FormattingEnabled = true;
+            this.cmbAdress.Location = new System.Drawing.Point(211, 235);
+            this.cmbAdress.Name = "cmbAdress";
+            this.cmbAdress.Size = new System.Drawing.Size(236, 24);
+            this.cmbAdress.TabIndex = 35;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(172, 88);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 41;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 687);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.cmbAdress);
+            this.Controls.Add(this.llblAddAdress);
+            this.Controls.Add(this.pnlAdress);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -374,8 +411,8 @@ namespace MijnProject
             this.Controls.Add(this.label1);
             this.Name = "AddUser";
             this.Text = "AddUser";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlAdress.ResumeLayout(false);
+            this.pnlAdress.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,7 +442,7 @@ namespace MijnProject
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlAdress;
         private System.Windows.Forms.TextBox txtLand;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtPC;
@@ -416,5 +453,8 @@ namespace MijnProject
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtStraat;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.LinkLabel llblAddAdress;
+        private System.Windows.Forms.ComboBox cmbAdress;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
