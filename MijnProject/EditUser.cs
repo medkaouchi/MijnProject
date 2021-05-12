@@ -11,18 +11,43 @@ using System.Windows.Forms;
 
 namespace MijnProject
 {
-    public partial class AddUser : Form
+    public partial class EditUser : Form
     {
-        public AddUser()
+        bool newAd;
+        public EditUser()
         {
             InitializeComponent();
+            newAd = false;
             List<Adress> Adresses = new List<Adress>();
             cmbRoles.DataSource = Enum.GetValues(typeof(RoleUser));
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
+            txtVnaam.Text = Databeheer.user.Voornaam;
+            txtAnaam.Text = Databeheer.user.Achternaam;
+            dtpGD.Value = Databeheer.user.Geboortdatum;
+            txtTel.Text = Databeheer.user.Telefoon;
+            txtEmail.Text = Databeheer.user.Email;
+            cmbAdress.SelectedItem = Databeheer.user.adress;
+            txtUsername.Text = Databeheer.user.Username;
+            txtWachtwoord1.Text = Databeheer.user.Wachtwoord;
+            txtWachtwoord2.Text = Databeheer.user.Wachtwoord;
+            cmbRoles.SelectedItem = Databeheer.user.Role;
         }
-        bool newAd = false;
+        private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pnlAdress.Visible = true;
+            cmbAdress.Enabled = false;
+            newAd = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            pnlAdress.Visible = false;
+            cmbAdress.Enabled = true;
+            newAd = false;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             User us = new User();
@@ -33,11 +58,11 @@ namespace MijnProject
             if (txtVnaam.Text != "" && txtVnaam.Text.ToCharArray().All(c => char.IsLetter(c)))
                 us.Voornaam = txtVnaam.Text;
             else
-                s+="Voornaam ? ";
+                s += "Voornaam ? ";
             if (txtAnaam.Text != "" && txtAnaam.Text.ToCharArray().All(c => char.IsLetter(c)))
                 us.Achternaam = txtAnaam.Text;
             else
-                s+="Achternaam ? ";
+                s += "Achternaam ? ";
             if (dtpGD.Value != null && dtpGD.Value < DateTime.Now)
                 us.Geboortdatum = dtpGD.Value;
             else
@@ -55,7 +80,7 @@ namespace MijnProject
                 if (txtStraat.Text != "" && txtStraat.Text.ToCharArray().All(c => char.IsLetter(c)))
                     ad.Straat = txtStraat.Text;
                 else
-                s += "Adress: Straat ? ";
+                    s += "Adress: Straat ? ";
                 if (txtHuisNr.Text != "" && txtHuisNr.Text.ToCharArray().All(c => char.IsLetterOrDigit(c)))
                     ad.Huisnummer = Convert.ToInt32(txtHuisNr.Text);
                 else
@@ -73,12 +98,7 @@ namespace MijnProject
                 else
                     s += "Adress: Land ? ";
             }
-            User u=null;
-            using(var ctx=new ProjectContext())
-            {
-                u = ctx.Users.FirstOrDefault(U => U.Username == txtUsername.Text);
-            }
-            if (txtUsername.Text != "" && txtUsername.Text.ToCharArray().All(c => char.IsLetter(c)) &&u==null)
+            if (txtUsername.Text != "" && txtUsername.Text.ToCharArray().All(c => char.IsLetter(c)))
                 us.Username = txtUsername.Text;
             else
                 s += "Usernaam ? ";
@@ -86,62 +106,39 @@ namespace MijnProject
                 us.Wachtwoord = txtWachtwoord1.Text.Aggregate("", (c, a) => c + (char)(a + 2));
             else
                 s += "Wachtwoord ? ";
-            us.Role =(RoleUser) cmbRoles.SelectedItem;
+            us.Role = (RoleUser)cmbRoles.SelectedItem;
             if (s == "")
             {
                 using (var ctx = new ProjectContext())
                 {
-                    if(newAd)
-                    ctx.Adressen.Add(ad);
+                    if (newAd)
+                        ctx.Adressen.Add(ad);
                     ctx.SaveChanges();
                     if (newAd)
                         us.adress = ad;
                     else
                         us.adress = (Adress)cmbAdress.SelectedItem;
-                    ctx.Users.Add(us);
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Voornaam = us.Voornaam;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Achternaam = us.Achternaam;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Geboortdatum = us.Geboortdatum;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Telefoon = us.Telefoon;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Email = us.Email;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).adress = us.adress;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Username = us.Username;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Wachtwoord = us.Wachtwoord;
+                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Role = us.Role;
                     ctx.SaveChanges();
                     Databeheer.Users = ctx.Users.Include("Adress").ToList();
                 }
                 Databeheer.loaddgvusers();
-                txtVnaam.Text = "";
-                txtAnaam.Text = "";
-                dtpGD.Value = DateTime.Now;
-                txtTel.Text = "";
-                txtEmail.Text = "";
-                txtStraat.Text = "";
-                txtHuisNr.Text = "";
-                txttGem.Text = "";
-                txtPC.Text = "";
-                txtLand.Text = "";
-                txtUsername.Text = "";
-                txtWachtwoord1.Text = "";
-                txtWachtwoord2.Text = "";
-                cmbRoles.SelectedIndex = 0;
-                cmbAdress.SelectedIndex = 0;
-                pnlAdress.Visible = false;
-                cmbAdress.Enabled = true;
                 newAd = false;
+                this.Close();
             }
             else
-            { 
+            {
                 MessageBox.Show(s);
                 s = "";
-                
             }
-        }
-
-        private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            pnlAdress.Visible = true;
-            cmbAdress.Enabled = false;
-            newAd = true;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            pnlAdress.Visible = false;
-            cmbAdress.Enabled = true;
-            newAd = false;
         }
     }
 }

@@ -16,14 +16,14 @@ namespace MijnProject
         {
             InitializeComponent();
         }
-
+        public static User user=new User();
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            User user=new User();
+            
             //if(txtUsername.Text!="" && txtWachtwoord.Text!="")
             using (var ctx=new ProjectContext())
             {
-                    user = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text && u.Wachtwoord == txtWachtwoord.Text);
+                    user = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text && u.Wachtwoord.Aggregate("", (c, a) => c + (char)(a - 2)) == txtWachtwoord.Text);
             }
             if(user!=null)
             {

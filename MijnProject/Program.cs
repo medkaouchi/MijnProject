@@ -17,7 +17,7 @@ namespace MijnProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Databeheer());
         }
         static public User user;
     }

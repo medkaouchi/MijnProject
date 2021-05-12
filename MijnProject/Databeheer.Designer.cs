@@ -52,12 +52,13 @@ namespace MijnProject
             this.orderToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(805, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1112, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // userToolStripMenuItem
             // 
+            this.userToolStripMenuItem.Enabled = false;
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
             this.userToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.userToolStripMenuItem.Text = "Users";
@@ -65,18 +66,21 @@ namespace MijnProject
             // 
             // klantToolStripMenuItem
             // 
+            this.klantToolStripMenuItem.Enabled = false;
             this.klantToolStripMenuItem.Name = "klantToolStripMenuItem";
             this.klantToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.klantToolStripMenuItem.Text = "Klanten";
             // 
             // productToolStripMenuItem
             // 
+            this.productToolStripMenuItem.Enabled = false;
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
             this.productToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.productToolStripMenuItem.Text = "Producten";
             // 
             // orderToolStripMenuItem
             // 
+            this.orderToolStripMenuItem.Enabled = false;
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
             this.orderToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.orderToolStripMenuItem.Text = "Orders";
@@ -90,15 +94,13 @@ namespace MijnProject
             this.pnlUsers.Controls.Add(this.dgvUsers);
             this.pnlUsers.Location = new System.Drawing.Point(0, 31);
             this.pnlUsers.Name = "pnlUsers";
-            this.pnlUsers.Size = new System.Drawing.Size(805, 418);
+            this.pnlUsers.Size = new System.Drawing.Size(1112, 418);
             this.pnlUsers.TabIndex = 1;
             this.pnlUsers.Visible = false;
             // 
             // llblNewUser
             // 
-            this.llblNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.llblNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.llblNewUser.AutoSize = true;
             this.llblNewUser.Location = new System.Drawing.Point(4, 287);
             this.llblNewUser.Name = "llblNewUser";
@@ -124,7 +126,7 @@ namespace MijnProject
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
-            this.dgvUsers.Size = new System.Drawing.Size(799, 277);
+            this.dgvUsers.Size = new System.Drawing.Size(1106, 277);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
@@ -132,7 +134,7 @@ namespace MijnProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 450);
+            this.ClientSize = new System.Drawing.Size(1112, 450);
             this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

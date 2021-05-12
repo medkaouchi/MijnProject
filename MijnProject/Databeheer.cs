@@ -15,17 +15,36 @@ namespace MijnProject
         public Databeheer()
         {
             InitializeComponent();
-            
+            if(Login.user.Role==RoleUser.Admin)
+            {
+                userToolStripMenuItem.Enabled = true;
+                productToolStripMenuItem.Enabled = true;
+                klantToolStripMenuItem.Enabled = true;
+                orderToolStripMenuItem.Enabled = true;
+            }
+            if (Login.user.Role == RoleUser.Magazijnier)
+            {
+                userToolStripMenuItem.Enabled = false;
+                productToolStripMenuItem.Enabled = true;
+                klantToolStripMenuItem.Enabled = false;
+                orderToolStripMenuItem.Enabled = false;
+            }
+            if (Login.user.Role == RoleUser.Verkoper)
+            {
+                userToolStripMenuItem.Enabled = false;
+                productToolStripMenuItem.Enabled = false;
+                klantToolStripMenuItem.Enabled = true;
+                orderToolStripMenuItem.Enabled = true;
+            }
         }
         public static List<User> Users = new List<User>();
         public static DataGridView dgv_users ;
+        public static User user = new User();
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
             pnlUsers.Visible = true;
             using (var ctx=new ProjectContext())
-            {
-                Users = ctx.Users.ToList();
-            }
+                Users = ctx.Users.Include("Adress").ToList();
             loaddgvusers();
         }
 
@@ -39,29 +58,14 @@ namespace MijnProject
                         User usr = (User)dgvUsers.Rows[e.RowIndex].DataBoundItem;
                         ctx.Users.RemoveRange(ctx.Users.Where(g => g.UserId == usr.UserId));
                         ctx.SaveChanges();
-                        Users = ctx.Users.ToList();
+                        Users = ctx.Users.Include("Adress").ToList();
                     }
                 }
                 else
                 {
-                    if (dgvUsers.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == "Bewerk")
-                    {
-                        ((DataGridViewButtonColumn)dgvUsers.Columns["Bewerken"]).UseColumnTextForButtonValue = false;
-                        dgvUsers.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Opslaan";
-
-                    }
-                    else
-                    {
-                        using (var ctx = new ProjectContext())
-                        {
-                            User usr = (User)dgvUsers.Rows[e.RowIndex].DataBoundItem;
-                            ctx.Users.RemoveRange(ctx.Users.Where(g => g.UserId == usr.UserId));
-                            ctx.SaveChanges();
-                            Users = ctx.Users.ToList();
-                        }
-                        dgvUsers.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Bewerk";
-                    }
-                    
+                    user = dgvUsers.Rows[e.RowIndex].DataBoundItem as User;
+                    EditUser edituser = new EditUser();
+                    edituser.ShowDialog();
                 }
             loaddgvusers();
             
@@ -93,6 +97,10 @@ namespace MijnProject
             DeleteButtonColumn.UseColumnTextForButtonValue = true;
             dgv_users.Columns.Insert(dgv_users.Columns.Count, EditButtonColumn);
             dgv_users.Columns.Insert(dgv_users.Columns.Count, DeleteButtonColumn);
+            for (int i = 0; i < dgv_users.Rows.Count; i++)
+            {
+                dgv_users.Rows[i].Cells["Wachtwoord"].Value = dgv_users.Rows[i].Cells["Wachtwoord"].Value.ToString().Aggregate("", (c, a) => c + (char)(a - 2));
+            }
         }
     }
 }
