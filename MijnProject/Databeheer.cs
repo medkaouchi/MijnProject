@@ -38,15 +38,13 @@ namespace MijnProject
             }
         }
         public static List<User> Users = new List<User>();
+        public static List<Klant> Klanten = new List<Klant>();
         public static DataGridView dgv_users ;
+        public static DataGridView dgv_klanten;
         public static User user = new User();
-        private void userToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            pnlUsers.Visible = true;
-            using (var ctx=new ProjectContext())
-                Users = ctx.Users.Include("Adress").ToList();
-            loaddgvusers();
-        }
+        public static Klant klant = new Klant();
+        public static int deleteindex;
+        public static int editindex;
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -70,7 +68,6 @@ namespace MijnProject
             loaddgvusers();
             
         }
-
         private void llblNewUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             AddUser adduser = new AddUser();
@@ -79,7 +76,7 @@ namespace MijnProject
 
         private void Databeheer_Load(object sender, EventArgs e)
         {
-
+            dgv_klanten = dgvKlanten;
             dgv_users = dgvUsers;
         }
         public static void loaddgvusers()
@@ -101,6 +98,78 @@ namespace MijnProject
             {
                 dgv_users.Rows[i].Cells["Wachtwoord"].Value = dgv_users.Rows[i].Cells["Wachtwoord"].Value.ToString().Aggregate("", (c, a) => c + (char)(a - 2));
             }
+        }
+        public static void loaddgvklants()
+        {
+            dgv_klanten.DataSource = null;
+            dgv_klanten.Columns.Clear();
+            dgv_klanten.DataSource = Klanten;
+            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
+            EditButtonColumn.Name = "Bewerken";
+            EditButtonColumn.Text = "Bewerk";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgv_klanten.Columns.Insert(dgv_users.Columns.Count, EditButtonColumn);
+            dgv_klanten.Columns.Insert(dgv_users.Columns.Count, DeleteButtonColumn);
+            dgv_klanten.Columns["Verwijderen"].DisplayIndex = 14;
+            dgv_klanten.Columns["Bewerken"].DisplayIndex = 13;
+            deleteindex = dgv_klanten.Columns["Verwijderen"].Index;
+            editindex = dgv_klanten.Columns["Bewerken"].Index;
+        }
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlKlanten.Visible = false;
+            pnlUsers.Visible = true;
+            using (var ctx = new ProjectContext())
+                Users = ctx.Users.Include("Adress").ToList();
+            loaddgvusers();
+        }
+
+        private void klantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlUsers.Visible = false;
+            pnlKlanten.Visible = true;
+            using (var ctx = new ProjectContext())
+                Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
+            loaddgvklants();
+        }
+
+        private void productToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlUsers.Visible = false;
+            pnlKlanten.Visible = false;
+        }
+
+        private void orderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlUsers.Visible = false;
+            pnlKlanten.Visible = false;
+        }
+
+        private void dgvKlanten_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show(e.ColumnIndex.ToString());
+            if (e.RowIndex > -1 )
+                if (e.ColumnIndex == deleteindex)
+                {
+                    using (var ctx = new ProjectContext())
+                    {
+                        Klant klnt = (Klant)dgvKlanten.Rows[e.RowIndex].DataBoundItem;
+                        ctx.Klanten.RemoveRange(ctx.Klanten.Where(g => g.KlantId == klnt.KlantId));
+                        ctx.SaveChanges();
+                        Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
+                    }
+                }
+                else
+                {
+                    klant = dgvKlanten.Rows[e.RowIndex].DataBoundItem as Klant;
+                    //EditUser edituser = new EditUser();
+                    //edituser.ShowDialog();
+                }
+            loaddgvklants();
         }
     }
 }

@@ -19,5 +19,9 @@ namespace MijnProject
         public string Username { get; set; }
         public string Wachtwoord { get; set; }
         public RoleUser Role { get; set; }
+        public override string ToString()
+        {
+            return $"{Voornaam} {Achternaam}";
+        }
     }
 }

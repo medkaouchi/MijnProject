@@ -37,9 +37,14 @@ namespace MijnProject
             this.pnlUsers = new System.Windows.Forms.Panel();
             this.llblNewUser = new System.Windows.Forms.LinkLabel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.pnlKlanten = new System.Windows.Forms.Panel();
+            this.llblNewKlant = new System.Windows.Forms.LinkLabel();
+            this.dgvKlanten = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.pnlKlanten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKlanten)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -70,6 +75,7 @@ namespace MijnProject
             this.klantToolStripMenuItem.Name = "klantToolStripMenuItem";
             this.klantToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.klantToolStripMenuItem.Text = "Klanten";
+            this.klantToolStripMenuItem.Click += new System.EventHandler(this.klantToolStripMenuItem_Click);
             // 
             // productToolStripMenuItem
             // 
@@ -77,6 +83,7 @@ namespace MijnProject
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
             this.productToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.productToolStripMenuItem.Text = "Producten";
+            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // orderToolStripMenuItem
             // 
@@ -84,17 +91,16 @@ namespace MijnProject
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
             this.orderToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.orderToolStripMenuItem.Text = "Orders";
+            this.orderToolStripMenuItem.Click += new System.EventHandler(this.orderToolStripMenuItem_Click);
             // 
             // pnlUsers
             // 
-            this.pnlUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlUsers.Controls.Add(this.llblNewUser);
             this.pnlUsers.Controls.Add(this.dgvUsers);
-            this.pnlUsers.Location = new System.Drawing.Point(0, 31);
+            this.pnlUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlUsers.Location = new System.Drawing.Point(0, 28);
             this.pnlUsers.Name = "pnlUsers";
-            this.pnlUsers.Size = new System.Drawing.Size(1112, 418);
+            this.pnlUsers.Size = new System.Drawing.Size(1112, 422);
             this.pnlUsers.TabIndex = 1;
             this.pnlUsers.Visible = false;
             // 
@@ -102,7 +108,7 @@ namespace MijnProject
             // 
             this.llblNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.llblNewUser.AutoSize = true;
-            this.llblNewUser.Location = new System.Drawing.Point(4, 287);
+            this.llblNewUser.Location = new System.Drawing.Point(4, 293);
             this.llblNewUser.Name = "llblNewUser";
             this.llblNewUser.Size = new System.Drawing.Size(151, 17);
             this.llblNewUser.TabIndex = 1;
@@ -126,15 +132,51 @@ namespace MijnProject
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
-            this.dgvUsers.Size = new System.Drawing.Size(1106, 277);
+            this.dgvUsers.Size = new System.Drawing.Size(1106, 283);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
+            // 
+            // pnlKlanten
+            // 
+            this.pnlKlanten.Controls.Add(this.llblNewKlant);
+            this.pnlKlanten.Controls.Add(this.dgvKlanten);
+            this.pnlKlanten.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlKlanten.Location = new System.Drawing.Point(0, 28);
+            this.pnlKlanten.Name = "pnlKlanten";
+            this.pnlKlanten.Size = new System.Drawing.Size(1112, 422);
+            this.pnlKlanten.TabIndex = 3;
+            this.pnlKlanten.Visible = false;
+            // 
+            // llblNewKlant
+            // 
+            this.llblNewKlant.AutoSize = true;
+            this.llblNewKlant.Location = new System.Drawing.Point(13, 326);
+            this.llblNewKlant.Name = "llblNewKlant";
+            this.llblNewKlant.Size = new System.Drawing.Size(151, 17);
+            this.llblNewKlant.TabIndex = 1;
+            this.llblNewKlant.TabStop = true;
+            this.llblNewKlant.Text = "Nieuw klant toevoegen";
+            // 
+            // dgvKlanten
+            // 
+            this.dgvKlanten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvKlanten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvKlanten.Location = new System.Drawing.Point(0, 0);
+            this.dgvKlanten.Name = "dgvKlanten";
+            this.dgvKlanten.RowHeadersWidth = 51;
+            this.dgvKlanten.RowTemplate.Height = 24;
+            this.dgvKlanten.Size = new System.Drawing.Size(1112, 321);
+            this.dgvKlanten.TabIndex = 0;
+            this.dgvKlanten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKlanten_CellClick);
             // 
             // Databeheer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 450);
+            this.Controls.Add(this.pnlKlanten);
             this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -146,6 +188,9 @@ namespace MijnProject
             this.pnlUsers.ResumeLayout(false);
             this.pnlUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
+            this.pnlKlanten.ResumeLayout(false);
+            this.pnlKlanten.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKlanten)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +206,8 @@ namespace MijnProject
         private System.Windows.Forms.Panel pnlUsers;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.LinkLabel llblNewUser;
+        private System.Windows.Forms.Panel pnlKlanten;
+        private System.Windows.Forms.LinkLabel llblNewKlant;
+        private System.Windows.Forms.DataGridView dgvKlanten;
     }
 }
