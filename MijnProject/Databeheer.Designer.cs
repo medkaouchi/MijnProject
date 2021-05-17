@@ -33,18 +33,23 @@ namespace MijnProject
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlUsers = new System.Windows.Forms.Panel();
             this.llblNewUser = new System.Windows.Forms.LinkLabel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.pnlKlanten = new System.Windows.Forms.Panel();
             this.llblNewKlant = new System.Windows.Forms.LinkLabel();
             this.dgvKlanten = new System.Windows.Forms.DataGridView();
+            this.pnlProducten = new System.Windows.Forms.Panel();
+            this.dgvProducten = new System.Windows.Forms.DataGridView();
+            this.btnupload = new System.Windows.Forms.Button();
+            this.llblNewProduct = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.pnlKlanten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKlanten)).BeginInit();
+            this.pnlProducten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducten)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -53,8 +58,7 @@ namespace MijnProject
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.userToolStripMenuItem,
             this.klantToolStripMenuItem,
-            this.productToolStripMenuItem,
-            this.orderToolStripMenuItem});
+            this.productToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1112, 28);
@@ -84,14 +88,6 @@ namespace MijnProject
             this.productToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.productToolStripMenuItem.Text = "Producten";
             this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
-            // 
-            // orderToolStripMenuItem
-            // 
-            this.orderToolStripMenuItem.Enabled = false;
-            this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
-            this.orderToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
-            this.orderToolStripMenuItem.Text = "Orders";
-            this.orderToolStripMenuItem.Click += new System.EventHandler(this.orderToolStripMenuItem_Click);
             // 
             // pnlUsers
             // 
@@ -149,6 +145,7 @@ namespace MijnProject
             // 
             // llblNewKlant
             // 
+            this.llblNewKlant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.llblNewKlant.AutoSize = true;
             this.llblNewKlant.Location = new System.Drawing.Point(13, 326);
             this.llblNewKlant.Name = "llblNewKlant";
@@ -156,6 +153,7 @@ namespace MijnProject
             this.llblNewKlant.TabIndex = 1;
             this.llblNewKlant.TabStop = true;
             this.llblNewKlant.Text = "Nieuw klant toevoegen";
+            this.llblNewKlant.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewKlant_LinkClicked);
             // 
             // dgvKlanten
             // 
@@ -171,11 +169,57 @@ namespace MijnProject
             this.dgvKlanten.TabIndex = 0;
             this.dgvKlanten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKlanten_CellClick);
             // 
+            // pnlProducten
+            // 
+            this.pnlProducten.Controls.Add(this.btnupload);
+            this.pnlProducten.Controls.Add(this.llblNewProduct);
+            this.pnlProducten.Controls.Add(this.dgvProducten);
+            this.pnlProducten.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlProducten.Location = new System.Drawing.Point(0, 28);
+            this.pnlProducten.Name = "pnlProducten";
+            this.pnlProducten.Size = new System.Drawing.Size(1112, 422);
+            this.pnlProducten.TabIndex = 4;
+            this.pnlProducten.Visible = false;
+            // 
+            // dgvProducten
+            // 
+            this.dgvProducten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProducten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducten.Location = new System.Drawing.Point(0, 0);
+            this.dgvProducten.Name = "dgvProducten";
+            this.dgvProducten.RowHeadersWidth = 51;
+            this.dgvProducten.RowTemplate.Height = 24;
+            this.dgvProducten.Size = new System.Drawing.Size(1112, 320);
+            this.dgvProducten.TabIndex = 0;
+            this.dgvProducten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducten_CellClick);
+            // 
+            // btnupload
+            // 
+            this.btnupload.Location = new System.Drawing.Point(0, 346);
+            this.btnupload.Name = "btnupload";
+            this.btnupload.Size = new System.Drawing.Size(260, 23);
+            this.btnupload.TabIndex = 4;
+            this.btnupload.Text = "Upload leverancier bestand ";
+            this.btnupload.UseVisualStyleBackColor = true;
+            // 
+            // llblNewProduct
+            // 
+            this.llblNewProduct.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.llblNewProduct.AutoSize = true;
+            this.llblNewProduct.Location = new System.Drawing.Point(942, 352);
+            this.llblNewProduct.Name = "llblNewProduct";
+            this.llblNewProduct.Size = new System.Drawing.Size(170, 17);
+            this.llblNewProduct.TabIndex = 3;
+            this.llblNewProduct.TabStop = true;
+            this.llblNewProduct.Text = "Nieuw Product toevoegen";
+            // 
             // Databeheer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 450);
+            this.Controls.Add(this.pnlProducten);
             this.Controls.Add(this.pnlKlanten);
             this.Controls.Add(this.pnlUsers);
             this.Controls.Add(this.menuStrip1);
@@ -191,6 +235,9 @@ namespace MijnProject
             this.pnlKlanten.ResumeLayout(false);
             this.pnlKlanten.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKlanten)).EndInit();
+            this.pnlProducten.ResumeLayout(false);
+            this.pnlProducten.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducten)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,12 +249,15 @@ namespace MijnProject
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem klantToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem orderToolStripMenuItem;
         private System.Windows.Forms.Panel pnlUsers;
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.LinkLabel llblNewUser;
         private System.Windows.Forms.Panel pnlKlanten;
         private System.Windows.Forms.LinkLabel llblNewKlant;
         private System.Windows.Forms.DataGridView dgvKlanten;
+        private System.Windows.Forms.Panel pnlProducten;
+        private System.Windows.Forms.DataGridView dgvProducten;
+        private System.Windows.Forms.Button btnupload;
+        private System.Windows.Forms.LinkLabel llblNewProduct;
     }
 }

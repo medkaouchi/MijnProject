@@ -23,10 +23,21 @@ namespace MijnProject
             //if(txtUsername.Text!="" && txtWachtwoord.Text!="")
             using (var ctx=new ProjectContext())
             {
-                    user = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text && u.Wachtwoord.Aggregate("", (c, a) => c + (char)(a - 2)) == txtWachtwoord.Text);
+                string t = null;
+                if (ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text)!=null)
+                t = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text).Wachtwoord.Aggregate("", (c, a) => c + (char)(a - 2));
+                else
+                {
+                    MessageBox.Show("Username of Wachtwoord bestaat niet!");
+                    txtUsername.Text = "";
+                    txtWachtwoord.Text = "";
+                }
+                user = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text && t == txtWachtwoord.Text);
             }
             if(user!=null)
             {
+                txtUsername.Text = "";
+                txtWachtwoord.Text = "";
                 Program.user = user;
                 Main main = new Main();
                 main.ShowDialog();

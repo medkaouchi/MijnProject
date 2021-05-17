@@ -21,8 +21,6 @@ namespace MijnProject
         private void llblLogOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Program.user = null;
-            Login login = new Login();
-            login.Show();
             this.Close();
         }
 

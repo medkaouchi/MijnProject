@@ -34,10 +34,6 @@ namespace MijnProject
             this.txtBTW = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.cbBedrijf = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dtpIngevoegdDatum = new System.Windows.Forms.DateTimePicker();
-            this.cmbIngevoegdDoor = new System.Windows.Forms.ComboBox();
             this.txtTel2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbAdress = new System.Windows.Forms.ComboBox();
@@ -72,7 +68,7 @@ namespace MijnProject
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(93, 607);
+            this.label12.Location = new System.Drawing.Point(93, 527);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(92, 17);
             this.label12.TabIndex = 97;
@@ -80,7 +76,7 @@ namespace MijnProject
             // 
             // rtbComentaar
             // 
-            this.rtbComentaar.Location = new System.Drawing.Point(247, 604);
+            this.rtbComentaar.Location = new System.Drawing.Point(247, 524);
             this.rtbComentaar.Name = "rtbComentaar";
             this.rtbComentaar.Size = new System.Drawing.Size(235, 79);
             this.rtbComentaar.TabIndex = 96;
@@ -111,39 +107,6 @@ namespace MijnProject
             this.cbBedrijf.TabIndex = 93;
             this.cbBedrijf.Text = "Is een bedrijf";
             this.cbBedrijf.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(92, 525);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 17);
-            this.label7.TabIndex = 92;
-            this.label7.Text = "Ingevoegd door:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(91, 569);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 17);
-            this.label6.TabIndex = 91;
-            this.label6.Text = "Ingevoegd datum:";
-            // 
-            // dtpIngevoegdDatum
-            // 
-            this.dtpIngevoegdDatum.Location = new System.Drawing.Point(246, 564);
-            this.dtpIngevoegdDatum.Name = "dtpIngevoegdDatum";
-            this.dtpIngevoegdDatum.Size = new System.Drawing.Size(236, 22);
-            this.dtpIngevoegdDatum.TabIndex = 90;
-            // 
-            // cmbIngevoegdDoor
-            // 
-            this.cmbIngevoegdDoor.FormattingEnabled = true;
-            this.cmbIngevoegdDoor.Location = new System.Drawing.Point(246, 522);
-            this.cmbIngevoegdDoor.Name = "cmbIngevoegdDoor";
-            this.cmbIngevoegdDoor.Size = new System.Drawing.Size(236, 24);
-            this.cmbIngevoegdDoor.TabIndex = 89;
             // 
             // txtTel2
             // 
@@ -178,6 +141,7 @@ namespace MijnProject
             this.llblAddAdress.TabIndex = 85;
             this.llblAddAdress.TabStop = true;
             this.llblAddAdress.Text = "Nieuw adress";
+            this.llblAddAdress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddAdress_LinkClicked);
             // 
             // pnlAdress
             // 
@@ -207,6 +171,7 @@ namespace MijnProject
             this.btnCancel.TabIndex = 41;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtLand
             // 
@@ -370,12 +335,14 @@ namespace MijnProject
             // 
             // btnOpslaan
             // 
-            this.btnOpslaan.Location = new System.Drawing.Point(202, 698);
+            this.btnOpslaan.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOpslaan.Location = new System.Drawing.Point(205, 660);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(195, 40);
             this.btnOpslaan.TabIndex = 73;
             this.btnOpslaan.Text = "Opslaan";
             this.btnOpslaan.UseVisualStyleBackColor = true;
+            this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
             // 
             // label1
             // 
@@ -396,10 +363,6 @@ namespace MijnProject
             this.Controls.Add(this.txtBTW);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cbBedrijf);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dtpIngevoegdDatum);
-            this.Controls.Add(this.cmbIngevoegdDoor);
             this.Controls.Add(this.txtTel2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cmbAdress);
@@ -433,10 +396,6 @@ namespace MijnProject
         private System.Windows.Forms.TextBox txtBTW;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox cbBedrijf;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtpIngevoegdDatum;
-        private System.Windows.Forms.ComboBox cmbIngevoegdDoor;
         private System.Windows.Forms.TextBox txtTel2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbAdress;
