@@ -39,20 +39,20 @@ namespace MijnProject
             this.label4 = new System.Windows.Forms.Label();
             this.txtBarcode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGewicht = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBreedte = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtLengte = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtHoogte = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbLeverancier = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.rtbOmschrijving = new System.Windows.Forms.RichTextBox();
+            this.btnOpslaan = new System.Windows.Forms.Button();
+            this.llblNewLeverancier = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // label1
@@ -135,12 +135,12 @@ namespace MijnProject
             this.label5.TabIndex = 8;
             this.label5.Text = "Barcode:";
             // 
-            // textBox1
+            // txtGewicht
             // 
-            this.textBox1.Location = new System.Drawing.Point(211, 244);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
-            this.textBox1.TabIndex = 11;
+            this.txtGewicht.Location = new System.Drawing.Point(211, 244);
+            this.txtGewicht.Name = "txtGewicht";
+            this.txtGewicht.Size = new System.Drawing.Size(200, 22);
+            this.txtGewicht.TabIndex = 11;
             // 
             // label6
             // 
@@ -151,28 +151,28 @@ namespace MijnProject
             this.label6.TabIndex = 10;
             this.label6.Text = "Gewicht:";
             // 
-            // textBox2
+            // txtBreedte
             // 
-            this.textBox2.Location = new System.Drawing.Point(211, 282);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 22);
-            this.textBox2.TabIndex = 13;
+            this.txtBreedte.Location = new System.Drawing.Point(211, 282);
+            this.txtBreedte.Name = "txtBreedte";
+            this.txtBreedte.Size = new System.Drawing.Size(200, 22);
+            this.txtBreedte.TabIndex = 13;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(63, 285);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 17);
+            this.label7.Size = new System.Drawing.Size(62, 17);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Breete:";
+            this.label7.Text = "Breedte:";
             // 
-            // textBox3
+            // txtLengte
             // 
-            this.textBox3.Location = new System.Drawing.Point(211, 320);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 22);
-            this.textBox3.TabIndex = 15;
+            this.txtLengte.Location = new System.Drawing.Point(211, 320);
+            this.txtLengte.Name = "txtLengte";
+            this.txtLengte.Size = new System.Drawing.Size(200, 22);
+            this.txtLengte.TabIndex = 15;
             // 
             // label8
             // 
@@ -183,12 +183,12 @@ namespace MijnProject
             this.label8.TabIndex = 14;
             this.label8.Text = "Lengte:";
             // 
-            // textBox4
+            // txtHoogte
             // 
-            this.textBox4.Location = new System.Drawing.Point(211, 360);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(200, 22);
-            this.textBox4.TabIndex = 17;
+            this.txtHoogte.Location = new System.Drawing.Point(211, 360);
+            this.txtHoogte.Name = "txtHoogte";
+            this.txtHoogte.Size = new System.Drawing.Size(200, 22);
+            this.txtHoogte.TabIndex = 17;
             // 
             // label9
             // 
@@ -199,74 +199,79 @@ namespace MijnProject
             this.label9.TabIndex = 16;
             this.label9.Text = "Hoogte:";
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(211, 398);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 18;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(63, 403);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 17);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "BBD:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(211, 436);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 24);
-            this.comboBox1.TabIndex = 20;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(63, 439);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 17);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "Categorie:";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(63, 479);
+            this.label12.Location = new System.Drawing.Point(63, 404);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(79, 17);
             this.label12.TabIndex = 23;
             this.label12.Text = "Levrencier:";
             // 
-            // comboBox2
+            // cmbLeverancier
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(211, 476);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(200, 24);
-            this.comboBox2.TabIndex = 22;
+            this.cmbLeverancier.FormattingEnabled = true;
+            this.cmbLeverancier.Location = new System.Drawing.Point(211, 401);
+            this.cmbLeverancier.Name = "cmbLeverancier";
+            this.cmbLeverancier.Size = new System.Drawing.Size(200, 24);
+            this.cmbLeverancier.TabIndex = 22;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(63, 469);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(93, 17);
+            this.label13.TabIndex = 24;
+            this.label13.Text = "Omschrijving:";
+            // 
+            // rtbOmschrijving
+            // 
+            this.rtbOmschrijving.Location = new System.Drawing.Point(211, 466);
+            this.rtbOmschrijving.Name = "rtbOmschrijving";
+            this.rtbOmschrijving.Size = new System.Drawing.Size(200, 106);
+            this.rtbOmschrijving.TabIndex = 25;
+            this.rtbOmschrijving.Text = "";
+            // 
+            // btnOpslaan
+            // 
+            this.btnOpslaan.Location = new System.Drawing.Point(209, 645);
+            this.btnOpslaan.Name = "btnOpslaan";
+            this.btnOpslaan.Size = new System.Drawing.Size(146, 43);
+            this.btnOpslaan.TabIndex = 26;
+            this.btnOpslaan.Text = "Opslaan";
+            this.btnOpslaan.UseVisualStyleBackColor = true;
+            this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
+            // 
+            // llblNewLeverancier
+            // 
+            this.llblNewLeverancier.AutoSize = true;
+            this.llblNewLeverancier.Location = new System.Drawing.Point(208, 428);
+            this.llblNewLeverancier.Name = "llblNewLeverancier";
+            this.llblNewLeverancier.Size = new System.Drawing.Size(147, 17);
+            this.llblNewLeverancier.TabIndex = 28;
+            this.llblNewLeverancier.TabStop = true;
+            this.llblNewLeverancier.Text = "Add nieuw leverencier";
+            this.llblNewLeverancier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewLeverancier_LinkClicked);
             // 
             // EditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 764);
+            this.Controls.Add(this.llblNewLeverancier);
+            this.Controls.Add(this.btnOpslaan);
+            this.Controls.Add(this.rtbOmschrijving);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.cmbLeverancier);
+            this.Controls.Add(this.txtHoogte);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtLengte);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtBreedte);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtGewicht);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtBarcode);
             this.Controls.Add(this.label5);
@@ -297,19 +302,19 @@ namespace MijnProject
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBarcode;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGewicht;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBreedte;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtLengte;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtHoogte;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbLeverancier;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.RichTextBox rtbOmschrijving;
+        private System.Windows.Forms.Button btnOpslaan;
+        private System.Windows.Forms.LinkLabel llblNewLeverancier;
     }
 }

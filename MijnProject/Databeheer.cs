@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -137,8 +139,8 @@ namespace MijnProject
             DeleteButtonColumn.UseColumnTextForButtonValue = true;
             dgv_producten.Columns.Insert(dgv_producten.Columns.Count, EditButtonColumn);
             dgv_producten.Columns.Insert(dgv_producten.Columns.Count, DeleteButtonColumn);
-            dgv_producten.Columns["Verwijderen"].DisplayIndex = 15;
-            dgv_producten.Columns["Bewerken"].DisplayIndex = 14;
+            dgv_producten.Columns["Verwijderen"].DisplayIndex = 13;
+            dgv_producten.Columns["Bewerken"].DisplayIndex = 12;
             deleteindex = dgv_producten.Columns["Verwijderen"].Index;
             editindex = dgv_producten.Columns["Bewerken"].Index;
         }
@@ -168,7 +170,7 @@ namespace MijnProject
             pnlKlanten.Visible = false;
             pnlProducten.Visible = true;
             using (var ctx = new ProjectContext())
-                Producten = ctx.Products.Include("levrancier").Include("categorie").ToList();
+                Producten = ctx.Products.Include("levrancier").ToList();
             loaddgvprodut();
         }
 
@@ -210,7 +212,7 @@ namespace MijnProject
                         Product prd = (Product)dgvProducten.Rows[e.RowIndex].DataBoundItem;
                         ctx.Products.RemoveRange(ctx.Products.Where(g => g.ProductId == prd.ProductId));
                         ctx.SaveChanges();
-                        Producten = ctx.Products.Include("levrancier").Include("categorie").ToList();
+                        Producten = ctx.Products.Include("levrancier").ToList();
                     }
                 }
                 else if(e.ColumnIndex==editindexproduct)
@@ -220,6 +222,24 @@ namespace MijnProject
                     editproduct.ShowDialog();
                 }
             loaddgvprodut();
+        }
+       
+        private void btnupload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            //dialog.Filter = "Text files | *.txt"; 
+            dialog.Multiselect = false; 
+            if (dialog.ShowDialog() == DialogResult.OK) 
+            {
+               string FileLocation = dialog.FileName; // get name of file
+                Microsoft.Office.Interop.Word.Application App = new Microsoft.Office.Interop.Word.Application();
+                Microsoft.Office.Interop.Word.Document Doc = App.Documents.Open( FileLocation);
+                //Microsoft.Office.Interop.Word.Table tab1 = Doc.Tables[1];
+                //Microsoft.Office.Interop.Word.Table tab2 = Doc.Tables[2];
+                //Microsoft.Office.Interop.Word.Table tab3 = Doc.Tables[3];
+                MessageBox.Show("-"+Doc.Content.Tables[1].Cell(2,1).Range.Text.Substring(0, Doc.Content.Tables[1].Cell(2, 1).Range.Text.Length-2)+ "-");
+                
+            }
         }
     }
 }

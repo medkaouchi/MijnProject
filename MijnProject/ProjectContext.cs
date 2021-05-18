@@ -24,7 +24,6 @@ namespace MijnProject
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Bezorger> Bezorgers { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Categorie> Categories { get; set; }
         public DbSet<Levrancier> Levranciers { get; set; }
     }
 }
