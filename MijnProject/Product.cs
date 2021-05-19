@@ -21,5 +21,9 @@ namespace MijnProject
         public double Lengte { get; set; }
         public double Hoogte { get; set; }
         public string Omschrijving { get; set; }
+        public override string ToString()
+        {
+            return $"[{ProductNummer}] " +ProductNaam;
+        }
     }
 }

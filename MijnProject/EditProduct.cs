@@ -16,7 +16,9 @@ namespace MijnProject
         public static ComboBox cmb_Leveranciere = new ComboBox();
         public static List<Levrancier> Leveranciers = new List<Levrancier>();
         Regex re = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-
+        string prNaam;
+        string prNummer;
+        string prBarcode;
         public EditProduct()
         {
             InitializeComponent();
@@ -26,10 +28,13 @@ namespace MijnProject
             }
             cmbLeverancier.DataSource = Leveranciers;
             txtNaam.Text = Databeheer.product.ProductNaam;
+            prNaam= Databeheer.product.ProductNaam;
             txtUnitprice.Text = Databeheer.product.UnitPrice.ToString();
             txtUnitsOnStock.Text = Databeheer.product.UnitsOnStock.ToString();
             txtProductNummer.Text = Databeheer.product.ProductNummer.ToString();
+            prNummer= Databeheer.product.ProductNummer.ToString();
             txtBarcode.Text = Databeheer.product.BarCode;
+            prBarcode= Databeheer.product.BarCode;
             txtGewicht.Text = Databeheer.product.Gewicht.ToString();
             txtBreedte.Text = Databeheer.product.Breedte.ToString();
             txtLengte.Text = Databeheer.product.Lengte.ToString();
@@ -60,14 +65,8 @@ namespace MijnProject
             string s= "";
             Product pr = new Product();
             if (txtNaam.Text != "" && txtNaam.Text.ToCharArray().All(c => char.IsLetter(c)))
-                using (var ctx = new ProjectContext())
-                {
-                    if (ctx.Products.FirstOrDefault(p => p.ProductNaam == txtNaam.Text) == null)
-                        pr.ProductNaam = txtNaam.Text;
-                    else
-                        s += "Naam? ";
-                }
-            else
+                 pr.ProductNaam = txtNaam.Text;
+                else
                 s += "Naam? ";
             if (IsDouble(txtUnitprice.Text ))
                 pr.UnitPrice =Convert.ToDouble( txtUnitprice.Text);
@@ -78,17 +77,26 @@ namespace MijnProject
             else
                 s += "Units on stock? ";
             if (txtProductNummer.Text != "" && txtProductNummer.Text.ToCharArray().All(c => char.IsDigit(c)))
-                pr.ProductNummer = txtProductNummer.Text;
-            else
-                s += "Product nummer? ";
-            if (txtBarcode.Text != "" && txtBarcode.Text.ToCharArray().All(c => char.IsDigit(c)))
+                if (txtProductNummer.Text != prNummer)
                 using (var ctx = new ProjectContext())
                 {
-                    if (ctx.Products.FirstOrDefault(p => p.ProductNummer == txtProductNummer.Text) == null)
+                    if (ctx.Products.FirstOrDefault(p => p.ProductNummer == txtProductNummer.Text && p.ProductNummer != prNummer) == null)
                         pr.ProductNummer = txtProductNummer.Text;
                     else
                         s += "Product nummer? ";
                 }
+            else
+                s += "Product nummer? ";
+            if (txtBarcode.Text != "" && txtBarcode.Text.ToCharArray().All(c => char.IsDigit(c)))
+                if(txtBarcode.Text!=prBarcode)
+                using (var ctx = new ProjectContext())
+                {
+                    if (ctx.Products.FirstOrDefault(p => p.BarCode == txtBarcode.Text && p.BarCode!=prBarcode) == null)
+                        pr.BarCode = txtBarcode.Text;
+                    else
+                        s += "BarCode Exists? ";
+                }
+
             else
                 s += "BarCode? ";
             if (IsDouble(txtGewicht.Text ))

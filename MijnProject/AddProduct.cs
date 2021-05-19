@@ -25,6 +25,7 @@ namespace MijnProject
                 Leveranciers = ctx.Levranciers.ToList();
             }
             cmbLeverancier.DataSource = Leveranciers;
+            cmb_Leveranciere = cmbLeverancier;
         }
         public bool IsDouble(string text)
         {
@@ -40,13 +41,7 @@ namespace MijnProject
             string s = "";
             Product pr = new Product();
             if (txtNaam.Text != "" && txtNaam.Text.ToCharArray().All(c => char.IsLetter(c)))
-                using (var ctx = new ProjectContext())
-                {
-                    if (ctx.Products.FirstOrDefault(p => p.ProductNaam == txtNaam.Text) == null)
-                        pr.ProductNaam = txtNaam.Text;
-                    else
-                    s += "Naam? ";
-                }
+                 pr.ProductNaam = txtNaam.Text;
             else
                 s += "Naam? ";
             if (IsDouble(txtUnitprice.Text))
@@ -63,12 +58,18 @@ namespace MijnProject
                     if(ctx.Products.FirstOrDefault(p=>p.ProductNummer==txtProductNummer.Text)==null)
                     pr.ProductNummer = txtProductNummer.Text;
                     else
-                        s += "Product nummer? ";
+                        s += "Product nummer Exists? ";
                 }
             else
                 s += "Product nummer? ";
             if (txtBarcode.Text != "" && txtBarcode.Text.ToCharArray().All(c => char.IsDigit(c)))
-                pr.BarCode = txtBarcode.Text;
+                using (var ctx = new ProjectContext())
+                {
+                    if (ctx.Products.FirstOrDefault(p => p.BarCode == txtBarcode.Text) == null)
+                        pr.BarCode = txtBarcode.Text;
+                    else
+                        s += "BarCode Exists? ";
+                }
             else
                 s += "BarCode? ";
             if (IsDouble(txtGewicht.Text))

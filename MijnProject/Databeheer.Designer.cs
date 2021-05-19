@@ -188,7 +188,7 @@ namespace MijnProject
             this.btnupload.Name = "btnupload";
             this.btnupload.Size = new System.Drawing.Size(260, 23);
             this.btnupload.TabIndex = 4;
-            this.btnupload.Text = "Upload leverancier bestand ";
+            this.btnupload.Text = "Leverancier bestand toevoegen ";
             this.btnupload.UseVisualStyleBackColor = true;
             this.btnupload.Click += new System.EventHandler(this.btnupload_Click);
             // 

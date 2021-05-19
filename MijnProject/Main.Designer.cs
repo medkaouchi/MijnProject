@@ -63,6 +63,7 @@ namespace MijnProject
             this.btnBestelling.TabIndex = 2;
             this.btnBestelling.Text = "Bestelling";
             this.btnBestelling.UseVisualStyleBackColor = true;
+            this.btnBestelling.Click += new System.EventHandler(this.btnBestelling_Click);
             // 
             // lblUser
             // 

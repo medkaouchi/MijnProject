@@ -21,5 +21,9 @@ namespace MijnProject
         public bool IsBedrijf { get; set; }
         public string BTWNummer { get; set; }
         public string Commentaar { get; set; }
+        public override string ToString()
+        {
+            return Voornaam+" "+achternaam;
+        }
     }
 }

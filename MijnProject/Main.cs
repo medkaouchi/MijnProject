@@ -29,5 +29,11 @@ namespace MijnProject
             Databeheer databeheer = new Databeheer();
             databeheer.ShowDialog();
         }
+
+        private void btnBestelling_Click(object sender, EventArgs e)
+        {
+            Bestellingen bestellingen = new Bestellingen();
+            bestellingen.ShowDialog();
+        }
     }
 }

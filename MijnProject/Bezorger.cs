@@ -15,6 +15,9 @@ namespace MijnProject
         public string Telefoon2 { get; set; }
         public string Email { get; set; }
         public Adress adress { get; set; }
-
+        public override string ToString()
+        {
+            return Naam;
+        }
     }
 }

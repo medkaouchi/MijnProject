@@ -13,10 +13,10 @@ namespace MijnProject
 {
     public partial class AddKlant : Form
     {
+            List<Adress> Adresses = new List<Adress>();
         public AddKlant()
         {
             InitializeComponent();
-            List<Adress> Adresses = new List<Adress>();
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
@@ -89,12 +89,12 @@ namespace MijnProject
                     ad.Land = txtLand.Text;
                 else
                     s += "Adress: Land ? ";
+            }
             klt.IsBedrijf = cbBedrijf.Checked;
                 if (txtBTW.Text != "")
                     klt.BTWNummer = txtBTW.Text;
                 else
                     s += "BTW nummer ? ";
-            klt.IngevoegdDoor = Login.user;
             klt.IngevoegdDatum = DateTime.UtcNow;
                 if (rtbComentaar.Text != "")
                     klt.Commentaar = rtbComentaar.Text;
@@ -105,11 +105,15 @@ namespace MijnProject
                         if (newAd)
                             ctx.Adressen.Add(ad);
                         ctx.SaveChanges();
-                        if (newAd)
+                        Adresses = ctx.Adressen.ToList();
+                        cmbAdress.DataSource = Adresses;
+                    if (newAd)
                             klt.adress = ad;
                         else
                             klt.adress = (Adress)cmbAdress.SelectedItem;
-                        ctx.Klanten.Add(klt);
+
+                    klt.IngevoegdDoor =ctx.Users.FirstOrDefault(u=>u.UserId==Login.user.UserId) ;
+                    ctx.Klanten.Add(klt);
                         ctx.SaveChanges();
                         Databeheer.Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
                     }
@@ -140,6 +144,6 @@ namespace MijnProject
 
                 }
             }
-        }
+        
     }
 }

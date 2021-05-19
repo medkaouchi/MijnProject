@@ -19,7 +19,6 @@ namespace MijnProject
         public DbSet<User> Users { get; set; }
         public DbSet<Adress> Adressen { get; set; }
         public DbSet<Klant> Klanten { get; set; }
-        public DbSet<Status> Statuses { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Bezorger> Bezorgers { get; set; }
