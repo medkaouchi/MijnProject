@@ -65,10 +65,14 @@ namespace MijnProject
                     ctx.Levranciers.Add(lev);
                     ctx.SaveChanges();
                     EditProduct.Leveranciers = ctx.Levranciers.ToList();
+                    AddProduct.Leveranciers= ctx.Levranciers.ToList();
                 }
                 EditProduct.cmb_Leveranciere.DataSource = null;
                 EditProduct.cmb_Leveranciere.DataSource = EditProduct.Leveranciers;
                 EditProduct.cmb_Leveranciere.SelectedItem = lev;
+                AddProduct.cmb_Leveranciere.DataSource = null;
+                AddProduct.cmb_Leveranciere.DataSource = AddProduct.Leveranciers;
+                AddProduct.cmb_Leveranciere.SelectedItem = lev;
             }
             else
                 MessageBox.Show(s);

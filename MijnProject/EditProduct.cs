@@ -13,7 +13,6 @@ namespace MijnProject
 {
     public partial class EditProduct : Form
     {
-        public static ComboBox cmb_Categorie = new ComboBox();
         public static ComboBox cmb_Leveranciere = new ComboBox();
         public static List<Levrancier> Leveranciers = new List<Levrancier>();
         Regex re = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
@@ -40,7 +39,15 @@ namespace MijnProject
             cmb_Leveranciere = cmbLeverancier;
         }
 
-       
+        public bool IsDouble(string text)
+        {
+            double num = 0;
+            bool isDouble = false;
+            if (string.IsNullOrEmpty(text))
+                return false;
+            isDouble = double.TryParse(text, out num);
+            return isDouble;
+        }
 
         private void llblNewLeverancier_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -53,10 +60,16 @@ namespace MijnProject
             string s= "";
             Product pr = new Product();
             if (txtNaam.Text != "" && txtNaam.Text.ToCharArray().All(c => char.IsLetter(c)))
-                pr.ProductNaam = txtNaam.Text;
+                using (var ctx = new ProjectContext())
+                {
+                    if (ctx.Products.FirstOrDefault(p => p.ProductNaam == txtNaam.Text) == null)
+                        pr.ProductNaam = txtNaam.Text;
+                    else
+                        s += "Naam? ";
+                }
             else
                 s += "Naam? ";
-            if (txtUnitprice.Text != "" && txtUnitprice.Text.ToCharArray().All(c => char.IsDigit(c)))
+            if (IsDouble(txtUnitprice.Text ))
                 pr.UnitPrice =Convert.ToDouble( txtUnitprice.Text);
             else
                 s += "Unit prijs? ";
@@ -69,32 +82,39 @@ namespace MijnProject
             else
                 s += "Product nummer? ";
             if (txtBarcode.Text != "" && txtBarcode.Text.ToCharArray().All(c => char.IsDigit(c)))
-                pr.BarCode = txtBarcode.Text;
+                using (var ctx = new ProjectContext())
+                {
+                    if (ctx.Products.FirstOrDefault(p => p.ProductNummer == txtProductNummer.Text) == null)
+                        pr.ProductNummer = txtProductNummer.Text;
+                    else
+                        s += "Product nummer? ";
+                }
             else
                 s += "BarCode? ";
-            if (txtGewicht.Text != "" && txtGewicht.Text.ToCharArray().All(c => char.IsDigit(c)))
+            if (IsDouble(txtGewicht.Text ))
                 pr.Gewicht = Convert.ToDouble(txtGewicht.Text);
             else
                 s += "Gewicht? ";
-            if (txtBreedte.Text != "" && txtBreedte.Text.ToCharArray().All(c => char.IsDigit(c)))
+            if (IsDouble( txtBreedte.Text) )
                 pr.Breedte = Convert.ToDouble(txtBreedte.Text);
             else
                 s += "Breedte? ";
-            if (txtLengte.Text != "" && txtLengte.Text.ToCharArray().All(c => char.IsDigit(c)))
+            if (IsDouble(txtLengte.Text ))
                 pr.Lengte = Convert.ToDouble(txtLengte.Text);
             else
                 s += "Lengte? ";
-            if (txtHoogte.Text != "" && txtHoogte.Text.ToCharArray().All(c => char.IsDigit(c)))
+            if (IsDouble(txtHoogte.Text ))
                 pr.Hoogte = Convert.ToDouble(txtHoogte.Text);
             else
                 s += "Hoogte? ";
             if (rtbOmschrijving.Text != "")
                 pr.Omschrijving = rtbOmschrijving.Text;
-            pr.levrancier = (Levrancier)cmbLeverancier.SelectedItem;
             if(s=="")
             {
                 using (var ctx=new ProjectContext())
                 {
+
+                    pr.levrancier = ctx.Levranciers.FirstOrDefault(l => l.LevrancierID == ((Levrancier)cmbLeverancier.SelectedItem).LevrancierID);
                     ctx.Products.FirstOrDefault(p => p.ProductId == Databeheer.product.ProductId).ProductNaam = pr.ProductNaam;
                     ctx.Products.FirstOrDefault(p => p.ProductId == Databeheer.product.ProductId).UnitPrice = pr.UnitPrice;
                     ctx.Products.FirstOrDefault(p => p.ProductId == Databeheer.product.ProductId).UnitsOnStock = pr.UnitsOnStock;

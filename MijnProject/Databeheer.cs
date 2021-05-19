@@ -141,8 +141,8 @@ namespace MijnProject
             dgv_producten.Columns.Insert(dgv_producten.Columns.Count, DeleteButtonColumn);
             dgv_producten.Columns["Verwijderen"].DisplayIndex = 13;
             dgv_producten.Columns["Bewerken"].DisplayIndex = 12;
-            deleteindex = dgv_producten.Columns["Verwijderen"].Index;
-            editindex = dgv_producten.Columns["Bewerken"].Index;
+            deleteindexproduct = dgv_producten.Columns["Verwijderen"].Index;
+            editindexproduct = dgv_producten.Columns["Bewerken"].Index;
         }
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -226,20 +226,74 @@ namespace MijnProject
        
         private void btnupload_Click(object sender, EventArgs e)
         {
+            Product pr = new Product();
             OpenFileDialog dialog = new OpenFileDialog();
             //dialog.Filter = "Text files | *.txt"; 
             dialog.Multiselect = false; 
             if (dialog.ShowDialog() == DialogResult.OK) 
             {
-               string FileLocation = dialog.FileName; // get name of file
+               string FileLocation = dialog.FileName; 
                 Microsoft.Office.Interop.Word.Application App = new Microsoft.Office.Interop.Word.Application();
                 Microsoft.Office.Interop.Word.Document Doc = App.Documents.Open( FileLocation);
-                //Microsoft.Office.Interop.Word.Table tab1 = Doc.Tables[1];
-                //Microsoft.Office.Interop.Word.Table tab2 = Doc.Tables[2];
-                //Microsoft.Office.Interop.Word.Table tab3 = Doc.Tables[3];
-                MessageBox.Show("-"+Doc.Content.Tables[1].Cell(2,1).Range.Text.Substring(0, Doc.Content.Tables[1].Cell(2, 1).Range.Text.Length-2)+ "-");
-                
+                Microsoft.Office.Interop.Word.Table tab1 = Doc.Content.Tables[1];
+                Microsoft.Office.Interop.Word.Table tab2 = Doc.Content.Tables[2];
+                Microsoft.Office.Interop.Word.Table tab3 = Doc.Content.Tables[3];
+                Levrancier lev = new Levrancier();
+                Adress ad = new Adress();
+                lev.Naam=tab1.Cell(2,1).Range.Text.Substring(0, tab1.Cell(2, 1).Range.Text.Length - 2);
+                lev.Omschrijving = tab1.Cell(2, 2).Range.Text.Substring(0, tab1.Cell(2, 2).Range.Text.Length - 2);
+                lev.Telefoon1 = tab1.Cell(2, 3).Range.Text.Substring(0, tab1.Cell(2, 3).Range.Text.Length - 2);
+                lev.Telefoon2 = tab1.Cell(2, 4).Range.Text.Substring(0, tab1.Cell(2, 4).Range.Text.Length - 2);
+                lev.Email = tab1.Cell(2, 5).Range.Text.Substring(0, tab1.Cell(2, 5).Range.Text.Length - 2);
+                ad.Straat =tab2.Cell(2, 1).Range.Text.Substring(0, tab2.Cell(2, 1).Range.Text.Length - 2);
+                ad.Huisnummer =Convert.ToInt32( tab2.Cell(2, 2).Range.Text.Substring(0, tab2.Cell(2, 2).Range.Text.Length - 2));
+                ad.Gemeente = tab2.Cell(2, 3).Range.Text.Substring(0, tab2.Cell(2, 3).Range.Text.Length - 2);
+                ad.Postcode = tab2.Cell(2, 4).Range.Text.Substring(0, tab2.Cell(2, 4).Range.Text.Length - 2);
+                ad.Land = tab2.Cell(2, 5).Range.Text.Substring(0, tab2.Cell(2, 5).Range.Text.Length - 2);
+                lev.adress = ad;
+                using (var ctx=new ProjectContext())
+                {
+                    
+                }
+                for(int i=2;i<=tab3.Rows.Count;i++)
+                {
+                    pr.ProductNaam=tab3.Cell(i,1).Range.Text.Substring(0, tab3.Cell(i, 1).Range.Text.Length - 2);
+                    pr.UnitPrice =Convert.ToDouble( tab3.Cell(i, 3).Range.Text.Substring(0, tab3.Cell(i, 3).Range.Text.Length - 2));
+                    pr.UnitsOnStock =Convert.ToInt32( tab3.Cell(i, 2).Range.Text.Substring(0, tab3.Cell(i, 2).Range.Text.Length - 2));
+                    pr.ProductNummer = tab3.Cell(i, 4).Range.Text.Substring(0, tab3.Cell(i, 4).Range.Text.Length - 2);
+                    pr.BarCode = tab3.Cell(i, 5).Range.Text.Substring(0, tab3.Cell(i, 5).Range.Text.Length - 2);
+                    pr.Gewicht = Convert.ToDouble(tab3.Cell(i, 6).Range.Text.Substring(0, tab3.Cell(i, 6).Range.Text.Length - 2));
+                    pr.Breedte = Convert.ToDouble(tab3.Cell(i, 7).Range.Text.Substring(0, tab3.Cell(i, 7).Range.Text.Length - 2));
+                    pr.Lengte = Convert.ToDouble(tab3.Cell(i, 8).Range.Text.Substring(0, tab3.Cell(i, 8).Range.Text.Length - 2));
+                    pr.Hoogte = Convert.ToDouble(tab3.Cell(i, 9).Range.Text.Substring(0, tab3.Cell(i, 9).Range.Text.Length - 2));
+                    pr.Omschrijving = tab3.Cell(i, 10).Range.Text.Substring(0, tab3.Cell(i, 10).Range.Text.Length - 2);
+                    using (var ctx = new ProjectContext())
+                    {
+                        Product P = ctx.Products.FirstOrDefault(p => p.ProductNummer == pr.ProductNummer);
+                        if (P== null)
+                        {
+                            ctx.Products.Add(pr);
+                            ctx.SaveChanges();
+                            if (ctx.Levranciers.FirstOrDefault(l => l.Naam == lev.Naam) == null)
+                                ctx.Products.FirstOrDefault(p=>p.ProductNummer==pr.ProductNummer).levrancier=lev;
+                            else
+                                pr.levrancier = ctx.Levranciers.FirstOrDefault(l => l.Naam == lev.Naam);
+                            ctx.SaveChanges();
+                        }
+                        else
+                            ctx.Products.FirstOrDefault(p => p.ProductNummer == pr.ProductNummer).UnitsOnStock =P.UnitsOnStock+ pr.UnitsOnStock;
+                        ctx.SaveChanges();
+                        Producten = ctx.Products.Include("levrancier").ToList();
+                    }
+                    loaddgvprodut();
+                }
             }
+        }
+
+        private void llblNewProduct_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddProduct addproduct = new AddProduct();
+            addproduct.ShowDialog();
         }
     }
 }
