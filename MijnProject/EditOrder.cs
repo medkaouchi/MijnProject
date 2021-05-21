@@ -10,7 +10,8 @@ using System.Windows.Forms;
 
 namespace MijnProject
 {
-    public partial class AddOrder : Form
+    public partial class EditOrder : Form
+
     {
         bool newAd = false;
         public static List<Klant> Klanten = new List<Klant>();
@@ -19,20 +20,33 @@ namespace MijnProject
         public static ComboBox cmb_Klanten;
         public static int deleteindex;
         public static int editindex;
-        public AddOrder()
+        public EditOrder()
         {
             InitializeComponent();
-            using (var ctx=new ProjectContext())
+            using (var ctx = new ProjectContext())
             {
                 Klanten = ctx.Klanten.Include("adress").ToList();
                 Producten = ctx.Products.ToList();
+                ProductsOrdered= ctx.OrderDetails.Where(o => o.order.OrderId == Bestellingen.orderline.orderid).Join(ctx.Products, od => od.product.ProductId, p => p.ProductId, (od, p) => new ProductOrdered() { ProductId = p.ProductId, ProductNaam = p.ProductNaam, levrancier = p.levrancier, UnitPrice = p.UnitPrice, Omschrijving = p.Omschrijving, aantal = od.Aantal }).ToList();
             }
+            dgvOrderProducten.DataSource=ProductsOrdered;
+            cmbKlanten.SelectedIndexChanged -= new System.EventHandler(cmbKlanten_SelectedIndexChanged);
             cmbKlanten.DataSource = Klanten;
+            cmbKlanten.SelectedItem = Bestellingen.orderline.klant;
+            cmbKlanten.SelectedIndexChanged += new System.EventHandler(cmbKlanten_SelectedIndexChanged);
             cmb_Klanten = cmbKlanten;
             cmbProducten.SelectedIndexChanged -= new System.EventHandler(cmbProducten_SelectedIndexChanged);
             cmbProducten.DataSource = Producten;
             cmbProducten.SelectedIndexChanged += new System.EventHandler(cmbProducten_SelectedIndexChanged);
             cmbStatus.DataSource = Enum.GetValues(typeof(OrderStatus));
+            cmbStatus.SelectedItem = Bestellingen.orderline.status;
+            lblKlantAdress.Text = Bestellingen.orderline.adress.ToString();
+        }
+
+        private void cmbKlanten_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbKlanten.Items.Count > 0)
+                lblKlantAdress.Text = ((Klant)(cmbKlanten.SelectedItem)).adress.ToString();
         }
 
         private void llblNewKlant_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -41,10 +55,18 @@ namespace MijnProject
             addklant.ShowDialog();
         }
 
-        private void cmbKlanten_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbProducten_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbKlanten.Items.Count > 0)
-                lblKlantAdress.Text = ((Klant)(cmbKlanten.SelectedItem)).adress.ToString();
+            ComboBox cmb = (ComboBox)sender;
+            Product p = cmb.SelectedItem as Product;
+            ProductOrdered po = new ProductOrdered();
+            po.ProductId = p.ProductId;
+            po.ProductNaam = p.ProductNaam;
+            po.levrancier = p.levrancier;
+            po.UnitPrice = p.UnitPrice;
+            po.Omschrijving = p.Omschrijving;
+            po.aantal = 1;
+            NewProductOrdered(po);
         }
 
         private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -85,27 +107,13 @@ namespace MijnProject
             editindex = dgvOrderProducten.Columns["Aantal Bewerken"].Index;
         }
 
-        private void cmbProducten_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox cmb = (ComboBox)sender;
-            Product p = cmb.SelectedItem as Product;
-            ProductOrdered po = new ProductOrdered();
-            po.ProductId = p.ProductId;
-            po.ProductNaam = p.ProductNaam;
-            po.levrancier = p.levrancier;
-            po.UnitPrice = p.UnitPrice;
-            po.Omschrijving = p.Omschrijving;
-            po.aantal = 1;
-            NewProductOrdered(po);
-        }
-
         private void txtPrNummer_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
                 Product p = new Product();
-                using (var ctx=new ProjectContext())
-                    p = ctx.Products.FirstOrDefault(P=>P.ProductNummer==txtPrNummer.Text);
+                using (var ctx = new ProjectContext())
+                    p = ctx.Products.FirstOrDefault(P => P.ProductNummer == txtPrNummer.Text);
                 if (p != null)
                 {
                     ProductOrdered po = new ProductOrdered();
@@ -141,7 +149,7 @@ namespace MijnProject
             }
         }
 
-        private void btnAddOrder_Click(object sender, EventArgs e)
+        private void btnOpslaan_Click(object sender, EventArgs e)
         {
             Adress ad = new Adress();
             string s = "";
@@ -149,7 +157,7 @@ namespace MijnProject
             {
                 Order ord = new Order();
                 OrderDetail orddt = new OrderDetail();
-                ord.OrderDatum = DateTime.UtcNow;
+                ord.OrderDatum = Bestellingen.orderline.orderdate;
                 ord.status = (OrderStatus)cmbStatus.SelectedItem;
                 if (newAd)
                 {
@@ -179,12 +187,19 @@ namespace MijnProject
                 else
                     ord.BezorgdAdress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Klant)cmbKlanten.SelectedItem).adress.AdressId);
                 ord.klant = ctx.Klanten.FirstOrDefault(k => k.KlantId == ((Klant)cmbKlanten.SelectedItem).KlantId);
-                ord.user = ctx.Users.FirstOrDefault(a => a.UserId == ((User)Login.user).UserId);
-                ctx.Orders.Add(ord);
+                ord.user = Bestellingen.orderline.user;
+                if (ord != ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid))
+                {
+                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).klant= ord.klant ;
+                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).OrderDatum= ord.OrderDatum ;
+                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).status= ord.status ;
+                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).BezorgdAdress= ord.BezorgdAdress ;
+                }
                 ctx.SaveChanges();
+                ctx.OrderDetails.RemoveRange(ctx.OrderDetails.Where(od => od.order.OrderId == Bestellingen.orderline.orderid));
                 foreach (ProductOrdered item in ProductsOrdered)
                 {
-                    orddt.order = ctx.Orders.FirstOrDefault(o => o.OrderId == ord.OrderId);
+                    orddt.order = ctx.Orders.FirstOrDefault(O => O.OrderId == ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).OrderId);
                     orddt.product = ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
                     orddt.Aantal = item.aantal;
                     ctx.OrderDetails.Add(orddt);

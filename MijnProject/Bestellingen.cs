@@ -16,6 +16,7 @@ namespace MijnProject
         public static DataGridView dgv_Orders;
         public static int deleteindex;
         public static int editindex;
+        public static OrderLine orderline = new OrderLine();
         public Bestellingen()
         {
             InitializeComponent();
@@ -55,24 +56,25 @@ namespace MijnProject
 
         private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex > -1)
-            //    if (e.ColumnIndex == deleteindex)
-            //    {
-            //        using (var ctx = new ProjectContext())
-            //        {
-            //            OrderLine klnt = (OrderLine)dgvOrders.Rows[e.RowIndex].DataBoundItem;
-            //            ctx.Klanten.RemoveRange(ctx.Klanten.Where(g => g.KlantId == klnt.KlantId));
-            //            ctx.SaveChanges();
-            //            Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
-            //        }
-            //    }
-            //    else if (e.ColumnIndex == editindex)
-            //    {
-            //        klant = dgvKlanten.Rows[e.RowIndex].DataBoundItem as Klant;
-            //        EditKlant editklant = new EditKlant();
-            //        editklant.ShowDialog();
-            //    }
-            //loaddgvklants();
+            if (e.RowIndex > -1)
+                if (e.ColumnIndex == deleteindex)
+                {
+                    using (var ctx = new ProjectContext())
+                    {
+                        OrderLine ordln = (OrderLine)dgvOrders.Rows[e.RowIndex].DataBoundItem;
+                        ctx.OrderDetails.RemoveRange(ctx.OrderDetails.Where(g => g.order.OrderId == ordln.orderid && g.product.ProductId== ordln.product.ProductId));
+                        ctx.SaveChanges();
+                        OrderLines = ctx.Orders.Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new OrderLine() { orderid = o.OrderId, klant = o.klant, user = o.user, orderdate = o.OrderDatum, status = o.status, bezorgddoor = o.BezorgdDoor, adress = o.BezorgdAdress, orderdetailid = od.ID, product = od.product, aantal = od.Aantal }).ToList();
+                        
+                    }
+                }
+                else if (e.ColumnIndex == editindex)
+                {
+                    orderline = dgvOrders.Rows[e.RowIndex].DataBoundItem as OrderLine;
+                    EditOrder editorder = new EditOrder();
+                    editorder.ShowDialog();
+                }
+            loaddgvOrders();
         }
     }
 }
