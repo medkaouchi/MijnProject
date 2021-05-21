@@ -140,6 +140,7 @@
     <Compile Include="OrderDetail.cs" />
     <Compile Include="OrderLine.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductOrdered.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProjectContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -61,7 +61,7 @@ namespace MijnProject
             this.productToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1112, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1112, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,9 +94,9 @@ namespace MijnProject
             this.pnlUsers.Controls.Add(this.llblNewUser);
             this.pnlUsers.Controls.Add(this.dgvUsers);
             this.pnlUsers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlUsers.Location = new System.Drawing.Point(0, 28);
+            this.pnlUsers.Location = new System.Drawing.Point(0, 30);
             this.pnlUsers.Name = "pnlUsers";
-            this.pnlUsers.Size = new System.Drawing.Size(1112, 422);
+            this.pnlUsers.Size = new System.Drawing.Size(1112, 420);
             this.pnlUsers.TabIndex = 1;
             this.pnlUsers.Visible = false;
             // 
@@ -104,7 +104,7 @@ namespace MijnProject
             // 
             this.llblNewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.llblNewUser.AutoSize = true;
-            this.llblNewUser.Location = new System.Drawing.Point(4, 293);
+            this.llblNewUser.Location = new System.Drawing.Point(4, 291);
             this.llblNewUser.Name = "llblNewUser";
             this.llblNewUser.Size = new System.Drawing.Size(151, 17);
             this.llblNewUser.TabIndex = 1;
@@ -128,7 +128,7 @@ namespace MijnProject
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
-            this.dgvUsers.Size = new System.Drawing.Size(1106, 283);
+            this.dgvUsers.Size = new System.Drawing.Size(1106, 281);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
@@ -137,9 +137,9 @@ namespace MijnProject
             this.pnlKlanten.Controls.Add(this.llblNewKlant);
             this.pnlKlanten.Controls.Add(this.dgvKlanten);
             this.pnlKlanten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlKlanten.Location = new System.Drawing.Point(0, 28);
+            this.pnlKlanten.Location = new System.Drawing.Point(0, 30);
             this.pnlKlanten.Name = "pnlKlanten";
-            this.pnlKlanten.Size = new System.Drawing.Size(1112, 422);
+            this.pnlKlanten.Size = new System.Drawing.Size(1112, 420);
             this.pnlKlanten.TabIndex = 3;
             this.pnlKlanten.Visible = false;
             // 
@@ -147,7 +147,7 @@ namespace MijnProject
             // 
             this.llblNewKlant.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.llblNewKlant.AutoSize = true;
-            this.llblNewKlant.Location = new System.Drawing.Point(13, 326);
+            this.llblNewKlant.Location = new System.Drawing.Point(13, 324);
             this.llblNewKlant.Name = "llblNewKlant";
             this.llblNewKlant.Size = new System.Drawing.Size(151, 17);
             this.llblNewKlant.TabIndex = 1;
@@ -165,7 +165,7 @@ namespace MijnProject
             this.dgvKlanten.Name = "dgvKlanten";
             this.dgvKlanten.RowHeadersWidth = 51;
             this.dgvKlanten.RowTemplate.Height = 24;
-            this.dgvKlanten.Size = new System.Drawing.Size(1112, 321);
+            this.dgvKlanten.Size = new System.Drawing.Size(1112, 319);
             this.dgvKlanten.TabIndex = 0;
             this.dgvKlanten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKlanten_CellClick);
             // 
@@ -175,16 +175,16 @@ namespace MijnProject
             this.pnlProducten.Controls.Add(this.llblNewProduct);
             this.pnlProducten.Controls.Add(this.dgvProducten);
             this.pnlProducten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlProducten.Location = new System.Drawing.Point(0, 28);
+            this.pnlProducten.Location = new System.Drawing.Point(0, 30);
             this.pnlProducten.Name = "pnlProducten";
-            this.pnlProducten.Size = new System.Drawing.Size(1112, 422);
+            this.pnlProducten.Size = new System.Drawing.Size(1112, 420);
             this.pnlProducten.TabIndex = 4;
             this.pnlProducten.Visible = false;
             // 
             // btnupload
             // 
             this.btnupload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnupload.Location = new System.Drawing.Point(0, 346);
+            this.btnupload.Location = new System.Drawing.Point(0, 344);
             this.btnupload.Name = "btnupload";
             this.btnupload.Size = new System.Drawing.Size(260, 23);
             this.btnupload.TabIndex = 4;
@@ -196,7 +196,7 @@ namespace MijnProject
             // 
             this.llblNewProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.llblNewProduct.AutoSize = true;
-            this.llblNewProduct.Location = new System.Drawing.Point(942, 352);
+            this.llblNewProduct.Location = new System.Drawing.Point(942, 350);
             this.llblNewProduct.Name = "llblNewProduct";
             this.llblNewProduct.Size = new System.Drawing.Size(170, 17);
             this.llblNewProduct.TabIndex = 3;
@@ -214,7 +214,7 @@ namespace MijnProject
             this.dgvProducten.Name = "dgvProducten";
             this.dgvProducten.RowHeadersWidth = 51;
             this.dgvProducten.RowTemplate.Height = 24;
-            this.dgvProducten.Size = new System.Drawing.Size(1112, 320);
+            this.dgvProducten.Size = new System.Drawing.Size(1112, 318);
             this.dgvProducten.TabIndex = 0;
             this.dgvProducten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducten_CellClick);
             // 

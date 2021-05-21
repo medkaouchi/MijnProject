@@ -52,5 +52,27 @@ namespace MijnProject
             AddOrder addorder = new AddOrder();
             addorder.ShowDialog();
         }
+
+        private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (e.RowIndex > -1)
+            //    if (e.ColumnIndex == deleteindex)
+            //    {
+            //        using (var ctx = new ProjectContext())
+            //        {
+            //            OrderLine klnt = (OrderLine)dgvOrders.Rows[e.RowIndex].DataBoundItem;
+            //            ctx.Klanten.RemoveRange(ctx.Klanten.Where(g => g.KlantId == klnt.KlantId));
+            //            ctx.SaveChanges();
+            //            Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
+            //        }
+            //    }
+            //    else if (e.ColumnIndex == editindex)
+            //    {
+            //        klant = dgvKlanten.Rows[e.RowIndex].DataBoundItem as Klant;
+            //        EditKlant editklant = new EditKlant();
+            //        editklant.ShowDialog();
+            //    }
+            //loaddgvklants();
+        }
     }
 }

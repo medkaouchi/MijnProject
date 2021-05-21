@@ -116,7 +116,10 @@ namespace MijnProject
                     ctx.Klanten.Add(klt);
                         ctx.SaveChanges();
                         Databeheer.Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
-                    }
+                    AddOrder.Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
+                }
+                AddOrder.cmb_Klanten.DataSource = null;
+                AddOrder.cmb_Klanten.DataSource = AddOrder.Klanten;
                     Databeheer.loaddgvklants();
                     txtVnaam.Text = "";
                     txtAnaam.Text = "";
