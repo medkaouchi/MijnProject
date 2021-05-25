@@ -13,13 +13,17 @@ namespace MijnProject
     public partial class EditOrder : Form
 
     {
+        List<Bezorger> Bezorgers = new List<Bezorger>();
         bool newAd = false;
+        public static int aantal;
+        public static int rowindex;
         public static List<Klant> Klanten = new List<Klant>();
         public static List<Product> Producten = new List<Product>();
         public List<ProductOrdered> ProductsOrdered = new List<ProductOrdered>();
         public static ComboBox cmb_Klanten;
         public static int deleteindex;
         public static int editindex;
+        public static DataGridView dgv_OrderProducten = new DataGridView();
         public EditOrder()
         {
             InitializeComponent();
@@ -27,19 +31,37 @@ namespace MijnProject
             {
                 Klanten = ctx.Klanten.Include("adress").ToList();
                 Producten = ctx.Products.ToList();
-                ProductsOrdered= ctx.OrderDetails.Where(o => o.order.OrderId == Bestellingen.orderline.orderid).Join(ctx.Products, od => od.product.ProductId, p => p.ProductId, (od, p) => new ProductOrdered() { ProductId = p.ProductId, ProductNaam = p.ProductNaam, levrancier = p.levrancier, UnitPrice = p.UnitPrice, Omschrijving = p.Omschrijving, aantal = od.Aantal }).ToList();
+                Bezorgers = ctx.Bezorgers.ToList();
+                ProductsOrdered = ctx.OrderDetails.Where(o => o.order.OrderId == Bestellingen.orderline.orderid).Join(ctx.Products, od => od.product.ProductId, p => p.ProductId, (od, p) => new ProductOrdered() { ProductId = p.ProductId, ProductNaam = p.ProductNaam, levrancier = p.levrancier, UnitPrice = p.UnitPrice, Omschrijving = p.Omschrijving, aantal = od.Aantal }).ToList();
             }
+            dgv_OrderProducten = dgvOrderProducten;
             dgvOrderProducten.DataSource=ProductsOrdered;
+            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
+            EditButtonColumn.Name = "Aantal Bewerken";
+            EditButtonColumn.Text = "Bewerk Aantal";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, EditButtonColumn);
+            dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, DeleteButtonColumn);
+            dgvOrderProducten.Columns["Verwijderen"].DisplayIndex = 7;
+            dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
+            deleteindex = dgvOrderProducten.Columns["Verwijderen"].Index;
+            editindex = dgvOrderProducten.Columns["Aantal Bewerken"].Index;
             cmbKlanten.SelectedIndexChanged -= new System.EventHandler(cmbKlanten_SelectedIndexChanged);
             cmbKlanten.DataSource = Klanten;
             cmbKlanten.SelectedItem = Bestellingen.orderline.klant;
             cmbKlanten.SelectedIndexChanged += new System.EventHandler(cmbKlanten_SelectedIndexChanged);
             cmb_Klanten = cmbKlanten;
+            cmbBezorgers.DataSource = Bezorgers;
             cmbProducten.SelectedIndexChanged -= new System.EventHandler(cmbProducten_SelectedIndexChanged);
             cmbProducten.DataSource = Producten;
             cmbProducten.SelectedIndexChanged += new System.EventHandler(cmbProducten_SelectedIndexChanged);
             cmbStatus.DataSource = Enum.GetValues(typeof(OrderStatus));
             cmbStatus.SelectedItem = Bestellingen.orderline.status;
+            cmbBezorgers.SelectedItem = Bestellingen.orderline.bezorgddoor;
             lblKlantAdress.Text = Bestellingen.orderline.adress.ToString();
         }
 
@@ -153,12 +175,14 @@ namespace MijnProject
         {
             Adress ad = new Adress();
             string s = "";
-            using (var ctx = new ProjectContext())
-            {
+            
                 Order ord = new Order();
                 OrderDetail orddt = new OrderDetail();
                 ord.OrderDatum = Bestellingen.orderline.orderdate;
-                ord.status = (OrderStatus)cmbStatus.SelectedItem;
+                ord.status = (OrderStatus)cmbStatus.SelectedItem; 
+                ord.BezorgdDoor = (Bezorger)cmbBezorgers.SelectedItem;
+                if(ord.status > OrderStatus.Geanuleerd && ord.BezorgdDoor==null)
+                    s += "Bestellingen met staus 'Klaar' of 'Verzondzn' moet ueen bezorger hebben ? ";
                 if (newAd)
                 {
                     if (txtStraat.Text != "" && txtStraat.Text.ToCharArray().All(c => char.IsLetter(c)))
@@ -182,6 +206,9 @@ namespace MijnProject
                     else
                         s += "Adress: Land ? ";
                 }
+            if (s == "")
+                using (var ctx = new ProjectContext())
+            {
                 if (newAd)
                     ord.BezorgdAdress = ad;
                 else
@@ -193,7 +220,8 @@ namespace MijnProject
                      ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).klant= ord.klant ;
                      ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).OrderDatum= ord.OrderDatum ;
                      ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).status= ord.status ;
-                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).BezorgdAdress= ord.BezorgdAdress ;
+                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).BezorgdAdress= ord.BezorgdAdress;
+                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).BezorgdDoor = ord.BezorgdDoor;
                 }
                 ctx.SaveChanges();
                 ctx.OrderDetails.RemoveRange(ctx.OrderDetails.Where(od => od.order.OrderId == Bestellingen.orderline.orderid));
@@ -207,6 +235,28 @@ namespace MijnProject
                 ctx.SaveChanges();
                 Bestellingen.OrderLines = ctx.Orders.Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new OrderLine() { orderid = o.OrderId, klant = o.klant, user = o.user, orderdate = o.OrderDatum, status = o.status, bezorgddoor = o.BezorgdDoor, adress = o.BezorgdAdress, orderdetailid = od.ID, product = od.product, aantal = od.Aantal }).ToList();
                 Bestellingen.loaddgvOrders();
+            }
+            else
+                MessageBox.Show(s);
+        }
+
+        private void dgvOrderProducten_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex>-1)
+            { 
+                if (e.ColumnIndex == editindex)
+                {
+                    rowindex = e.RowIndex;
+                    aantal = Convert.ToInt32(dgvOrderProducten.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Value);
+                    EditAantal editaantal = new EditAantal();
+                    editaantal.ShowDialog();
+                }
+                if(e.ColumnIndex==deleteindex)
+                {
+                    ProductsOrdered.Remove((ProductOrdered)dgvOrderProducten.Rows[e.RowIndex].DataBoundItem);
+                    dgvOrderProducten.DataSource = null;
+                    dgvOrderProducten.DataSource = ProductsOrdered;
+                }
             }
         }
     }

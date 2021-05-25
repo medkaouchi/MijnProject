@@ -104,6 +104,12 @@
     <Compile Include="Databeheer.Designer.cs">
       <DependentUpon>Databeheer.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditAantal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditAantal.Designer.cs">
+      <DependentUpon>EditAantal.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditKlant.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Databeheer.resx">
       <DependentUpon>Databeheer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditAantal.resx">
+      <DependentUpon>EditAantal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditKlant.resx">
       <DependentUpon>EditKlant.cs</DependentUpon>

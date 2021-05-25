@@ -57,6 +57,8 @@ namespace MijnProject
             this.cmbKlanten = new System.Windows.Forms.ComboBox();
             this.dgvOrderProducten = new System.Windows.Forms.DataGridView();
             this.lblKlantAdress = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbBezorgers = new System.Windows.Forms.ComboBox();
             this.pnlAdress.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderProducten)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +66,7 @@ namespace MijnProject
             // btnOpslaan
             // 
             this.btnOpslaan.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOpslaan.Location = new System.Drawing.Point(435, 650);
+            this.btnOpslaan.Location = new System.Drawing.Point(454, 670);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(151, 51);
             this.btnOpslaan.TabIndex = 116;
@@ -75,7 +77,7 @@ namespace MijnProject
             // llblNewKlant
             // 
             this.llblNewKlant.AutoSize = true;
-            this.llblNewKlant.Location = new System.Drawing.Point(253, 60);
+            this.llblNewKlant.Location = new System.Drawing.Point(249, 55);
             this.llblNewKlant.Name = "llblNewKlant";
             this.llblNewKlant.Size = new System.Drawing.Size(82, 17);
             this.llblNewKlant.TabIndex = 115;
@@ -85,7 +87,7 @@ namespace MijnProject
             // cmbProducten
             // 
             this.cmbProducten.FormattingEnabled = true;
-            this.cmbProducten.Location = new System.Drawing.Point(785, 236);
+            this.cmbProducten.Location = new System.Drawing.Point(781, 231);
             this.cmbProducten.Name = "cmbProducten";
             this.cmbProducten.Size = new System.Drawing.Size(167, 24);
             this.cmbProducten.TabIndex = 114;
@@ -94,7 +96,7 @@ namespace MijnProject
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(712, 238);
+            this.label7.Location = new System.Drawing.Point(708, 233);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 17);
             this.label7.TabIndex = 113;
@@ -102,7 +104,7 @@ namespace MijnProject
             // 
             // txtPrNummer
             // 
-            this.txtPrNummer.Location = new System.Drawing.Point(558, 236);
+            this.txtPrNummer.Location = new System.Drawing.Point(554, 231);
             this.txtPrNummer.Name = "txtPrNummer";
             this.txtPrNummer.Size = new System.Drawing.Size(132, 22);
             this.txtPrNummer.TabIndex = 112;
@@ -111,7 +113,7 @@ namespace MijnProject
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(447, 239);
+            this.label6.Location = new System.Drawing.Point(443, 234);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(115, 17);
             this.label6.TabIndex = 111;
@@ -119,7 +121,7 @@ namespace MijnProject
             // 
             // txtBarcode
             // 
-            this.txtBarcode.Location = new System.Drawing.Point(229, 236);
+            this.txtBarcode.Location = new System.Drawing.Point(225, 231);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(195, 22);
             this.txtBarcode.TabIndex = 109;
@@ -128,7 +130,7 @@ namespace MijnProject
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(118, 239);
+            this.label5.Location = new System.Drawing.Point(114, 234);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 17);
             this.label5.TabIndex = 108;
@@ -137,7 +139,7 @@ namespace MijnProject
             // llblAddAdress
             // 
             this.llblAddAdress.AutoSize = true;
-            this.llblAddAdress.Location = new System.Drawing.Point(251, 117);
+            this.llblAddAdress.Location = new System.Drawing.Point(247, 112);
             this.llblAddAdress.Name = "llblAddAdress";
             this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
             this.llblAddAdress.TabIndex = 106;
@@ -159,7 +161,7 @@ namespace MijnProject
             this.pnlAdress.Controls.Add(this.label13);
             this.pnlAdress.Controls.Add(this.txtStraat);
             this.pnlAdress.Controls.Add(this.label9);
-            this.pnlAdress.Location = new System.Drawing.Point(254, 90);
+            this.pnlAdress.Location = new System.Drawing.Point(250, 85);
             this.pnlAdress.Name = "pnlAdress";
             this.pnlAdress.Size = new System.Drawing.Size(270, 122);
             this.pnlAdress.TabIndex = 105;
@@ -258,7 +260,7 @@ namespace MijnProject
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(118, 90);
+            this.label17.Location = new System.Drawing.Point(114, 85);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(56, 17);
             this.label17.TabIndex = 104;
@@ -267,7 +269,7 @@ namespace MijnProject
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(118, 579);
+            this.label3.Location = new System.Drawing.Point(114, 574);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 103;
@@ -276,7 +278,7 @@ namespace MijnProject
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(254, 576);
+            this.cmbStatus.Location = new System.Drawing.Point(250, 571);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(270, 24);
             this.cmbStatus.TabIndex = 102;
@@ -284,7 +286,7 @@ namespace MijnProject
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(118, 36);
+            this.label1.Location = new System.Drawing.Point(114, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 17);
             this.label1.TabIndex = 101;
@@ -293,7 +295,7 @@ namespace MijnProject
             // cmbKlanten
             // 
             this.cmbKlanten.FormattingEnabled = true;
-            this.cmbKlanten.Location = new System.Drawing.Point(254, 33);
+            this.cmbKlanten.Location = new System.Drawing.Point(250, 28);
             this.cmbKlanten.Name = "cmbKlanten";
             this.cmbKlanten.Size = new System.Drawing.Size(270, 24);
             this.cmbKlanten.TabIndex = 100;
@@ -301,27 +303,47 @@ namespace MijnProject
             // dgvOrderProducten
             // 
             this.dgvOrderProducten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderProducten.Location = new System.Drawing.Point(121, 286);
+            this.dgvOrderProducten.Location = new System.Drawing.Point(117, 281);
             this.dgvOrderProducten.Name = "dgvOrderProducten";
             this.dgvOrderProducten.RowHeadersWidth = 51;
             this.dgvOrderProducten.RowTemplate.Height = 24;
             this.dgvOrderProducten.Size = new System.Drawing.Size(832, 266);
             this.dgvOrderProducten.TabIndex = 110;
+            this.dgvOrderProducten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderProducten_CellClick);
             // 
             // lblKlantAdress
             // 
             this.lblKlantAdress.AutoSize = true;
-            this.lblKlantAdress.Location = new System.Drawing.Point(251, 90);
+            this.lblKlantAdress.Location = new System.Drawing.Point(247, 85);
             this.lblKlantAdress.Name = "lblKlantAdress";
             this.lblKlantAdress.Size = new System.Drawing.Size(84, 17);
             this.lblKlantAdress.TabIndex = 107;
             this.lblKlantAdress.Text = "KlantAdress";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(114, 618);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 17);
+            this.label2.TabIndex = 118;
+            this.label2.Text = "Bezorger:";
+            // 
+            // cmbBezorgers
+            // 
+            this.cmbBezorgers.FormattingEnabled = true;
+            this.cmbBezorgers.Location = new System.Drawing.Point(250, 615);
+            this.cmbBezorgers.Name = "cmbBezorgers";
+            this.cmbBezorgers.Size = new System.Drawing.Size(270, 24);
+            this.cmbBezorgers.TabIndex = 117;
             // 
             // EditOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1074, 756);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbBezorgers);
             this.Controls.Add(this.btnOpslaan);
             this.Controls.Add(this.llblNewKlant);
             this.Controls.Add(this.cmbProducten);
@@ -379,5 +401,7 @@ namespace MijnProject
         private System.Windows.Forms.ComboBox cmbKlanten;
         private System.Windows.Forms.DataGridView dgvOrderProducten;
         private System.Windows.Forms.Label lblKlantAdress;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbBezorgers;
     }
 }

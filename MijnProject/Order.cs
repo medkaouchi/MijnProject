@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MijnProject
 {
-   public enum OrderStatus { Gepland,Gereserveerd,Prepareren,Blocked,Klaar,verzondzn,Geanuleerd}
+   public enum OrderStatus { Gepland,Gereserveerd,Prepareren,Blocked,Geanuleerd,Klaar,verzondzn}
    public class Order
     {
         public int OrderId { get; set; }
