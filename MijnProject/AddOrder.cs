@@ -29,7 +29,7 @@ namespace MijnProject
             using (var ctx=new ProjectContext())
             {
                 Klanten = ctx.Klanten.Include("adress").ToList();
-                Producten = ctx.Products.ToList();
+                Producten = ctx.Products.Where(p=>p.UnitsOnStock>0).ToList();
                 Bezorgers = ctx.Bezorgers.ToList();
             }
             dgv_OrderProducten = dgvOrderProducten;
@@ -151,6 +151,7 @@ namespace MijnProject
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
+            bool overstock = false;
             Adress ad = new Adress();
             string s = "";
             
@@ -158,7 +159,6 @@ namespace MijnProject
                 OrderDetail orddt = new OrderDetail();
                 ord.OrderDatum = DateTime.UtcNow;
                 ord.status = (OrderStatus)cmbStatus.SelectedItem;
-                ord.BezorgdDoor = (Bezorger)cmbBezorgers.SelectedItem;
                 if (ord.status > OrderStatus.Geanuleerd && ord.BezorgdDoor == null)
                     s += "Bestellingen met staus 'Klaar' of 'Verzondzn' moet ueen bezorger hebben ? ";
                 if (newAd)
@@ -184,30 +184,49 @@ namespace MijnProject
                     else
                         s += "Adress: Land ? ";
                 }
-            if (s == "")
+            using (var ctx = new ProjectContext())
+            {
+                foreach (ProductOrdered item in ProductsOrdered)
+                {
+                    if (ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId).UnitsOnStock < item.aantal)
+                    {
+                        overstock = true;
+                        s+=$"Slechts {ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId).UnitsOnStock} stuks zijn beschikbaar voor artikel: {ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId)} ";
+                    }
+                }
+            }
+
+                if (s == "")
                 using (var ctx = new ProjectContext())
                 {
+                    this.DialogResult = DialogResult.OK;
                     if (newAd)
                         ord.BezorgdAdress = ad;
                     else
                         ord.BezorgdAdress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Klant)cmbKlanten.SelectedItem).adress.AdressId);
                     ord.klant = ctx.Klanten.FirstOrDefault(k => k.KlantId == ((Klant)cmbKlanten.SelectedItem).KlantId);
                     ord.user = ctx.Users.FirstOrDefault(a => a.UserId == ((User)Login.user).UserId);
+                    if(cmbBezorgers.SelectedIndex>-1)
+                    ord.BezorgdDoor =ctx.Bezorgers.FirstOrDefault(b=>b.BezorgerId== ((Bezorger)cmbBezorgers.SelectedItem).BezorgerId);
                     ctx.Orders.Add(ord);
                     ctx.SaveChanges();
                     foreach (ProductOrdered item in ProductsOrdered)
                     {
-                        orddt.order = ctx.Orders.FirstOrDefault(o => o.OrderId == ord.OrderId);
-                        orddt.product = ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
-                        orddt.Aantal = item.aantal;
-                        ctx.OrderDetails.Add(orddt);
-                        ctx.SaveChanges();
+                            orddt.order = ctx.Orders.FirstOrDefault(o => o.OrderId == ord.OrderId);
+                            orddt.product = ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
+                            orddt.Aantal = item.aantal;
+                            ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId).UnitsOnStock -= item.aantal;
+                            ctx.OrderDetails.Add(orddt);
+                            ctx.SaveChanges();
                     }
                     Bestellingen.OrderLines = ctx.Orders.Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new OrderLine() { orderid = o.OrderId, klant = o.klant, user = o.user, orderdate = o.OrderDatum, status = o.status, bezorgddoor = o.BezorgdDoor, adress = o.BezorgdAdress, orderdetailid = od.ID, product = od.product, aantal = od.Aantal }).ToList();
                     Bestellingen.loaddgvOrders();
                 }
             else
+            {
+                this.DialogResult = DialogResult.None;
                 MessageBox.Show(s);
+            }
         }
 
         private void dgvOrderProducten_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -218,12 +237,14 @@ namespace MijnProject
                 {
                     rowindex = e.RowIndex;
                     aantal = Convert.ToInt32(dgvOrderProducten.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Value);
+                    EditAantal.parent = "Add";
                     EditAantal editaantal = new EditAantal();
                     editaantal.ShowDialog();
                 }
                 if (e.ColumnIndex == deleteindex)
                 {
                     ProductsOrdered.Remove((ProductOrdered)dgvOrderProducten.Rows[e.RowIndex].DataBoundItem);
+
                     dgvOrderProducten.DataSource = null;
                     dgvOrderProducten.DataSource = ProductsOrdered;
                 }

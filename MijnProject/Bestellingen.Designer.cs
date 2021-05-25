@@ -50,6 +50,7 @@ namespace MijnProject
             // 
             // llblAddOrder
             // 
+            this.llblAddOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.llblAddOrder.AutoSize = true;
             this.llblAddOrder.Location = new System.Drawing.Point(13, 399);
             this.llblAddOrder.Name = "llblAddOrder";

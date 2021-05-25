@@ -16,6 +16,8 @@ namespace MijnProject
         {
             InitializeComponent();
             lblUser.Text = Program.user.Voornaam + " " + Program.user.Achternaam;
+            if (Login.user.Role == RoleUser.Magazijnier)
+                btnBestelling.Enabled = false;
         }
 
         private void llblLogOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

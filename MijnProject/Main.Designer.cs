@@ -61,7 +61,7 @@ namespace MijnProject
             this.btnBestelling.Name = "btnBestelling";
             this.btnBestelling.Size = new System.Drawing.Size(126, 50);
             this.btnBestelling.TabIndex = 2;
-            this.btnBestelling.Text = "Bestelling";
+            this.btnBestelling.Text = "Bestellingen ";
             this.btnBestelling.UseVisualStyleBackColor = true;
             this.btnBestelling.Click += new System.EventHandler(this.btnBestelling_Click);
             // 

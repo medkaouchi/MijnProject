@@ -30,7 +30,7 @@ namespace MijnProject
             using (var ctx = new ProjectContext())
             {
                 Klanten = ctx.Klanten.Include("adress").ToList();
-                Producten = ctx.Products.ToList();
+                Producten = ctx.Products.Where(p => p.UnitsOnStock > 0).ToList();
                 Bezorgers = ctx.Bezorgers.ToList();
                 ProductsOrdered = ctx.OrderDetails.Where(o => o.order.OrderId == Bestellingen.orderline.orderid).Join(ctx.Products, od => od.product.ProductId, p => p.ProductId, (od, p) => new ProductOrdered() { ProductId = p.ProductId, ProductNaam = p.ProductNaam, levrancier = p.levrancier, UnitPrice = p.UnitPrice, Omschrijving = p.Omschrijving, aantal = od.Aantal }).ToList();
             }
@@ -48,8 +48,6 @@ namespace MijnProject
             dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, DeleteButtonColumn);
             dgvOrderProducten.Columns["Verwijderen"].DisplayIndex = 7;
             dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
-            deleteindex = dgvOrderProducten.Columns["Verwijderen"].Index;
-            editindex = dgvOrderProducten.Columns["Aantal Bewerken"].Index;
             cmbKlanten.SelectedIndexChanged -= new System.EventHandler(cmbKlanten_SelectedIndexChanged);
             cmbKlanten.DataSource = Klanten;
             cmbKlanten.SelectedItem = Bestellingen.orderline.klant;
@@ -125,8 +123,6 @@ namespace MijnProject
             dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, DeleteButtonColumn);
             dgvOrderProducten.Columns["Verwijderen"].DisplayIndex = 7;
             dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
-            deleteindex = dgvOrderProducten.Columns["Verwijderen"].Index;
-            editindex = dgvOrderProducten.Columns["Aantal Bewerken"].Index;
         }
 
         private void txtPrNummer_KeyPress(object sender, KeyPressEventArgs e)
@@ -173,6 +169,7 @@ namespace MijnProject
 
         private void btnOpslaan_Click(object sender, EventArgs e)
         {
+            bool overstock = false;
             Adress ad = new Adress();
             string s = "";
             
@@ -206,10 +203,36 @@ namespace MijnProject
                     else
                         s += "Adress: Land ? ";
                 }
+            using (var ctx = new ProjectContext())
+            {
+                List<OrderDetail> ods = ctx.OrderDetails.Include("product").Where(od => od.order.OrderId == Bestellingen.orderline.orderid).ToList();
+                foreach (OrderDetail item in ods)
+                {
+                    ctx.Products.FirstOrDefault(p => p.ProductId == item.product.ProductId).UnitsOnStock += item.Aantal;
+                    ctx.SaveChanges();
+                }
+                foreach (ProductOrdered item in ProductsOrdered)
+                {
+                    if (ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId).UnitsOnStock < item.aantal)
+                    {
+                        overstock = true;
+                        s += $"Slechts {ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId).UnitsOnStock} stuks zijn beschikbaar voor artikel: {ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId)} ";
+                    }
+                }
+                if(!overstock)
+                {
+                    foreach (OrderDetail item in ods)
+                    {
+                        ctx.Products.FirstOrDefault(p => p.ProductId == item.product.ProductId).UnitsOnStock -= item.Aantal;
+                        ctx.SaveChanges();
+                    }
+                }
+            }
             if (s == "")
                 using (var ctx = new ProjectContext())
-            {
-                if (newAd)
+                {
+                    this.DialogResult = DialogResult.OK;
+                    if (newAd)
                     ord.BezorgdAdress = ad;
                 else
                     ord.BezorgdAdress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Klant)cmbKlanten.SelectedItem).adress.AdressId);
@@ -221,37 +244,51 @@ namespace MijnProject
                      ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).OrderDatum= ord.OrderDatum ;
                      ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).status= ord.status ;
                      ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).BezorgdAdress= ord.BezorgdAdress;
-                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).BezorgdDoor = ord.BezorgdDoor;
+                        if(ord.BezorgdDoor!=null)
+                     ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).BezorgdDoor =ctx.Bezorgers.FirstOrDefault(b=>b.BezorgerId== ord.BezorgdDoor.BezorgerId);
                 }
                 ctx.SaveChanges();
-                ctx.OrderDetails.RemoveRange(ctx.OrderDetails.Where(od => od.order.OrderId == Bestellingen.orderline.orderid));
-                foreach (ProductOrdered item in ProductsOrdered)
+                    List<OrderDetail> ods = ctx.OrderDetails.Include("product").Where(od => od.order.OrderId == Bestellingen.orderline.orderid).ToList();
+                    foreach (OrderDetail item in ods)
+                    {
+                        ctx.Products.FirstOrDefault(p => p.ProductId == item.product.ProductId).UnitsOnStock += item.Aantal;
+                        ctx.SaveChanges();
+                    }
+                    ctx.OrderDetails.RemoveRange(ctx.OrderDetails.Where(od => od.order.OrderId == Bestellingen.orderline.orderid));
+                    ctx.SaveChanges();
+                    foreach (ProductOrdered item in ProductsOrdered)
                 {
                     orddt.order = ctx.Orders.FirstOrDefault(O => O.OrderId == ctx.Orders.FirstOrDefault(o => o.OrderId == Bestellingen.orderline.orderid).OrderId);
                     orddt.product = ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId);
                     orddt.Aantal = item.aantal;
+                    ctx.Products.FirstOrDefault(p => p.ProductId == item.ProductId).UnitsOnStock -= item.aantal;
                     ctx.OrderDetails.Add(orddt);
-                }
+                        ctx.SaveChanges();
+                    }
                 ctx.SaveChanges();
                 Bestellingen.OrderLines = ctx.Orders.Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new OrderLine() { orderid = o.OrderId, klant = o.klant, user = o.user, orderdate = o.OrderDatum, status = o.status, bezorgddoor = o.BezorgdDoor, adress = o.BezorgdAdress, orderdetailid = od.ID, product = od.product, aantal = od.Aantal }).ToList();
                 Bestellingen.loaddgvOrders();
             }
             else
+            {
+                this.DialogResult = DialogResult.None;
                 MessageBox.Show(s);
+            }
         }
 
         private void dgvOrderProducten_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex>-1)
-            { 
-                if (e.ColumnIndex == editindex)
+            {
+                if (e.ColumnIndex == dgvOrderProducten.Columns["Aantal Bewerken"].Index)
                 {
                     rowindex = e.RowIndex;
-                    aantal = Convert.ToInt32(dgvOrderProducten.Rows[e.RowIndex].Cells[e.ColumnIndex-1].Value);
+                    aantal = Convert.ToInt32(dgvOrderProducten.Rows[e.RowIndex].Cells[dgvOrderProducten.Columns["aantal"].Index].Value);
+                    EditAantal.parent = "Edit";
                     EditAantal editaantal = new EditAantal();
                     editaantal.ShowDialog();
                 }
-                if(e.ColumnIndex==deleteindex)
+                if(e.ColumnIndex== dgvOrderProducten.Columns["Verwijderen"].Index)
                 {
                     ProductsOrdered.Remove((ProductOrdered)dgvOrderProducten.Rows[e.RowIndex].DataBoundItem);
                     dgvOrderProducten.DataSource = null;
