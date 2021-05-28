@@ -29,9 +29,9 @@ namespace MijnProject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpBegin = new System.Windows.Forms.DateTimePicker();
             this.dtpEind = new System.Windows.Forms.DateTimePicker();
@@ -79,10 +79,17 @@ namespace MijnProject
             this.cmbOverzicht.FormattingEnabled = true;
             this.cmbOverzicht.Items.AddRange(new object[] {
             "10 best verkochte producten",
+            "10 best besteld producten",
             "10 minder verkochte producten",
-            "10 best kopers",
-            "10 best verkopers",
-            "stock overzicht"});
+            "10 minder besteld producten",
+            "10 best kopers (bedrag)",
+            "10 best kopers (bestellingen)",
+            "10 best verkopers (bedrag)",
+            "10 best verkopers (bestellingen)",
+            "bestellingen per bezorgers",
+            "Incomes",
+            "Bestellingen",
+            "Nieuwe klanten"});
             this.cmbOverzicht.Location = new System.Drawing.Point(260, 43);
             this.cmbOverzicht.Name = "cmbOverzicht";
             this.cmbOverzicht.Size = new System.Drawing.Size(232, 24);
@@ -100,16 +107,16 @@ namespace MijnProject
             // 
             // crtTopverkocht
             // 
-            chartArea1.Name = "ChartArea1";
-            this.crtTopverkocht.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.crtTopverkocht.Legends.Add(legend1);
+            chartArea6.Name = "ChartArea1";
+            this.crtTopverkocht.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.crtTopverkocht.Legends.Add(legend6);
             this.crtTopverkocht.Location = new System.Drawing.Point(15, 202);
             this.crtTopverkocht.Name = "crtTopverkocht";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "product";
-            this.crtTopverkocht.Series.Add(series1);
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "product";
+            this.crtTopverkocht.Series.Add(series6);
             this.crtTopverkocht.Size = new System.Drawing.Size(773, 394);
             this.crtTopverkocht.TabIndex = 6;
             this.crtTopverkocht.Text = "chart1";
