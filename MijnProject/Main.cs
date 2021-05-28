@@ -37,5 +37,11 @@ namespace MijnProject
             Bestellingen bestellingen = new Bestellingen();
             bestellingen.ShowDialog();
         }
+
+        private void btnOverzicht_Click(object sender, EventArgs e)
+        {
+            Overzicht overzicht = new Overzicht();
+            overzicht.ShowDialog();
+        }
     }
 }

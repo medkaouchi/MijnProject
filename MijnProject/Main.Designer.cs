@@ -54,6 +54,7 @@ namespace MijnProject
             this.btnOverzicht.TabIndex = 1;
             this.btnOverzicht.Text = "Overzicht";
             this.btnOverzicht.UseVisualStyleBackColor = true;
+            this.btnOverzicht.Click += new System.EventHandler(this.btnOverzicht_Click);
             // 
             // btnBestelling
             // 
