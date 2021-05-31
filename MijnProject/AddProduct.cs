@@ -26,6 +26,7 @@ namespace MijnProject
             }
             cmbLeverancier.DataSource = Leveranciers;
             cmb_Leveranciere = cmbLeverancier;
+            cmbLeverancier.SelectedIndex = -1;
         }
         public bool IsDouble(string text)
         {
@@ -100,6 +101,17 @@ namespace MijnProject
                     Databeheer.Producten = ctx.Products.ToList();
                 }
                 Databeheer.loaddgvprodut();
+                txtNaam.Text = "";
+                txtUnitprice.Text = "";
+                txtUnitsOnStock.Text = "";
+                txtProductNummer.Text = "";
+                txtLengte.Text = "";
+                txtHoogte.Text = "";
+                txtGewicht.Text = "";
+                txtBreedte.Text = "";
+                txtBarcode.Text = "";
+                rtbOmschrijving.Text = "";
+                cmbLeverancier.SelectedIndex = -1;
             }
             else
             {

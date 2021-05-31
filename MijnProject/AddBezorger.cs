@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace MijnProject
 {
-    public partial class AddLeverancier : Form
+    public partial class AddBezorger : Form
     {
-        public AddLeverancier()
+        public AddBezorger()
         {
             InitializeComponent();
             List<Adress> Adresses = new List<Adress>();
@@ -21,7 +21,6 @@ namespace MijnProject
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
         }
-        
         bool newAd = false;
         Regex re = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
 
@@ -42,14 +41,14 @@ namespace MijnProject
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
             string s = "";
-            Levrancier lev = new Levrancier();
+            Bezorger lev = new Bezorger();
             Adress ad = new Adress();
             if (txtNaam.Text != "")
                 lev.Naam = txtNaam.Text;
             else
                 s += "Naam? ";
             lev.Omschrijving = rtbOmschrijving.Text;
-            if(txtTel1.Text!="" && txtTel1.Text.ToCharArray().All(c => char.IsDigit(c)))
+            if (txtTel1.Text != "" && txtTel1.Text.ToCharArray().All(c => char.IsDigit(c)))
                 lev.Telefoon1 = txtTel1.Text;
             else
                 s += "Telefoon1? ";
@@ -90,21 +89,19 @@ namespace MijnProject
                     lev.adress = (Adress)cmbAdress.SelectedItem;
                 using (var ctx = new ProjectContext())
                 {
-                    ctx.Levranciers.Add(lev);
+                    ctx.Bezorgers.Add(lev);
                     ctx.SaveChanges();
-                    EditProduct.Leveranciers = ctx.Levranciers.ToList();
-                    AddProduct.Leveranciers= ctx.Levranciers.ToList();
+                    Databeheer.Deliverers = ctx.Bezorgers.Include("adress").ToList();
                 }
-                EditProduct.cmb_Leveranciere.DataSource = null;
-                EditProduct.cmb_Leveranciere.DataSource = EditProduct.Leveranciers;
-                EditProduct.cmb_Leveranciere.SelectedItem = lev;
-                AddProduct.cmb_Leveranciere.DataSource = null;
-                AddProduct.cmb_Leveranciere.DataSource = AddProduct.Leveranciers;
-                AddProduct.cmb_Leveranciere.SelectedItem = lev;
+                Databeheer.dgv_Deliverer.DataSource = null;
+                Databeheer.dgv_Deliverer.DataSource = Databeheer.Deliverers;
                 btnToevoegen.DialogResult = DialogResult.OK;
             }
             else
+            {
                 MessageBox.Show(s);
+                btnToevoegen.DialogResult = DialogResult.None;
+            }
         }
     }
 }

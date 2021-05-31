@@ -48,7 +48,7 @@ namespace MijnProject
             // 
             // btnOverzicht
             // 
-            this.btnOverzicht.Location = new System.Drawing.Point(197, 76);
+            this.btnOverzicht.Location = new System.Drawing.Point(347, 76);
             this.btnOverzicht.Name = "btnOverzicht";
             this.btnOverzicht.Size = new System.Drawing.Size(126, 50);
             this.btnOverzicht.TabIndex = 1;
@@ -58,7 +58,7 @@ namespace MijnProject
             // 
             // btnBestelling
             // 
-            this.btnBestelling.Location = new System.Drawing.Point(351, 76);
+            this.btnBestelling.Location = new System.Drawing.Point(204, 76);
             this.btnBestelling.Name = "btnBestelling";
             this.btnBestelling.Size = new System.Drawing.Size(126, 50);
             this.btnBestelling.TabIndex = 2;
@@ -90,7 +90,7 @@ namespace MijnProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 160);
+            this.ClientSize = new System.Drawing.Size(517, 227);
             this.Controls.Add(this.llblLogOut);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnBestelling);

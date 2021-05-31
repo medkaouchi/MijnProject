@@ -47,7 +47,6 @@ namespace MijnProject
             dgv_Orders.Columns["Bewerken"].DisplayIndex = 10;
             deleteindex = dgv_Orders.Columns["Verwijderen"].Index;
             editindex = dgv_Orders.Columns["Bewerken"].Index;
-
         }
 
         private void llblAddOrder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

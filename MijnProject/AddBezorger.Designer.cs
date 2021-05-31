@@ -1,7 +1,7 @@
 ﻿
 namespace MijnProject
 {
-    partial class AddLeverancier
+    partial class AddBezorger
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,6 @@ namespace MijnProject
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnToevoegen = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.rtbOmschrijving = new System.Windows.Forms.RichTextBox();
-            this.txtNaam = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtTel2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cmbAdress = new System.Windows.Forms.ComboBox();
@@ -55,83 +50,45 @@ namespace MijnProject
             this.label4 = new System.Windows.Forms.Label();
             this.txtTel1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnToevoegen = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rtbOmschrijving = new System.Windows.Forms.RichTextBox();
+            this.txtNaam = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlAdress.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnToevoegen
-            // 
-            this.btnToevoegen.Location = new System.Drawing.Point(179, 512);
-            this.btnToevoegen.Name = "btnToevoegen";
-            this.btnToevoegen.Size = new System.Drawing.Size(118, 37);
-            this.btnToevoegen.TabIndex = 9;
-            this.btnToevoegen.Text = "Toevoegen";
-            this.btnToevoegen.UseVisualStyleBackColor = true;
-            this.btnToevoegen.Click += new System.EventHandler(this.btnToevoegen_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 380);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 17);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Omschrijving:";
-            // 
-            // rtbOmschrijving
-            // 
-            this.rtbOmschrijving.Location = new System.Drawing.Point(166, 377);
-            this.rtbOmschrijving.Name = "rtbOmschrijving";
-            this.rtbOmschrijving.Size = new System.Drawing.Size(235, 103);
-            this.rtbOmschrijving.TabIndex = 7;
-            this.rtbOmschrijving.Text = "";
-            // 
-            // txtNaam
-            // 
-            this.txtNaam.Location = new System.Drawing.Point(166, 28);
-            this.txtNaam.Name = "txtNaam";
-            this.txtNaam.Size = new System.Drawing.Size(236, 22);
-            this.txtNaam.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Naam:";
-            // 
             // txtTel2
             // 
-            this.txtTel2.Location = new System.Drawing.Point(166, 106);
+            this.txtTel2.Location = new System.Drawing.Point(220, 127);
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(235, 22);
-            this.txtTel2.TabIndex = 98;
+            this.txtTel2.TabIndex = 113;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 106);
+            this.label11.Location = new System.Drawing.Point(65, 127);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 17);
-            this.label11.TabIndex = 97;
+            this.label11.TabIndex = 112;
             this.label11.Text = "Telefoon 2:";
             // 
             // cmbAdress
             // 
             this.cmbAdress.FormattingEnabled = true;
-            this.cmbAdress.Location = new System.Drawing.Point(166, 182);
+            this.cmbAdress.Location = new System.Drawing.Point(220, 203);
             this.cmbAdress.Name = "cmbAdress";
             this.cmbAdress.Size = new System.Drawing.Size(236, 24);
-            this.cmbAdress.TabIndex = 96;
+            this.cmbAdress.TabIndex = 111;
             // 
             // llblAddAdress
             // 
             this.llblAddAdress.AutoSize = true;
-            this.llblAddAdress.Location = new System.Drawing.Point(166, 208);
+            this.llblAddAdress.Location = new System.Drawing.Point(220, 229);
             this.llblAddAdress.Name = "llblAddAdress";
             this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
-            this.llblAddAdress.TabIndex = 95;
+            this.llblAddAdress.TabIndex = 110;
             this.llblAddAdress.TabStop = true;
             this.llblAddAdress.Text = "Nieuw adress";
             this.llblAddAdress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddAdress_LinkClicked);
@@ -150,10 +107,10 @@ namespace MijnProject
             this.pnlAdress.Controls.Add(this.label13);
             this.pnlAdress.Controls.Add(this.txtStraat);
             this.pnlAdress.Controls.Add(this.label9);
-            this.pnlAdress.Location = new System.Drawing.Point(158, 231);
+            this.pnlAdress.Location = new System.Drawing.Point(212, 252);
             this.pnlAdress.Name = "pnlAdress";
             this.pnlAdress.Size = new System.Drawing.Size(254, 122);
-            this.pnlAdress.TabIndex = 94;
+            this.pnlAdress.TabIndex = 109;
             this.pnlAdress.Visible = false;
             // 
             // btnCancel
@@ -249,49 +206,92 @@ namespace MijnProject
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 182);
+            this.label17.Location = new System.Drawing.Point(66, 203);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(56, 17);
-            this.label17.TabIndex = 93;
+            this.label17.TabIndex = 108;
             this.label17.Text = "Adress:";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(166, 145);
+            this.txtEmail.Location = new System.Drawing.Point(220, 166);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(235, 22);
-            this.txtEmail.TabIndex = 92;
+            this.txtEmail.TabIndex = 107;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 145);
+            this.label4.Location = new System.Drawing.Point(65, 166);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
-            this.label4.TabIndex = 91;
+            this.label4.TabIndex = 106;
             this.label4.Text = "Email:";
             // 
             // txtTel1
             // 
-            this.txtTel1.Location = new System.Drawing.Point(166, 67);
+            this.txtTel1.Location = new System.Drawing.Point(220, 88);
             this.txtTel1.Name = "txtTel1";
             this.txtTel1.Size = new System.Drawing.Size(235, 22);
-            this.txtTel1.TabIndex = 90;
+            this.txtTel1.TabIndex = 105;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 67);
+            this.label5.Location = new System.Drawing.Point(65, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 17);
-            this.label5.TabIndex = 89;
+            this.label5.TabIndex = 104;
             this.label5.Text = "Telefoon 1:";
             // 
-            // AddLeverancier
+            // btnToevoegen
+            // 
+            this.btnToevoegen.Location = new System.Drawing.Point(233, 533);
+            this.btnToevoegen.Name = "btnToevoegen";
+            this.btnToevoegen.Size = new System.Drawing.Size(118, 37);
+            this.btnToevoegen.TabIndex = 103;
+            this.btnToevoegen.Text = "Toevoegen";
+            this.btnToevoegen.UseVisualStyleBackColor = true;
+            this.btnToevoegen.Click += new System.EventHandler(this.btnToevoegen_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(66, 401);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 17);
+            this.label2.TabIndex = 102;
+            this.label2.Text = "Omschrijving:";
+            // 
+            // rtbOmschrijving
+            // 
+            this.rtbOmschrijving.Location = new System.Drawing.Point(220, 398);
+            this.rtbOmschrijving.Name = "rtbOmschrijving";
+            this.rtbOmschrijving.Size = new System.Drawing.Size(235, 103);
+            this.rtbOmschrijving.TabIndex = 101;
+            this.rtbOmschrijving.Text = "";
+            // 
+            // txtNaam
+            // 
+            this.txtNaam.Location = new System.Drawing.Point(220, 49);
+            this.txtNaam.Name = "txtNaam";
+            this.txtNaam.Size = new System.Drawing.Size(236, 22);
+            this.txtNaam.TabIndex = 100;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(65, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 17);
+            this.label1.TabIndex = 99;
+            this.label1.Text = "Naam:";
+            // 
+            // AddBezorger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 578);
+            this.ClientSize = new System.Drawing.Size(569, 604);
             this.Controls.Add(this.txtTel2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cmbAdress);
@@ -307,8 +307,8 @@ namespace MijnProject
             this.Controls.Add(this.rtbOmschrijving);
             this.Controls.Add(this.txtNaam);
             this.Controls.Add(this.label1);
-            this.Name = "AddLeverancier";
-            this.Text = "AddLeverancier";
+            this.Name = "AddBezorger";
+            this.Text = "AddBezorger";
             this.pnlAdress.ResumeLayout(false);
             this.pnlAdress.PerformLayout();
             this.ResumeLayout(false);
@@ -318,11 +318,6 @@ namespace MijnProject
 
         #endregion
 
-        private System.Windows.Forms.Button btnToevoegen;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox rtbOmschrijving;
-        private System.Windows.Forms.TextBox txtNaam;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTel2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cmbAdress;
@@ -344,5 +339,10 @@ namespace MijnProject
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTel1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnToevoegen;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox rtbOmschrijving;
+        private System.Windows.Forms.TextBox txtNaam;
+        private System.Windows.Forms.Label label1;
     }
 }

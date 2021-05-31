@@ -23,18 +23,21 @@ namespace MijnProject
                 userToolStripMenuItem.Enabled = true;
                 productToolStripMenuItem.Enabled = true;
                 klantToolStripMenuItem.Enabled = true;
+                bezorgersToolStripMenuItem.Enabled = true;
             }
             if (Login.user.Role == RoleUser.Magazijnier)
             {
                 userToolStripMenuItem.Enabled = false;
                 productToolStripMenuItem.Enabled = true;
                 klantToolStripMenuItem.Enabled = false;
+                bezorgersToolStripMenuItem.Enabled = false;
             }
             if (Login.user.Role == RoleUser.Verkoper)
             {
                 userToolStripMenuItem.Enabled = false;
                 productToolStripMenuItem.Enabled = false;
                 klantToolStripMenuItem.Enabled = true;
+                bezorgersToolStripMenuItem.Enabled = false;
             }
         }
         public static List<User> Users = new List<User>();
@@ -50,6 +53,11 @@ namespace MijnProject
         public static int editindex;
         public static int deleteindexproduct;
         public static int editindexproduct;
+        public static List<Bezorger> Deliverers = new List<Bezorger>();
+        public static DataGridView dgv_Deliverer = new DataGridView();
+        public static int deleteindexBez;
+        public static int editindexBez;
+        public static Bezorger bezorger;
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -60,7 +68,15 @@ namespace MijnProject
                     {
                         User usr = (User)dgvUsers.Rows[e.RowIndex].DataBoundItem;
                         ctx.Users.RemoveRange(ctx.Users.Where(g => g.UserId == usr.UserId));
-                        ctx.SaveChanges();
+                        try
+                        {
+                            ctx.SaveChanges();
+                        }
+                        catch (System.Data.Entity.Infrastructure.DbUpdateException)
+                        {
+                            MessageBox.Show("User kan niet worden verwijderd !");
+                        }
+                        
                         Users = ctx.Users.Include("Adress").ToList();
                     }
                 }
@@ -84,6 +100,7 @@ namespace MijnProject
             dgv_klanten = dgvKlanten;
             dgv_users = dgvUsers;
             dgv_producten = dgvProducten;
+            dgv_Deliverer = dgvDeliverer;
         }
         public static void loaddgvusers()
         {
@@ -150,6 +167,7 @@ namespace MijnProject
             pnlKlanten.Visible = false;
             pnlKlanten.Visible = false;
             pnlUsers.Visible = true;
+            pnlBezorgers.Visible = false;
             using (var ctx = new ProjectContext())
                 Users = ctx.Users.Include("Adress").ToList();
             loaddgvusers();
@@ -160,6 +178,7 @@ namespace MijnProject
             pnlKlanten.Visible = false;
             pnlUsers.Visible = false;
             pnlKlanten.Visible = true;
+            pnlBezorgers.Visible = false;
             using (var ctx = new ProjectContext())
                 Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
             loaddgvklants();
@@ -170,6 +189,7 @@ namespace MijnProject
             pnlUsers.Visible = false;
             pnlKlanten.Visible = false;
             pnlProducten.Visible = true;
+            pnlBezorgers.Visible = false;
             using (var ctx = new ProjectContext())
                 Producten = ctx.Products.Include("levrancier").ToList();
             loaddgvprodut();
@@ -184,7 +204,14 @@ namespace MijnProject
                     {
                         Klant klnt = (Klant)dgvKlanten.Rows[e.RowIndex].DataBoundItem;
                         ctx.Klanten.RemoveRange(ctx.Klanten.Where(g => g.KlantId == klnt.KlantId));
-                        ctx.SaveChanges();
+                        try
+                        {
+                            ctx.SaveChanges();
+                        }
+                        catch (System.Data.Entity.Infrastructure.DbUpdateException)
+                        {
+                            MessageBox.Show("Klant kan niet worden verwijderd !");
+                        }
                         Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
                     }
                 }
@@ -212,7 +239,14 @@ namespace MijnProject
                     {
                         Product prd = (Product)dgvProducten.Rows[e.RowIndex].DataBoundItem;
                         ctx.Products.RemoveRange(ctx.Products.Where(g => g.ProductId == prd.ProductId));
-                        ctx.SaveChanges();
+                        try
+                        {
+                            ctx.SaveChanges();
+                        }
+                        catch (System.Data.Entity.Infrastructure.DbUpdateException)
+                        {
+                            MessageBox.Show("Product kan niet worden verwijderd !");
+                        }
                         Producten = ctx.Products.Include("levrancier").ToList();
                     }
                 }
@@ -301,6 +335,61 @@ namespace MijnProject
         {
             Main main = new Main();
             main.Show();
+        }
+
+        private void bezorgersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pnlBezorgers.Visible =true;
+            pnlUsers.Visible = false;
+            pnlKlanten.Visible = false;
+            pnlProducten.Visible = false;
+            using (var ctx = new ProjectContext())
+            {
+                Deliverers = ctx.Bezorgers.Include("adress").ToList();
+            }
+            loaddgvDeliverer();
+        }
+        public static void loaddgvDeliverer()
+        {
+            dgv_Deliverer.DataSource = null;
+            dgv_Deliverer.Columns.Clear();
+            dgv_Deliverer.DataSource = Deliverers;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgv_Deliverer.Columns.Insert(dgv_Deliverer.Columns.Count, DeleteButtonColumn);
+            dgv_Deliverer.Columns["Verwijderen"].DisplayIndex = 7;
+            deleteindexBez = dgv_Deliverer.Columns["Verwijderen"].Index;
+        }
+
+        private void dgvDeliverer_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+                if (e.ColumnIndex == deleteindex && e.RowIndex > -1)
+                {
+                    using (var ctx = new ProjectContext())
+                    {
+                        Bezorger prd = (Bezorger)dgvDeliverer.Rows[e.RowIndex].DataBoundItem;
+                        ctx.Bezorgers.RemoveRange(ctx.Bezorgers.Where(g => g.BezorgerId == prd.BezorgerId));
+                        try
+                        {
+                            ctx.SaveChanges();
+                        }
+                        catch (System.Data.Entity.Infrastructure.DbUpdateException)
+                        {
+                            MessageBox.Show("Bezorger kan niet worden verwijderd !");
+                        }
+                        Deliverers = ctx.Bezorgers.Include("adress").ToList();
+                    }
+                }
+                
+            loaddgvDeliverer();
+        }
+
+        private void llblNewDeliverer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddBezorger addbezorgzer = new AddBezorger();
+            addbezorgzer.Show();
         }
     }
 }

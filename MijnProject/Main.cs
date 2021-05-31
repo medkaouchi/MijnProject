@@ -16,8 +16,12 @@ namespace MijnProject
         {
             InitializeComponent();
             lblUser.Text = Program.user.Voornaam + " " + Program.user.Achternaam;
-            if (Login.user.Role == RoleUser.Magazijnier)
+            if (Login.user.Role != RoleUser.Admin)
+            {
                 btnBestelling.Enabled = false;
+                btnOverzicht.Enabled = false;
+            }
+
             Login.ActiveForm.Hide();
         }
 
@@ -51,5 +55,7 @@ namespace MijnProject
         {
 
         }
+
+        
     }
 }
