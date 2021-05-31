@@ -19,8 +19,6 @@ namespace MijnProject
         public static User user=new User();
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            
-            //if(txtUsername.Text!="" && txtWachtwoord.Text!="")
             using (var ctx=new ProjectContext())
             {
                 string t = null;
@@ -40,9 +38,14 @@ namespace MijnProject
                 txtWachtwoord.Text = "";
                 Program.user = user;
                 Main main = new Main();
-                main.ShowDialog();
+                main.Show();
             }
 
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

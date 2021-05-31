@@ -29,9 +29,9 @@ namespace MijnProject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpBegin = new System.Windows.Forms.DateTimePicker();
             this.dtpEind = new System.Windows.Forms.DateTimePicker();
@@ -39,13 +39,15 @@ namespace MijnProject
             this.cmbOverzicht = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.crtTopverkocht = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnToon = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtTopverkocht)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 117);
+            this.label1.Location = new System.Drawing.Point(220, 70);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 0;
@@ -53,22 +55,25 @@ namespace MijnProject
             // 
             // dtpBegin
             // 
-            this.dtpBegin.Location = new System.Drawing.Point(109, 112);
+            this.dtpBegin.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpBegin.Location = new System.Drawing.Point(317, 65);
             this.dtpBegin.Name = "dtpBegin";
             this.dtpBegin.Size = new System.Drawing.Size(200, 22);
             this.dtpBegin.TabIndex = 1;
             // 
             // dtpEind
             // 
-            this.dtpEind.Location = new System.Drawing.Point(478, 112);
+            this.dtpEind.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dtpEind.Location = new System.Drawing.Point(317, 102);
             this.dtpEind.Name = "dtpEind";
             this.dtpEind.Size = new System.Drawing.Size(200, 22);
             this.dtpEind.TabIndex = 3;
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(381, 117);
+            this.label2.Location = new System.Drawing.Point(220, 107);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 17);
             this.label2.TabIndex = 2;
@@ -76,6 +81,7 @@ namespace MijnProject
             // 
             // cmbOverzicht
             // 
+            this.cmbOverzicht.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cmbOverzicht.FormattingEnabled = true;
             this.cmbOverzicht.Items.AddRange(new object[] {
             "10 best verkochte producten",
@@ -90,7 +96,7 @@ namespace MijnProject
             "Incomes",
             "Bestellingen",
             "Nieuwe klanten"});
-            this.cmbOverzicht.Location = new System.Drawing.Point(260, 43);
+            this.cmbOverzicht.Location = new System.Drawing.Point(317, 25);
             this.cmbOverzicht.Name = "cmbOverzicht";
             this.cmbOverzicht.Size = new System.Drawing.Size(232, 24);
             this.cmbOverzicht.TabIndex = 4;
@@ -98,8 +104,9 @@ namespace MijnProject
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(157, 46);
+            this.label3.Location = new System.Drawing.Point(214, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 17);
             this.label3.TabIndex = 5;
@@ -107,25 +114,57 @@ namespace MijnProject
             // 
             // crtTopverkocht
             // 
-            chartArea6.Name = "ChartArea1";
-            this.crtTopverkocht.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.crtTopverkocht.Legends.Add(legend6);
+            this.crtTopverkocht.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.crtTopverkocht.BackColor = System.Drawing.Color.LightYellow;
+            this.crtTopverkocht.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.crtTopverkocht.BackSecondaryColor = System.Drawing.Color.White;
+            this.crtTopverkocht.BorderlineWidth = 0;
+            this.crtTopverkocht.BorderSkin.BorderColor = System.Drawing.Color.Transparent;
+            chartArea1.Area3DStyle.Enable3D = true;
+            chartArea1.Area3DStyle.Inclination = 10;
+            chartArea1.Area3DStyle.PointDepth = 80;
+            chartArea1.Area3DStyle.PointGapDepth = 50;
+            chartArea1.Area3DStyle.Rotation = 10;
+            chartArea1.Area3DStyle.WallWidth = 1;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.BackColor = System.Drawing.Color.LightYellow;
+            chartArea1.BorderColor = System.Drawing.Color.Transparent;
+            chartArea1.BorderWidth = 0;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.White;
+            this.crtTopverkocht.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.crtTopverkocht.Legends.Add(legend1);
             this.crtTopverkocht.Location = new System.Drawing.Point(15, 202);
             this.crtTopverkocht.Name = "crtTopverkocht";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "product";
-            this.crtTopverkocht.Series.Add(series6);
+            this.crtTopverkocht.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "product";
+            this.crtTopverkocht.Series.Add(series1);
             this.crtTopverkocht.Size = new System.Drawing.Size(773, 394);
             this.crtTopverkocht.TabIndex = 6;
             this.crtTopverkocht.Text = "chart1";
+            // 
+            // btnToon
+            // 
+            this.btnToon.Location = new System.Drawing.Point(317, 146);
+            this.btnToon.Name = "btnToon";
+            this.btnToon.Size = new System.Drawing.Size(114, 39);
+            this.btnToon.TabIndex = 7;
+            this.btnToon.Text = "Toon";
+            this.btnToon.UseVisualStyleBackColor = true;
+            this.btnToon.Click += new System.EventHandler(this.btnToon_Click);
             // 
             // Overzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 635);
+            this.Controls.Add(this.btnToon);
             this.Controls.Add(this.crtTopverkocht);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbOverzicht);
@@ -135,6 +174,7 @@ namespace MijnProject
             this.Controls.Add(this.label1);
             this.Name = "Overzicht";
             this.Text = "Overzicht";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Overzicht_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.crtTopverkocht)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,5 +190,6 @@ namespace MijnProject
         private System.Windows.Forms.ComboBox cmbOverzicht;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataVisualization.Charting.Chart crtTopverkocht;
+        private System.Windows.Forms.Button btnToon;
     }
 }

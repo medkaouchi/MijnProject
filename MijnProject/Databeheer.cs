@@ -17,6 +17,7 @@ namespace MijnProject
         public Databeheer()
         {
             InitializeComponent();
+            Main.ActiveForm.Close();
             if(Login.user.Role==RoleUser.Admin)
             {
                 userToolStripMenuItem.Enabled = true;
@@ -294,6 +295,12 @@ namespace MijnProject
         {
             AddProduct addproduct = new AddProduct();
             addproduct.ShowDialog();
+        }
+
+        private void Databeheer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Main main = new Main();
+            main.Show();
         }
     }
 }

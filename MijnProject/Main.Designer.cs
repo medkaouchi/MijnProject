@@ -98,6 +98,7 @@ namespace MijnProject
             this.Controls.Add(this.btnDatabeheer);
             this.Name = "Main";
             this.Text = "Main";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

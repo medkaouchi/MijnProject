@@ -20,6 +20,7 @@ namespace MijnProject
         public Bestellingen()
         {
             InitializeComponent();
+            Main.ActiveForm.Close();
             dgv_Orders = dgvOrders;
             using (var ctx=new ProjectContext())
             {
@@ -78,6 +79,12 @@ namespace MijnProject
                     editorder.ShowDialog();
                 }
             loaddgvOrders();
+        }
+
+        private void Bestellingen_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Main main = new Main();
+            main.Show();
         }
     }
 }

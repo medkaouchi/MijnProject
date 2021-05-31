@@ -18,11 +18,14 @@ namespace MijnProject
             lblUser.Text = Program.user.Voornaam + " " + Program.user.Achternaam;
             if (Login.user.Role == RoleUser.Magazijnier)
                 btnBestelling.Enabled = false;
+            Login.ActiveForm.Hide();
         }
 
         private void llblLogOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Program.user = null;
+            Login login = new Login();
+            login.Show();
             this.Close();
         }
 
@@ -42,6 +45,11 @@ namespace MijnProject
         {
             Overzicht overzicht = new Overzicht();
             overzicht.ShowDialog();
+        }
+
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

@@ -69,7 +69,7 @@ namespace MijnProject
             // 
             this.userToolStripMenuItem.Enabled = false;
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
             this.userToolStripMenuItem.Text = "Users";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
@@ -77,7 +77,7 @@ namespace MijnProject
             // 
             this.klantToolStripMenuItem.Enabled = false;
             this.klantToolStripMenuItem.Name = "klantToolStripMenuItem";
-            this.klantToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.klantToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
             this.klantToolStripMenuItem.Text = "Klanten";
             this.klantToolStripMenuItem.Click += new System.EventHandler(this.klantToolStripMenuItem_Click);
             // 
@@ -85,7 +85,7 @@ namespace MijnProject
             // 
             this.productToolStripMenuItem.Enabled = false;
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
-            this.productToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
             this.productToolStripMenuItem.Text = "Producten";
             this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
@@ -230,6 +230,7 @@ namespace MijnProject
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Databeheer";
             this.Text = "Databeheer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Databeheer_FormClosed);
             this.Load += new System.EventHandler(this.Databeheer_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

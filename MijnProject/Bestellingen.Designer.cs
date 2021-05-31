@@ -69,6 +69,7 @@ namespace MijnProject
             this.Controls.Add(this.dgvOrders);
             this.Name = "Bestellingen";
             this.Text = "Bestellingen";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Bestellingen_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
