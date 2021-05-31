@@ -141,6 +141,7 @@
     <Compile Include="EditUser.Designer.cs">
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="Klant.cs" />
     <Compile Include="Levrancier.cs" />
     <Compile Include="Login.cs">
