@@ -61,15 +61,17 @@ namespace MijnProject
             // 
             // txtTel2
             // 
-            this.txtTel2.Location = new System.Drawing.Point(220, 127);
+            this.txtTel2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTel2.Location = new System.Drawing.Point(316, 150);
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(235, 22);
             this.txtTel2.TabIndex = 113;
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(65, 127);
+            this.label11.Location = new System.Drawing.Point(161, 150);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(80, 17);
             this.label11.TabIndex = 112;
@@ -77,16 +79,18 @@ namespace MijnProject
             // 
             // cmbAdress
             // 
+            this.cmbAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbAdress.FormattingEnabled = true;
-            this.cmbAdress.Location = new System.Drawing.Point(220, 203);
+            this.cmbAdress.Location = new System.Drawing.Point(316, 226);
             this.cmbAdress.Name = "cmbAdress";
             this.cmbAdress.Size = new System.Drawing.Size(236, 24);
             this.cmbAdress.TabIndex = 111;
             // 
             // llblAddAdress
             // 
+            this.llblAddAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.llblAddAdress.AutoSize = true;
-            this.llblAddAdress.Location = new System.Drawing.Point(220, 229);
+            this.llblAddAdress.Location = new System.Drawing.Point(316, 252);
             this.llblAddAdress.Name = "llblAddAdress";
             this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
             this.llblAddAdress.TabIndex = 110;
@@ -97,6 +101,7 @@ namespace MijnProject
             // pnlAdress
             // 
             this.pnlAdress.AllowDrop = true;
+            this.pnlAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlAdress.Controls.Add(this.btnCancel);
             this.pnlAdress.Controls.Add(this.txtLand);
             this.pnlAdress.Controls.Add(this.label16);
@@ -108,7 +113,7 @@ namespace MijnProject
             this.pnlAdress.Controls.Add(this.label13);
             this.pnlAdress.Controls.Add(this.txtStraat);
             this.pnlAdress.Controls.Add(this.label9);
-            this.pnlAdress.Location = new System.Drawing.Point(212, 252);
+            this.pnlAdress.Location = new System.Drawing.Point(308, 275);
             this.pnlAdress.Name = "pnlAdress";
             this.pnlAdress.Size = new System.Drawing.Size(254, 122);
             this.pnlAdress.TabIndex = 109;
@@ -206,8 +211,9 @@ namespace MijnProject
             // 
             // label17
             // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(66, 203);
+            this.label17.Location = new System.Drawing.Point(162, 226);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(56, 17);
             this.label17.TabIndex = 108;
@@ -215,15 +221,17 @@ namespace MijnProject
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(220, 166);
+            this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtEmail.Location = new System.Drawing.Point(316, 189);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(235, 22);
             this.txtEmail.TabIndex = 107;
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(65, 166);
+            this.label4.Location = new System.Drawing.Point(161, 189);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 106;
@@ -231,15 +239,17 @@ namespace MijnProject
             // 
             // txtTel1
             // 
-            this.txtTel1.Location = new System.Drawing.Point(220, 88);
+            this.txtTel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtTel1.Location = new System.Drawing.Point(316, 111);
             this.txtTel1.Name = "txtTel1";
             this.txtTel1.Size = new System.Drawing.Size(235, 22);
             this.txtTel1.TabIndex = 105;
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(65, 88);
+            this.label5.Location = new System.Drawing.Point(161, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 17);
             this.label5.TabIndex = 104;
@@ -247,7 +257,8 @@ namespace MijnProject
             // 
             // btnToevoegen
             // 
-            this.btnToevoegen.Location = new System.Drawing.Point(233, 533);
+            this.btnToevoegen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnToevoegen.Location = new System.Drawing.Point(329, 556);
             this.btnToevoegen.Name = "btnToevoegen";
             this.btnToevoegen.Size = new System.Drawing.Size(118, 37);
             this.btnToevoegen.TabIndex = 103;
@@ -257,8 +268,9 @@ namespace MijnProject
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 401);
+            this.label2.Location = new System.Drawing.Point(162, 424);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 17);
             this.label2.TabIndex = 102;
@@ -266,7 +278,8 @@ namespace MijnProject
             // 
             // rtbOmschrijving
             // 
-            this.rtbOmschrijving.Location = new System.Drawing.Point(220, 398);
+            this.rtbOmschrijving.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rtbOmschrijving.Location = new System.Drawing.Point(316, 421);
             this.rtbOmschrijving.Name = "rtbOmschrijving";
             this.rtbOmschrijving.Size = new System.Drawing.Size(235, 103);
             this.rtbOmschrijving.TabIndex = 101;
@@ -274,15 +287,17 @@ namespace MijnProject
             // 
             // txtNaam
             // 
-            this.txtNaam.Location = new System.Drawing.Point(220, 49);
+            this.txtNaam.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtNaam.Location = new System.Drawing.Point(316, 72);
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(236, 22);
             this.txtNaam.TabIndex = 100;
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 52);
+            this.label1.Location = new System.Drawing.Point(161, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(49, 17);
             this.label1.TabIndex = 99;
@@ -290,7 +305,8 @@ namespace MijnProject
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(439, 609);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(622, 609);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
             this.button1.TabIndex = 114;
@@ -302,7 +318,7 @@ namespace MijnProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(569, 658);
+            this.ClientSize = new System.Drawing.Size(752, 658);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtTel2);
             this.Controls.Add(this.label11);

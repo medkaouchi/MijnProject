@@ -16,6 +16,9 @@ namespace MijnProject
         {
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
+                this.Hide();
+                Login login = new Login();
+                login.Show();
                 this.Close();
                 return true;
             }
@@ -25,19 +28,18 @@ namespace MijnProject
         {
             InitializeComponent();
             Global.ModifyForm(this);
-            lblUser.Text = Program.user.Voornaam + " " + Program.user.Achternaam;
+            lblUser.Text ="Welkom "+ Program.user.Voornaam + " " + Program.user.Achternaam;
             if (Login.user.Role != RoleUser.Admin)
             {
                 btnBestelling.Enabled = false;
                 btnOverzicht.Enabled = false;
             }
-
-            Login.ActiveForm.Hide();
         }
 
         private void llblLogOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Program.user = null;
+            this.Hide();
             Login login = new Login();
             login.Show();
             this.Close();
@@ -46,30 +48,39 @@ namespace MijnProject
         private void btnDatabeheer_Click(object sender, EventArgs e)
         {
             Databeheer databeheer = new Databeheer();
-            databeheer.ShowDialog();
+            databeheer.Show();
+            this.Close();
         }
 
         private void btnBestelling_Click(object sender, EventArgs e)
         {
             Bestellingen bestellingen = new Bestellingen();
-            bestellingen.ShowDialog();
+            bestellingen.Show();
+            this.Close();
         }
 
         private void btnOverzicht_Click(object sender, EventArgs e)
         {
             Overzicht overzicht = new Overzicht();
-            overzicht.ShowDialog();
+            overzicht.Show();
+            this.Close();
         }
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Login login = new Login();
-            login.Show();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Login login = new Login();
+            login.Show();
             this.Close();
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

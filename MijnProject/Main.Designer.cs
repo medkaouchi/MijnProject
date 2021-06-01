@@ -39,9 +39,12 @@ namespace MijnProject
             // 
             // btnDatabeheer
             // 
-            this.btnDatabeheer.Location = new System.Drawing.Point(43, 76);
+            this.btnDatabeheer.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDatabeheer.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDatabeheer.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnDatabeheer.Location = new System.Drawing.Point(179, 201);
             this.btnDatabeheer.Name = "btnDatabeheer";
-            this.btnDatabeheer.Size = new System.Drawing.Size(126, 50);
+            this.btnDatabeheer.Size = new System.Drawing.Size(310, 326);
             this.btnDatabeheer.TabIndex = 0;
             this.btnDatabeheer.Text = "Databeheer";
             this.btnDatabeheer.UseVisualStyleBackColor = true;
@@ -49,9 +52,12 @@ namespace MijnProject
             // 
             // btnOverzicht
             // 
-            this.btnOverzicht.Location = new System.Drawing.Point(347, 76);
+            this.btnOverzicht.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnOverzicht.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOverzicht.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnOverzicht.Location = new System.Drawing.Point(839, 201);
             this.btnOverzicht.Name = "btnOverzicht";
-            this.btnOverzicht.Size = new System.Drawing.Size(126, 50);
+            this.btnOverzicht.Size = new System.Drawing.Size(310, 326);
             this.btnOverzicht.TabIndex = 1;
             this.btnOverzicht.Text = "Overzicht";
             this.btnOverzicht.UseVisualStyleBackColor = true;
@@ -59,9 +65,12 @@ namespace MijnProject
             // 
             // btnBestelling
             // 
-            this.btnBestelling.Location = new System.Drawing.Point(204, 76);
+            this.btnBestelling.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnBestelling.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBestelling.ForeColor = System.Drawing.Color.DarkBlue;
+            this.btnBestelling.Location = new System.Drawing.Point(512, 201);
             this.btnBestelling.Name = "btnBestelling";
-            this.btnBestelling.Size = new System.Drawing.Size(126, 50);
+            this.btnBestelling.Size = new System.Drawing.Size(310, 326);
             this.btnBestelling.TabIndex = 2;
             this.btnBestelling.Text = "Bestellingen ";
             this.btnBestelling.UseVisualStyleBackColor = true;
@@ -69,17 +78,21 @@ namespace MijnProject
             // 
             // lblUser
             // 
+            this.lblUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(302, 28);
+            this.lblUser.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.DarkGreen;
+            this.lblUser.Location = new System.Drawing.Point(172, 121);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(38, 17);
+            this.lblUser.Size = new System.Drawing.Size(83, 40);
             this.lblUser.TabIndex = 3;
             this.lblUser.Text = "User";
             // 
             // llblLogOut
             // 
+            this.llblLogOut.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.llblLogOut.AutoSize = true;
-            this.llblLogOut.Location = new System.Drawing.Point(417, 28);
+            this.llblLogOut.Location = new System.Drawing.Point(176, 161);
             this.llblLogOut.Name = "llblLogOut";
             this.llblLogOut.Size = new System.Drawing.Size(56, 17);
             this.llblLogOut.TabIndex = 4;
@@ -89,7 +102,10 @@ namespace MijnProject
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(387, 178);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DarkBlue;
+            this.button1.Location = new System.Drawing.Point(1160, 683);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
             this.button1.TabIndex = 115;
@@ -101,7 +117,7 @@ namespace MijnProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 227);
+            this.ClientSize = new System.Drawing.Size(1300, 744);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.llblLogOut);
             this.Controls.Add(this.lblUser);
@@ -110,6 +126,7 @@ namespace MijnProject
             this.Controls.Add(this.btnDatabeheer);
             this.Name = "Main";
             this.Text = "Main";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

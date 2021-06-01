@@ -27,7 +27,7 @@ namespace MijnProject
         {
             InitializeComponent();
             Global.ModifyForm(this);
-            Main.ActiveForm.Close();
+            //Main.ActiveForm.Close();
             if(Login.user.Role==RoleUser.Admin)
             {
                 userToolStripMenuItem.Enabled = true;
@@ -131,6 +131,7 @@ namespace MijnProject
             {
                 dgv_users.Rows[i].Cells["Wachtwoord"].Value = dgv_users.Rows[i].Cells["Wachtwoord"].Value.ToString().Aggregate("", (c, a) => c + (char)(a - 2));
             }
+            dgv_users.Height = dgv_users.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_users.ColumnHeadersHeight + 2;
         }
         public static void loaddgvklants()
         {
@@ -151,6 +152,7 @@ namespace MijnProject
             dgv_klanten.Columns["Bewerken"].DisplayIndex = 13;
             deleteindex = dgv_klanten.Columns["Verwijderen"].Index;
             editindex = dgv_klanten.Columns["Bewerken"].Index;
+            dgv_klanten.Height = dgv_klanten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_klanten.ColumnHeadersHeight + 2;
         }
         public static void loaddgvprodut()
         {
@@ -171,6 +173,7 @@ namespace MijnProject
             dgv_producten.Columns["Bewerken"].DisplayIndex = 12;
             deleteindexproduct = dgv_producten.Columns["Verwijderen"].Index;
             editindexproduct = dgv_producten.Columns["Bewerken"].Index;
+            dgv_producten.Height = dgv_producten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_producten.ColumnHeadersHeight + 2;
         }
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -371,6 +374,7 @@ namespace MijnProject
             dgv_Deliverer.Columns.Insert(dgv_Deliverer.Columns.Count, DeleteButtonColumn);
             dgv_Deliverer.Columns["Verwijderen"].DisplayIndex = 7;
             deleteindexBez = dgv_Deliverer.Columns["Verwijderen"].Index;
+            dgv_Deliverer.Height = dgv_Deliverer.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Deliverer.ColumnHeadersHeight + 2;
         }
 
         private void dgvDeliverer_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -398,13 +402,19 @@ namespace MijnProject
 
         private void llblNewDeliverer_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            AddBezorger addbezorgzer = new AddBezorger();
-            addbezorgzer.Show();
+            AddBezorger addbezorger = new AddBezorger();
+            addbezorger.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void llblNewDeliverer_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddBezorger addbezorger = new AddBezorger();
+            addbezorger.ShowDialog();
         }
     }
 }

@@ -19,6 +19,15 @@ namespace MijnProject
             form.Location = new Point(0, 0);
             form.Size = Screen.PrimaryScreen.WorkingArea.Size;
             form.WindowState = FormWindowState.Maximized;
+            foreach (var item in form.Controls)
+            {
+                ((Control)item).BackColor = Color.White;
+                if(((Control)item).Name.StartsWith("p"))
+                    foreach (var it in ((Control)item).Controls)
+                    {
+                        ((Control)it).BackColor = Color.White;
+                    }
+            }
         }
         
     }

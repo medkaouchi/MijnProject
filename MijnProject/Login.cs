@@ -16,7 +16,7 @@ namespace MijnProject
         {
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
             {
-                this.Close();
+                Application.Exit();
                 return true;
             }
             return base.ProcessDialogKey(keyData);
@@ -49,6 +49,7 @@ namespace MijnProject
                 txtUsername.Text = "";
                 txtWachtwoord.Text = "";
                 Program.user = user;
+                this.Hide();
                 Main main = new Main();
                 main.Show();
             }
@@ -57,12 +58,13 @@ namespace MijnProject
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if(user==null)
             Application.Exit();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
     }
 }
