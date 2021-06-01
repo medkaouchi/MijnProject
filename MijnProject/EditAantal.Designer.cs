@@ -32,6 +32,7 @@ namespace MijnProject
             this.label1 = new System.Windows.Forms.Label();
             this.nudAantal = new System.Windows.Forms.NumericUpDown();
             this.btnOpslaan = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudAantal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +55,7 @@ namespace MijnProject
             // btnOpslaan
             // 
             this.btnOpslaan.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOpslaan.Location = new System.Drawing.Point(126, 80);
+            this.btnOpslaan.Location = new System.Drawing.Point(53, 80);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(131, 35);
             this.btnOpslaan.TabIndex = 2;
@@ -62,11 +63,22 @@ namespace MijnProject
             this.btnOpslaan.UseVisualStyleBackColor = true;
             this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(267, 78);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 37);
+            this.button1.TabIndex = 115;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // EditAantal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 127);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnOpslaan);
             this.Controls.Add(this.nudAantal);
             this.Controls.Add(this.label1);
@@ -83,5 +95,6 @@ namespace MijnProject
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudAantal;
         private System.Windows.Forms.Button btnOpslaan;
+        private System.Windows.Forms.Button button1;
     }
 }

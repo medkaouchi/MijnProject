@@ -13,9 +13,19 @@ namespace MijnProject
 {
     public partial class AddBezorger : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public AddBezorger()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             List<Adress> Adresses = new List<Adress>();
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
@@ -102,6 +112,11 @@ namespace MijnProject
                 MessageBox.Show(s);
                 btnToevoegen.DialogResult = DialogResult.None;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

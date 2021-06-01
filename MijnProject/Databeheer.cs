@@ -14,9 +14,19 @@ namespace MijnProject
 {
     public partial class Databeheer : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public Databeheer()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             Main.ActiveForm.Close();
             if(Login.user.Role==RoleUser.Admin)
             {
@@ -390,6 +400,11 @@ namespace MijnProject
         {
             AddBezorger addbezorgzer = new AddBezorger();
             addbezorgzer.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

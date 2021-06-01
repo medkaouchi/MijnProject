@@ -12,9 +12,19 @@ namespace MijnProject
 {
     public partial class Overzicht : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public Overzicht()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             Main.ActiveForm.Close();
         }
 
@@ -165,6 +175,11 @@ namespace MijnProject
         {
             Main main = new Main();
             main.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -13,6 +13,15 @@ namespace MijnProject
 {
     public partial class AddProduct : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public static ComboBox cmb_Leveranciere = new ComboBox();
         public static List<Levrancier> Leveranciers = new List<Levrancier>();
         Regex re = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
@@ -20,6 +29,7 @@ namespace MijnProject
         public AddProduct()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             using (var ctx = new ProjectContext())
             {
                 Leveranciers = ctx.Levranciers.ToList();
@@ -124,6 +134,11 @@ namespace MijnProject
         {
             AddLeverancier addlev = new AddLeverancier();
             addlev.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

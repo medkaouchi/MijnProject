@@ -13,10 +13,20 @@ namespace MijnProject
 {
     public partial class EditKlant : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         bool newAd;
         public EditKlant()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             newAd = false;
             List<Adress> Adresses = new List<Adress>();
             using (var ctx = new ProjectContext())
@@ -148,6 +158,11 @@ namespace MijnProject
 
                 }
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
+    }
     }
 

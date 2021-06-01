@@ -13,9 +13,19 @@ namespace MijnProject
 {
     public partial class AddUser : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public AddUser()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             List<Adress> Adresses = new List<Adress>();
             cmbRoles.DataSource = Enum.GetValues(typeof(RoleUser));
             using (var ctx = new ProjectContext())
@@ -142,6 +152,11 @@ namespace MijnProject
             pnlAdress.Visible = false;
             cmbAdress.Enabled = true;
             newAd = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

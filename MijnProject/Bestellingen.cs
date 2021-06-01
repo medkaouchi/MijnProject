@@ -12,6 +12,15 @@ namespace MijnProject
 {
     public partial class Bestellingen : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public static List<OrderLine> OrderLines = new List<OrderLine>();
         public static DataGridView dgv_Orders;
         public static int deleteindex;
@@ -20,6 +29,7 @@ namespace MijnProject
         public Bestellingen()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             Main.ActiveForm.Close();
             dgv_Orders = dgvOrders;
             using (var ctx=new ProjectContext())
@@ -84,6 +94,11 @@ namespace MijnProject
         {
             Main main = new Main();
             main.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

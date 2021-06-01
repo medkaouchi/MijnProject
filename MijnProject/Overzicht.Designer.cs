@@ -40,6 +40,7 @@ namespace MijnProject
             this.label3 = new System.Windows.Forms.Label();
             this.crtTopverkocht = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.btnToon = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.crtTopverkocht)).BeginInit();
             this.SuspendLayout();
             // 
@@ -145,7 +146,7 @@ namespace MijnProject
             series1.Legend = "Legend1";
             series1.Name = "product";
             this.crtTopverkocht.Series.Add(series1);
-            this.crtTopverkocht.Size = new System.Drawing.Size(773, 394);
+            this.crtTopverkocht.Size = new System.Drawing.Size(773, 497);
             this.crtTopverkocht.TabIndex = 6;
             this.crtTopverkocht.Text = "chart1";
             // 
@@ -159,11 +160,22 @@ namespace MijnProject
             this.btnToon.UseVisualStyleBackColor = true;
             this.btnToon.Click += new System.EventHandler(this.btnToon_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(670, 716);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 37);
+            this.button1.TabIndex = 115;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Overzicht
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 635);
+            this.ClientSize = new System.Drawing.Size(800, 765);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnToon);
             this.Controls.Add(this.crtTopverkocht);
             this.Controls.Add(this.label3);
@@ -191,5 +203,6 @@ namespace MijnProject
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataVisualization.Charting.Chart crtTopverkocht;
         private System.Windows.Forms.Button btnToon;
+        private System.Windows.Forms.Button button1;
     }
 }

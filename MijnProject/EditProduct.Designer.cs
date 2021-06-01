@@ -53,6 +53,7 @@ namespace MijnProject
             this.rtbOmschrijving = new System.Windows.Forms.RichTextBox();
             this.btnOpslaan = new System.Windows.Forms.Button();
             this.llblNewLeverancier = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -235,7 +236,7 @@ namespace MijnProject
             // 
             // btnOpslaan
             // 
-            this.btnOpslaan.Location = new System.Drawing.Point(209, 645);
+            this.btnOpslaan.Location = new System.Drawing.Point(155, 617);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(146, 43);
             this.btnOpslaan.TabIndex = 26;
@@ -254,11 +255,22 @@ namespace MijnProject
             this.llblNewLeverancier.Text = "Add nieuw leverencier";
             this.llblNewLeverancier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewLeverancier_LinkClicked);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(389, 705);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 37);
+            this.button1.TabIndex = 115;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // EditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 764);
+            this.ClientSize = new System.Drawing.Size(532, 764);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.llblNewLeverancier);
             this.Controls.Add(this.btnOpslaan);
             this.Controls.Add(this.rtbOmschrijving);
@@ -316,5 +328,6 @@ namespace MijnProject
         private System.Windows.Forms.RichTextBox rtbOmschrijving;
         private System.Windows.Forms.Button btnOpslaan;
         private System.Windows.Forms.LinkLabel llblNewLeverancier;
+        private System.Windows.Forms.Button button1;
     }
 }

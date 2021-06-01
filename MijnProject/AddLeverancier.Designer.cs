@@ -55,6 +55,7 @@ namespace MijnProject
             this.label4 = new System.Windows.Forms.Label();
             this.txtTel1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pnlAdress.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -287,11 +288,22 @@ namespace MijnProject
             this.label5.TabIndex = 89;
             this.label5.Text = "Telefoon 1:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(348, 572);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 37);
+            this.button1.TabIndex = 115;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AddLeverancier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 578);
+            this.ClientSize = new System.Drawing.Size(478, 621);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtTel2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cmbAdress);
@@ -344,5 +356,6 @@ namespace MijnProject
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTel1;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
     }
 }

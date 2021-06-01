@@ -12,10 +12,20 @@ namespace MijnProject
 {
     public partial class EditAantal : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public static string parent;
         public EditAantal()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             nudAantal.Maximum = Decimal.MaxValue;
             nudAantal.Value = AddOrder.aantal;
         }
@@ -34,6 +44,11 @@ namespace MijnProject
                 EditOrder.dgv_OrderProducten.Refresh();
                 EditOrder.dgv_OrderProducten = null;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

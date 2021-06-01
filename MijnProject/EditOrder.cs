@@ -13,6 +13,15 @@ namespace MijnProject
     public partial class EditOrder : Form
 
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         List<Bezorger> Bezorgers = new List<Bezorger>();
         bool newAd = false;
         public static int aantal;
@@ -27,6 +36,7 @@ namespace MijnProject
         public EditOrder()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             using (var ctx = new ProjectContext())
             {
                 Klanten = ctx.Klanten.Include("adress").ToList();
@@ -295,6 +305,11 @@ namespace MijnProject
                     dgvOrderProducten.DataSource = ProductsOrdered;
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

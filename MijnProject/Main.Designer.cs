@@ -34,6 +34,7 @@ namespace MijnProject
             this.btnBestelling = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.llblLogOut = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDatabeheer
@@ -86,11 +87,22 @@ namespace MijnProject
             this.llblLogOut.Text = "Log out";
             this.llblLogOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblLogOut_LinkClicked);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(387, 178);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 37);
+            this.button1.TabIndex = 115;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(517, 227);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.llblLogOut);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btnBestelling);
@@ -111,5 +123,6 @@ namespace MijnProject
         private System.Windows.Forms.Button btnBestelling;
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.LinkLabel llblLogOut;
+        private System.Windows.Forms.Button button1;
     }
 }

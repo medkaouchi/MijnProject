@@ -31,6 +31,7 @@ namespace MijnProject
         {
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.llblAddOrder = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +45,7 @@ namespace MijnProject
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.RowHeadersWidth = 51;
             this.dgvOrders.RowTemplate.Height = 24;
-            this.dgvOrders.Size = new System.Drawing.Size(802, 392);
+            this.dgvOrders.Size = new System.Drawing.Size(802, 399);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellClick);
             // 
@@ -52,7 +53,7 @@ namespace MijnProject
             // 
             this.llblAddOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.llblAddOrder.AutoSize = true;
-            this.llblAddOrder.Location = new System.Drawing.Point(13, 399);
+            this.llblAddOrder.Location = new System.Drawing.Point(13, 406);
             this.llblAddOrder.Name = "llblAddOrder";
             this.llblAddOrder.Size = new System.Drawing.Size(182, 17);
             this.llblAddOrder.TabIndex = 1;
@@ -60,11 +61,22 @@ namespace MijnProject
             this.llblAddOrder.Text = "Nieuw Bestelling toevoegen";
             this.llblAddOrder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddOrder_LinkClicked);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(670, 408);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 37);
+            this.button1.TabIndex = 115;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Bestellingen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 457);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.llblAddOrder);
             this.Controls.Add(this.dgvOrders);
             this.Name = "Bestellingen";
@@ -80,5 +92,6 @@ namespace MijnProject
 
         private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.LinkLabel llblAddOrder;
+        private System.Windows.Forms.Button button1;
     }
 }

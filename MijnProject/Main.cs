@@ -12,9 +12,19 @@ namespace MijnProject
 {
     public partial class Main : Form
     {
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
         public Main()
         {
             InitializeComponent();
+            Global.ModifyForm(this);
             lblUser.Text = Program.user.Voornaam + " " + Program.user.Achternaam;
             if (Login.user.Role != RoleUser.Admin)
             {
@@ -53,9 +63,13 @@ namespace MijnProject
 
         private void Main_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Login login = new Login();
+            login.Show();
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
