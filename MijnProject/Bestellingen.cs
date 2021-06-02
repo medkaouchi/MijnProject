@@ -57,6 +57,7 @@ namespace MijnProject
             dgv_Orders.Columns["Bewerken"].DisplayIndex = 10;
             deleteindex = dgv_Orders.Columns["Verwijderen"].Index;
             editindex = dgv_Orders.Columns["Bewerken"].Index;
+            dgv_Orders.Height = dgv_Orders.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Orders.ColumnHeadersHeight + 2;
         }
 
         private void llblAddOrder_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -38,23 +38,23 @@ namespace MijnProject
             this.llblNewUser = new System.Windows.Forms.LinkLabel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.pnlBezorgers = new System.Windows.Forms.Panel();
-            this.llblNewDeliverer = new System.Windows.Forms.LinkLabel();
-            this.dgvDeliverer = new System.Windows.Forms.DataGridView();
             this.pnlProducten = new System.Windows.Forms.Panel();
             this.llblNewProduct = new System.Windows.Forms.LinkLabel();
             this.btnupload = new System.Windows.Forms.Button();
             this.dgvProducten = new System.Windows.Forms.DataGridView();
+            this.pnlBezorgers = new System.Windows.Forms.Panel();
+            this.llblNewDeliverer = new System.Windows.Forms.LinkLabel();
+            this.dgvDeliverer = new System.Windows.Forms.DataGridView();
             this.pnlKlanten = new System.Windows.Forms.Panel();
             this.llblNewKlant = new System.Windows.Forms.LinkLabel();
             this.dgvKlanten = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
-            this.pnlBezorgers.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliverer)).BeginInit();
             this.pnlProducten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducten)).BeginInit();
+            this.pnlBezorgers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliverer)).BeginInit();
             this.pnlKlanten.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKlanten)).BeginInit();
             this.SuspendLayout();
@@ -108,10 +108,10 @@ namespace MijnProject
             // 
             this.pnlUsers.Controls.Add(this.llblNewUser);
             this.pnlUsers.Controls.Add(this.dgvUsers);
-            this.pnlUsers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUsers.Location = new System.Drawing.Point(0, 30);
             this.pnlUsers.Name = "pnlUsers";
-            this.pnlUsers.Size = new System.Drawing.Size(1289, 632);
+            this.pnlUsers.Size = new System.Drawing.Size(1289, 645);
             this.pnlUsers.TabIndex = 1;
             this.pnlUsers.Visible = false;
             // 
@@ -131,8 +131,7 @@ namespace MijnProject
             this.dgvUsers.AllowUserToAddRows = false;
             this.dgvUsers.AllowUserToDeleteRows = false;
             this.dgvUsers.AllowUserToOrderColumns = true;
-            this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvUsers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvUsers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -141,16 +140,17 @@ namespace MijnProject
             this.dgvUsers.Location = new System.Drawing.Point(3, 27);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
+            this.dgvUsers.RowHeadersVisible = false;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
-            this.dgvUsers.Size = new System.Drawing.Size(1283, 493);
+            this.dgvUsers.Size = new System.Drawing.Size(1286, 506);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(1147, 603);
+            this.button1.Location = new System.Drawing.Point(1147, 681);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
             this.button1.TabIndex = 115;
@@ -158,50 +158,16 @@ namespace MijnProject
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pnlBezorgers
-            // 
-            this.pnlBezorgers.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlBezorgers.Controls.Add(this.llblNewDeliverer);
-            this.pnlBezorgers.Controls.Add(this.dgvDeliverer);
-            this.pnlBezorgers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBezorgers.Location = new System.Drawing.Point(0, 30);
-            this.pnlBezorgers.Name = "pnlBezorgers";
-            this.pnlBezorgers.Size = new System.Drawing.Size(1289, 632);
-            this.pnlBezorgers.TabIndex = 118;
-            this.pnlBezorgers.Visible = false;
-            // 
-            // llblNewDeliverer
-            // 
-            this.llblNewDeliverer.AutoSize = true;
-            this.llblNewDeliverer.Location = new System.Drawing.Point(0, 5);
-            this.llblNewDeliverer.Name = "llblNewDeliverer";
-            this.llblNewDeliverer.Size = new System.Drawing.Size(178, 17);
-            this.llblNewDeliverer.TabIndex = 7;
-            this.llblNewDeliverer.TabStop = true;
-            this.llblNewDeliverer.Text = "Nieuw bezorger toevoegen";
-            // 
-            // dgvDeliverer
-            // 
-            this.dgvDeliverer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDeliverer.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvDeliverer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeliverer.Location = new System.Drawing.Point(3, 25);
-            this.dgvDeliverer.Name = "dgvDeliverer";
-            this.dgvDeliverer.RowHeadersWidth = 51;
-            this.dgvDeliverer.RowTemplate.Height = 24;
-            this.dgvDeliverer.Size = new System.Drawing.Size(929, 532);
-            this.dgvDeliverer.TabIndex = 6;
-            // 
             // pnlProducten
             // 
             this.pnlProducten.Controls.Add(this.llblNewProduct);
             this.pnlProducten.Controls.Add(this.btnupload);
             this.pnlProducten.Controls.Add(this.dgvProducten);
-            this.pnlProducten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlProducten.Location = new System.Drawing.Point(0, 30);
+            this.pnlProducten.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlProducten.Location = new System.Drawing.Point(0, 675);
             this.pnlProducten.Name = "pnlProducten";
-            this.pnlProducten.Size = new System.Drawing.Size(1289, 632);
-            this.pnlProducten.TabIndex = 119;
+            this.pnlProducten.Size = new System.Drawing.Size(1289, 645);
+            this.pnlProducten.TabIndex = 121;
             this.pnlProducten.Visible = false;
             // 
             // llblNewProduct
@@ -225,27 +191,64 @@ namespace MijnProject
             // 
             // dgvProducten
             // 
-            this.dgvProducten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvProducten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProducten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProducten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducten.Location = new System.Drawing.Point(0, 32);
             this.dgvProducten.Name = "dgvProducten";
+            this.dgvProducten.RowHeadersVisible = false;
             this.dgvProducten.RowHeadersWidth = 51;
             this.dgvProducten.RowTemplate.Height = 24;
-            this.dgvProducten.Size = new System.Drawing.Size(1289, 530);
+            this.dgvProducten.Size = new System.Drawing.Size(1289, 543);
             this.dgvProducten.TabIndex = 0;
+            // 
+            // pnlBezorgers
+            // 
+            this.pnlBezorgers.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlBezorgers.Controls.Add(this.llblNewDeliverer);
+            this.pnlBezorgers.Controls.Add(this.dgvDeliverer);
+            this.pnlBezorgers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBezorgers.Location = new System.Drawing.Point(0, 1320);
+            this.pnlBezorgers.Name = "pnlBezorgers";
+            this.pnlBezorgers.Size = new System.Drawing.Size(1289, 645);
+            this.pnlBezorgers.TabIndex = 124;
+            this.pnlBezorgers.Visible = false;
+            // 
+            // llblNewDeliverer
+            // 
+            this.llblNewDeliverer.AutoSize = true;
+            this.llblNewDeliverer.Location = new System.Drawing.Point(0, 5);
+            this.llblNewDeliverer.Name = "llblNewDeliverer";
+            this.llblNewDeliverer.Size = new System.Drawing.Size(178, 17);
+            this.llblNewDeliverer.TabIndex = 7;
+            this.llblNewDeliverer.TabStop = true;
+            this.llblNewDeliverer.Text = "Nieuw bezorger toevoegen";
+            // 
+            // dgvDeliverer
+            // 
+            this.dgvDeliverer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvDeliverer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDeliverer.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDeliverer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDeliverer.Location = new System.Drawing.Point(3, 25);
+            this.dgvDeliverer.Name = "dgvDeliverer";
+            this.dgvDeliverer.RowHeadersVisible = false;
+            this.dgvDeliverer.RowHeadersWidth = 51;
+            this.dgvDeliverer.RowTemplate.Height = 24;
+            this.dgvDeliverer.Size = new System.Drawing.Size(1289, 544);
+            this.dgvDeliverer.TabIndex = 6;
             // 
             // pnlKlanten
             // 
             this.pnlKlanten.Controls.Add(this.llblNewKlant);
             this.pnlKlanten.Controls.Add(this.dgvKlanten);
-            this.pnlKlanten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlKlanten.Location = new System.Drawing.Point(0, 30);
+            this.pnlKlanten.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlKlanten.Location = new System.Drawing.Point(0, 1965);
             this.pnlKlanten.Name = "pnlKlanten";
-            this.pnlKlanten.Size = new System.Drawing.Size(1289, 632);
-            this.pnlKlanten.TabIndex = 120;
+            this.pnlKlanten.Size = new System.Drawing.Size(1289, 645);
+            this.pnlKlanten.TabIndex = 125;
             this.pnlKlanten.Visible = false;
             // 
             // llblNewKlant
@@ -260,29 +263,29 @@ namespace MijnProject
             // 
             // dgvKlanten
             // 
-            this.dgvKlanten.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvKlanten.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvKlanten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvKlanten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKlanten.Location = new System.Drawing.Point(0, 37);
             this.dgvKlanten.Name = "dgvKlanten";
+            this.dgvKlanten.RowHeadersVisible = false;
             this.dgvKlanten.RowHeadersWidth = 51;
             this.dgvKlanten.RowTemplate.Height = 24;
-            this.dgvKlanten.Size = new System.Drawing.Size(1289, 531);
+            this.dgvKlanten.Size = new System.Drawing.Size(1289, 544);
             this.dgvKlanten.TabIndex = 0;
             // 
             // Databeheer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1289, 662);
-            this.Controls.Add(this.pnlBezorgers);
+            this.ClientSize = new System.Drawing.Size(1289, 740);
             this.Controls.Add(this.pnlKlanten);
+            this.Controls.Add(this.pnlBezorgers);
             this.Controls.Add(this.pnlProducten);
             this.Controls.Add(this.pnlUsers);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.button1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Databeheer";
             this.Text = "Databeheer";
@@ -293,12 +296,12 @@ namespace MijnProject
             this.pnlUsers.ResumeLayout(false);
             this.pnlUsers.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
-            this.pnlBezorgers.ResumeLayout(false);
-            this.pnlBezorgers.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliverer)).EndInit();
             this.pnlProducten.ResumeLayout(false);
             this.pnlProducten.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducten)).EndInit();
+            this.pnlBezorgers.ResumeLayout(false);
+            this.pnlBezorgers.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDeliverer)).EndInit();
             this.pnlKlanten.ResumeLayout(false);
             this.pnlKlanten.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKlanten)).EndInit();
@@ -318,15 +321,15 @@ namespace MijnProject
         private System.Windows.Forms.LinkLabel llblNewUser;
         private System.Windows.Forms.ToolStripMenuItem bezorgersToolStripMenuItem;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel pnlKlanten;
-        private System.Windows.Forms.LinkLabel llblNewKlant;
-        private System.Windows.Forms.DataGridView dgvKlanten;
-        private System.Windows.Forms.Panel pnlBezorgers;
-        private System.Windows.Forms.LinkLabel llblNewDeliverer;
-        private System.Windows.Forms.DataGridView dgvDeliverer;
         private System.Windows.Forms.Panel pnlProducten;
         private System.Windows.Forms.LinkLabel llblNewProduct;
         private System.Windows.Forms.Button btnupload;
         private System.Windows.Forms.DataGridView dgvProducten;
+        private System.Windows.Forms.Panel pnlBezorgers;
+        private System.Windows.Forms.LinkLabel llblNewDeliverer;
+        private System.Windows.Forms.DataGridView dgvDeliverer;
+        private System.Windows.Forms.Panel pnlKlanten;
+        private System.Windows.Forms.LinkLabel llblNewKlant;
+        private System.Windows.Forms.DataGridView dgvKlanten;
     }
 }

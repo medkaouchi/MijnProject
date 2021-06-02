@@ -51,6 +51,7 @@ namespace MijnProject
             cmbProducten.DataSource = Producten;
             cmbProducten.SelectedIndexChanged += new System.EventHandler(cmbProducten_SelectedIndexChanged);
             cmbStatus.DataSource = Enum.GetValues(typeof(OrderStatus));
+            dgvOrderProducten.Height = dgvOrderProducten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgvOrderProducten.ColumnHeadersHeight + 2;
         }
 
         private void llblNewKlant_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -101,6 +102,7 @@ namespace MijnProject
             dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
             deleteindex = dgvOrderProducten.Columns["Verwijderen"].Index;
             editindex = dgvOrderProducten.Columns["Aantal Bewerken"].Index;
+            dgvOrderProducten.Height = dgvOrderProducten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgvOrderProducten.ColumnHeadersHeight + 2;
         }
 
         private void cmbProducten_SelectedIndexChanged(object sender, EventArgs e)

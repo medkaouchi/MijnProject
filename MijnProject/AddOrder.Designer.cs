@@ -66,6 +66,7 @@ namespace MijnProject
             // 
             // cmbKlanten
             // 
+            this.cmbKlanten.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbKlanten.FormattingEnabled = true;
             this.cmbKlanten.Location = new System.Drawing.Point(219, 25);
             this.cmbKlanten.Name = "cmbKlanten";
@@ -75,6 +76,7 @@ namespace MijnProject
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(83, 28);
             this.label1.Name = "label1";
@@ -84,6 +86,7 @@ namespace MijnProject
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(83, 571);
             this.label3.Name = "label3";
@@ -93,6 +96,7 @@ namespace MijnProject
             // 
             // cmbStatus
             // 
+            this.cmbStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Location = new System.Drawing.Point(219, 568);
             this.cmbStatus.Name = "cmbStatus";
@@ -101,6 +105,7 @@ namespace MijnProject
             // 
             // llblAddAdress
             // 
+            this.llblAddAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.llblAddAdress.AutoSize = true;
             this.llblAddAdress.Location = new System.Drawing.Point(216, 109);
             this.llblAddAdress.Name = "llblAddAdress";
@@ -113,6 +118,7 @@ namespace MijnProject
             // pnlAdress
             // 
             this.pnlAdress.AllowDrop = true;
+            this.pnlAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlAdress.Controls.Add(this.btnCancel);
             this.pnlAdress.Controls.Add(this.txtLand);
             this.pnlAdress.Controls.Add(this.label16);
@@ -222,6 +228,7 @@ namespace MijnProject
             // 
             // label17
             // 
+            this.label17.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(83, 82);
             this.label17.Name = "label17";
@@ -231,6 +238,7 @@ namespace MijnProject
             // 
             // lblKlantAdress
             // 
+            this.lblKlantAdress.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblKlantAdress.AutoSize = true;
             this.lblKlantAdress.Location = new System.Drawing.Point(216, 82);
             this.lblKlantAdress.Name = "lblKlantAdress";
@@ -240,6 +248,7 @@ namespace MijnProject
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(83, 231);
             this.label5.Name = "label5";
@@ -249,6 +258,7 @@ namespace MijnProject
             // 
             // txtBarcode
             // 
+            this.txtBarcode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtBarcode.Location = new System.Drawing.Point(194, 228);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(195, 22);
@@ -257,9 +267,13 @@ namespace MijnProject
             // 
             // dgvOrderProducten
             // 
+            this.dgvOrderProducten.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvOrderProducten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrderProducten.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrderProducten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrderProducten.Location = new System.Drawing.Point(86, 278);
             this.dgvOrderProducten.Name = "dgvOrderProducten";
+            this.dgvOrderProducten.RowHeadersVisible = false;
             this.dgvOrderProducten.RowHeadersWidth = 51;
             this.dgvOrderProducten.RowTemplate.Height = 24;
             this.dgvOrderProducten.Size = new System.Drawing.Size(832, 266);
@@ -268,6 +282,7 @@ namespace MijnProject
             // 
             // txtPrNummer
             // 
+            this.txtPrNummer.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPrNummer.Location = new System.Drawing.Point(523, 228);
             this.txtPrNummer.Name = "txtPrNummer";
             this.txtPrNummer.Size = new System.Drawing.Size(132, 22);
@@ -276,6 +291,7 @@ namespace MijnProject
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(412, 231);
             this.label6.Name = "label6";
@@ -285,6 +301,7 @@ namespace MijnProject
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(677, 230);
             this.label7.Name = "label7";
@@ -294,6 +311,7 @@ namespace MijnProject
             // 
             // cmbProducten
             // 
+            this.cmbProducten.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbProducten.FormattingEnabled = true;
             this.cmbProducten.Location = new System.Drawing.Point(750, 228);
             this.cmbProducten.Name = "cmbProducten";
@@ -303,6 +321,7 @@ namespace MijnProject
             // 
             // llblNewKlant
             // 
+            this.llblNewKlant.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.llblNewKlant.AutoSize = true;
             this.llblNewKlant.Location = new System.Drawing.Point(218, 52);
             this.llblNewKlant.Name = "llblNewKlant";
@@ -314,6 +333,7 @@ namespace MijnProject
             // 
             // btnAddOrder
             // 
+            this.btnAddOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAddOrder.Location = new System.Drawing.Point(415, 665);
             this.btnAddOrder.Name = "btnAddOrder";
@@ -325,6 +345,7 @@ namespace MijnProject
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(83, 614);
             this.label2.Name = "label2";
@@ -334,6 +355,7 @@ namespace MijnProject
             // 
             // cmbBezorgers
             // 
+            this.cmbBezorgers.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbBezorgers.FormattingEnabled = true;
             this.cmbBezorgers.Location = new System.Drawing.Point(219, 611);
             this.cmbBezorgers.Name = "cmbBezorgers";
@@ -342,6 +364,7 @@ namespace MijnProject
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(862, 740);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);

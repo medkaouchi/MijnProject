@@ -177,7 +177,7 @@ namespace MijnProject
         }
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pnlKlanten.Visible = false;
+            pnlProducten.Visible = false;
             pnlKlanten.Visible = false;
             pnlUsers.Visible = true;
             pnlBezorgers.Visible = false;
@@ -188,7 +188,7 @@ namespace MijnProject
 
         private void klantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pnlKlanten.Visible = false;
+            pnlProducten.Visible = false;
             pnlUsers.Visible = false;
             pnlKlanten.Visible = true;
             pnlBezorgers.Visible = false;

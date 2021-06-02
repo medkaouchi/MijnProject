@@ -58,6 +58,7 @@ namespace MijnProject
             dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, DeleteButtonColumn);
             dgvOrderProducten.Columns["Verwijderen"].DisplayIndex = 7;
             dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
+            dgvOrderProducten.Height = dgvOrderProducten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgvOrderProducten.ColumnHeadersHeight + 2;
             cmbKlanten.SelectedIndexChanged -= new System.EventHandler(cmbKlanten_SelectedIndexChanged);
             cmbKlanten.DataSource = Klanten;
             cmbKlanten.SelectedItem = Bestellingen.orderline.klant;
@@ -133,6 +134,7 @@ namespace MijnProject
             dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, DeleteButtonColumn);
             dgvOrderProducten.Columns["Verwijderen"].DisplayIndex = 7;
             dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
+            dgvOrderProducten.Height = dgvOrderProducten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgvOrderProducten.ColumnHeadersHeight + 2;
         }
 
         private void txtPrNummer_KeyPress(object sender, KeyPressEventArgs e)
