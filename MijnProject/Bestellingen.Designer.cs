@@ -54,7 +54,7 @@ namespace MijnProject
             // llblAddOrder
             // 
             this.llblAddOrder.AutoSize = true;
-            this.llblAddOrder.Location = new System.Drawing.Point(-3, 9);
+            this.llblAddOrder.Location = new System.Drawing.Point(46, 9);
             this.llblAddOrder.Name = "llblAddOrder";
             this.llblAddOrder.Size = new System.Drawing.Size(182, 17);
             this.llblAddOrder.TabIndex = 1;

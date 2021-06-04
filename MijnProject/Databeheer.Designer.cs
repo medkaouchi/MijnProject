@@ -69,7 +69,7 @@ namespace MijnProject
             this.bezorgersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1289, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1494, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -111,14 +111,14 @@ namespace MijnProject
             this.pnlUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUsers.Location = new System.Drawing.Point(0, 30);
             this.pnlUsers.Name = "pnlUsers";
-            this.pnlUsers.Size = new System.Drawing.Size(1289, 645);
+            this.pnlUsers.Size = new System.Drawing.Size(1494, 645);
             this.pnlUsers.TabIndex = 1;
             this.pnlUsers.Visible = false;
             // 
             // llblNewUser
             // 
             this.llblNewUser.AutoSize = true;
-            this.llblNewUser.Location = new System.Drawing.Point(3, 7);
+            this.llblNewUser.Location = new System.Drawing.Point(43, 7);
             this.llblNewUser.Name = "llblNewUser";
             this.llblNewUser.Size = new System.Drawing.Size(151, 17);
             this.llblNewUser.TabIndex = 1;
@@ -143,14 +143,14 @@ namespace MijnProject
             this.dgvUsers.RowHeadersVisible = false;
             this.dgvUsers.RowHeadersWidth = 51;
             this.dgvUsers.RowTemplate.Height = 24;
-            this.dgvUsers.Size = new System.Drawing.Size(1286, 506);
+            this.dgvUsers.Size = new System.Drawing.Size(1491, 506);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(1147, 681);
+            this.button1.Location = new System.Drawing.Point(1352, 1266);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
             this.button1.TabIndex = 115;
@@ -166,28 +166,31 @@ namespace MijnProject
             this.pnlProducten.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlProducten.Location = new System.Drawing.Point(0, 675);
             this.pnlProducten.Name = "pnlProducten";
-            this.pnlProducten.Size = new System.Drawing.Size(1289, 645);
+            this.pnlProducten.Size = new System.Drawing.Size(1494, 645);
             this.pnlProducten.TabIndex = 121;
             this.pnlProducten.Visible = false;
             // 
             // llblNewProduct
             // 
             this.llblNewProduct.AutoSize = true;
-            this.llblNewProduct.Location = new System.Drawing.Point(12, 9);
+            this.llblNewProduct.Location = new System.Drawing.Point(43, 10);
             this.llblNewProduct.Name = "llblNewProduct";
             this.llblNewProduct.Size = new System.Drawing.Size(170, 17);
             this.llblNewProduct.TabIndex = 117;
             this.llblNewProduct.TabStop = true;
             this.llblNewProduct.Text = "Nieuw Product toevoegen";
+            this.llblNewProduct.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewProduct_LinkClicked);
             // 
             // btnupload
             // 
-            this.btnupload.Location = new System.Drawing.Point(1017, 4);
+            this.btnupload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnupload.Location = new System.Drawing.Point(1172, 4);
             this.btnupload.Name = "btnupload";
             this.btnupload.Size = new System.Drawing.Size(260, 23);
             this.btnupload.TabIndex = 4;
             this.btnupload.Text = "Leverancier bestand toevoegen ";
             this.btnupload.UseVisualStyleBackColor = true;
+            this.btnupload.Click += new System.EventHandler(this.btnupload_Click);
             // 
             // dgvProducten
             // 
@@ -200,8 +203,9 @@ namespace MijnProject
             this.dgvProducten.RowHeadersVisible = false;
             this.dgvProducten.RowHeadersWidth = 51;
             this.dgvProducten.RowTemplate.Height = 24;
-            this.dgvProducten.Size = new System.Drawing.Size(1289, 543);
+            this.dgvProducten.Size = new System.Drawing.Size(1494, 543);
             this.dgvProducten.TabIndex = 0;
+            this.dgvProducten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducten_CellClick);
             // 
             // pnlBezorgers
             // 
@@ -211,19 +215,20 @@ namespace MijnProject
             this.pnlBezorgers.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlBezorgers.Location = new System.Drawing.Point(0, 1320);
             this.pnlBezorgers.Name = "pnlBezorgers";
-            this.pnlBezorgers.Size = new System.Drawing.Size(1289, 645);
+            this.pnlBezorgers.Size = new System.Drawing.Size(1494, 645);
             this.pnlBezorgers.TabIndex = 124;
             this.pnlBezorgers.Visible = false;
             // 
             // llblNewDeliverer
             // 
             this.llblNewDeliverer.AutoSize = true;
-            this.llblNewDeliverer.Location = new System.Drawing.Point(0, 5);
+            this.llblNewDeliverer.Location = new System.Drawing.Point(51, 9);
             this.llblNewDeliverer.Name = "llblNewDeliverer";
             this.llblNewDeliverer.Size = new System.Drawing.Size(178, 17);
             this.llblNewDeliverer.TabIndex = 7;
             this.llblNewDeliverer.TabStop = true;
             this.llblNewDeliverer.Text = "Nieuw bezorger toevoegen";
+            this.llblNewDeliverer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewDeliverer_LinkClicked);
             // 
             // dgvDeliverer
             // 
@@ -232,13 +237,14 @@ namespace MijnProject
             this.dgvDeliverer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDeliverer.BackgroundColor = System.Drawing.Color.White;
             this.dgvDeliverer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDeliverer.Location = new System.Drawing.Point(3, 25);
+            this.dgvDeliverer.Location = new System.Drawing.Point(3, 31);
             this.dgvDeliverer.Name = "dgvDeliverer";
             this.dgvDeliverer.RowHeadersVisible = false;
             this.dgvDeliverer.RowHeadersWidth = 51;
             this.dgvDeliverer.RowTemplate.Height = 24;
-            this.dgvDeliverer.Size = new System.Drawing.Size(1289, 544);
+            this.dgvDeliverer.Size = new System.Drawing.Size(1494, 538);
             this.dgvDeliverer.TabIndex = 6;
+            this.dgvDeliverer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeliverer_CellClick);
             // 
             // pnlKlanten
             // 
@@ -247,19 +253,20 @@ namespace MijnProject
             this.pnlKlanten.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlKlanten.Location = new System.Drawing.Point(0, 1965);
             this.pnlKlanten.Name = "pnlKlanten";
-            this.pnlKlanten.Size = new System.Drawing.Size(1289, 645);
+            this.pnlKlanten.Size = new System.Drawing.Size(1494, 645);
             this.pnlKlanten.TabIndex = 125;
             this.pnlKlanten.Visible = false;
             // 
             // llblNewKlant
             // 
             this.llblNewKlant.AutoSize = true;
-            this.llblNewKlant.Location = new System.Drawing.Point(4, 17);
+            this.llblNewKlant.Location = new System.Drawing.Point(44, 17);
             this.llblNewKlant.Name = "llblNewKlant";
             this.llblNewKlant.Size = new System.Drawing.Size(151, 17);
             this.llblNewKlant.TabIndex = 1;
             this.llblNewKlant.TabStop = true;
             this.llblNewKlant.Text = "Nieuw klant toevoegen";
+            this.llblNewKlant.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewKlant_LinkClicked);
             // 
             // dgvKlanten
             // 
@@ -272,14 +279,15 @@ namespace MijnProject
             this.dgvKlanten.RowHeadersVisible = false;
             this.dgvKlanten.RowHeadersWidth = 51;
             this.dgvKlanten.RowTemplate.Height = 24;
-            this.dgvKlanten.Size = new System.Drawing.Size(1289, 544);
+            this.dgvKlanten.Size = new System.Drawing.Size(1494, 544);
             this.dgvKlanten.TabIndex = 0;
+            this.dgvKlanten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKlanten_CellClick);
             // 
             // Databeheer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1289, 740);
+            this.ClientSize = new System.Drawing.Size(1494, 1325);
             this.Controls.Add(this.pnlKlanten);
             this.Controls.Add(this.pnlBezorgers);
             this.Controls.Add(this.pnlProducten);

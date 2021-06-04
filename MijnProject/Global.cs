@@ -28,6 +28,11 @@ namespace MijnProject
                         ((Control)it).BackColor = Color.White;
                     }
             }
+            //if(form.Name!="Overzicht")
+            //{ 
+            //    form.BackgroundImage = Properties.Resources.ebd258_seo_optimized_ecommerce;
+            //    form.BackgroundImageLayout = ImageLayout.Stretch;
+            //}
         }
         
     }
