@@ -416,5 +416,15 @@ namespace MijnProject
             AddBezorger addbezorger = new AddBezorger();
             addbezorger.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pnlBezorgers_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -37,7 +37,6 @@ namespace MijnProject
             this.pnlUsers = new System.Windows.Forms.Panel();
             this.llblNewUser = new System.Windows.Forms.LinkLabel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.pnlProducten = new System.Windows.Forms.Panel();
             this.llblNewProduct = new System.Windows.Forms.LinkLabel();
             this.btnupload = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@ namespace MijnProject
             this.pnlKlanten = new System.Windows.Forms.Panel();
             this.llblNewKlant = new System.Windows.Forms.LinkLabel();
             this.dgvKlanten = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -106,12 +106,13 @@ namespace MijnProject
             // 
             // pnlUsers
             // 
+            this.pnlUsers.BackColor = System.Drawing.SystemColors.Control;
             this.pnlUsers.Controls.Add(this.llblNewUser);
             this.pnlUsers.Controls.Add(this.dgvUsers);
             this.pnlUsers.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlUsers.Location = new System.Drawing.Point(0, 30);
             this.pnlUsers.Name = "pnlUsers";
-            this.pnlUsers.Size = new System.Drawing.Size(1494, 645);
+            this.pnlUsers.Size = new System.Drawing.Size(1494, 600);
             this.pnlUsers.TabIndex = 1;
             this.pnlUsers.Visible = false;
             // 
@@ -147,26 +148,15 @@ namespace MijnProject
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellClick);
             // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(1352, 1266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 115;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // pnlProducten
             // 
             this.pnlProducten.Controls.Add(this.llblNewProduct);
             this.pnlProducten.Controls.Add(this.btnupload);
             this.pnlProducten.Controls.Add(this.dgvProducten);
             this.pnlProducten.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlProducten.Location = new System.Drawing.Point(0, 675);
+            this.pnlProducten.Location = new System.Drawing.Point(0, 630);
             this.pnlProducten.Name = "pnlProducten";
-            this.pnlProducten.Size = new System.Drawing.Size(1494, 645);
+            this.pnlProducten.Size = new System.Drawing.Size(1494, 600);
             this.pnlProducten.TabIndex = 121;
             this.pnlProducten.Visible = false;
             // 
@@ -213,11 +203,12 @@ namespace MijnProject
             this.pnlBezorgers.Controls.Add(this.llblNewDeliverer);
             this.pnlBezorgers.Controls.Add(this.dgvDeliverer);
             this.pnlBezorgers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBezorgers.Location = new System.Drawing.Point(0, 1320);
+            this.pnlBezorgers.Location = new System.Drawing.Point(0, 1230);
             this.pnlBezorgers.Name = "pnlBezorgers";
-            this.pnlBezorgers.Size = new System.Drawing.Size(1494, 645);
+            this.pnlBezorgers.Size = new System.Drawing.Size(1494, 600);
             this.pnlBezorgers.TabIndex = 124;
             this.pnlBezorgers.Visible = false;
+            this.pnlBezorgers.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBezorgers_Paint);
             // 
             // llblNewDeliverer
             // 
@@ -251,9 +242,9 @@ namespace MijnProject
             this.pnlKlanten.Controls.Add(this.llblNewKlant);
             this.pnlKlanten.Controls.Add(this.dgvKlanten);
             this.pnlKlanten.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlKlanten.Location = new System.Drawing.Point(0, 1965);
+            this.pnlKlanten.Location = new System.Drawing.Point(0, 1830);
             this.pnlKlanten.Name = "pnlKlanten";
-            this.pnlKlanten.Size = new System.Drawing.Size(1494, 645);
+            this.pnlKlanten.Size = new System.Drawing.Size(1494, 600);
             this.pnlKlanten.TabIndex = 125;
             this.pnlKlanten.Visible = false;
             // 
@@ -282,6 +273,17 @@ namespace MijnProject
             this.dgvKlanten.Size = new System.Drawing.Size(1494, 544);
             this.dgvKlanten.TabIndex = 0;
             this.dgvKlanten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKlanten_CellClick);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(1319, 1000);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 37);
+            this.button1.TabIndex = 127;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Databeheer
             // 
@@ -328,7 +330,6 @@ namespace MijnProject
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.LinkLabel llblNewUser;
         private System.Windows.Forms.ToolStripMenuItem bezorgersToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel pnlProducten;
         private System.Windows.Forms.LinkLabel llblNewProduct;
         private System.Windows.Forms.Button btnupload;
@@ -339,5 +340,6 @@ namespace MijnProject
         private System.Windows.Forms.Panel pnlKlanten;
         private System.Windows.Forms.LinkLabel llblNewKlant;
         private System.Windows.Forms.DataGridView dgvKlanten;
+        private System.Windows.Forms.Button button1;
     }
 }
