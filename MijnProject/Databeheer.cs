@@ -298,12 +298,15 @@ namespace MijnProject
                 ad.Gemeente = tab2.Cell(2, 3).Range.Text.Substring(0, tab2.Cell(2, 3).Range.Text.Length - 2);
                 ad.Postcode = tab2.Cell(2, 4).Range.Text.Substring(0, tab2.Cell(2, 4).Range.Text.Length - 2);
                 ad.Land = tab2.Cell(2, 5).Range.Text.Substring(0, tab2.Cell(2, 5).Range.Text.Length - 2);
-                lev.adress = ad;
-                using (var ctx=new ProjectContext())
-                {
-                    
-                }
-                for(int i=2;i<=tab3.Rows.Count;i++)
+                //using (var ctx = new ProjectContext())
+                //{
+                //    if (ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) == null)
+                //        lev.adress = ad;
+                //    else
+                //        lev.adress = ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land);
+                //    ctx.SaveChanges();
+                //}
+                    for (int i=2;i<=tab3.Rows.Count;i++)
                 {
                     pr.ProductNaam=tab3.Cell(i,1).Range.Text.Substring(0, tab3.Cell(i, 1).Range.Text.Length - 2);
                     pr.UnitPrice =Convert.ToDouble( tab3.Cell(i, 3).Range.Text.Substring(0, tab3.Cell(i, 3).Range.Text.Length - 2));
@@ -320,12 +323,16 @@ namespace MijnProject
                         Product P = ctx.Products.FirstOrDefault(p => p.ProductNummer == pr.ProductNummer);
                         if (P== null)
                         {
-                            ctx.Products.Add(pr);
+                            if (ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) == null)
+                                lev.adress = ad;
+                            else
+                                lev.adress = ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land);
                             ctx.SaveChanges();
                             if (ctx.Levranciers.FirstOrDefault(l => l.Naam == lev.Naam) == null)
-                                ctx.Products.FirstOrDefault(p=>p.ProductNummer==pr.ProductNummer).levrancier=lev;
+                                pr.levrancier = lev;
                             else
                                 pr.levrancier = ctx.Levranciers.FirstOrDefault(l => l.Naam == lev.Naam);
+                            ctx.Products.Add(pr);
                             ctx.SaveChanges();
                         }
                         else

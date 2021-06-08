@@ -127,6 +127,7 @@ namespace MijnProject
             {
                 MessageBox.Show(s);
                 s = "";
+                this.DialogResult = DialogResult.OK;
             }
         }
 

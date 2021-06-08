@@ -94,12 +94,12 @@ namespace MijnProject
             }
             if (s == "")
             {
+                using (var ctx = new ProjectContext())
+                {
                 if (newAd)
                     lev.adress = ad;
                 else
-                    lev.adress = (Adress)cmbAdress.SelectedItem;
-                using (var ctx = new ProjectContext())
-                {
+                    lev.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
                     ctx.Levranciers.Add(lev);
                     ctx.SaveChanges();
                     EditProduct.Leveranciers = ctx.Levranciers.ToList();
@@ -114,7 +114,11 @@ namespace MijnProject
                 btnToevoegen.DialogResult = DialogResult.OK;
             }
             else
+            {
                 MessageBox.Show(s);
+                s = "";
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

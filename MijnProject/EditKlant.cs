@@ -111,8 +111,6 @@ namespace MijnProject
                 else
                     s += "Adress: Land ? ";
             }
-            else
-                klt.adress =(Adress) cmbAdress.SelectedItem;
             klt.IsBedrijf = cbBedrijf.Checked;
                 if (txtBTW.Text != "")
                     klt.BTWNummer = txtBTW.Text;
@@ -127,14 +125,12 @@ namespace MijnProject
                     using (var ctx = new ProjectContext())
                     {
                         if (newAd)
-                            ctx.Adressen.Add(ad);
-                        ctx.SaveChanges();
-                        if (newAd)
                             klt.adress = ad;
                         else
-                            klt.adress = (Adress)cmbAdress.SelectedItem;
+                            klt.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
+                        ctx.SaveChanges();
 
-                        ctx.Klanten.FirstOrDefault(u => u.KlantId == Databeheer.klant.KlantId).Voornaam = klt.Voornaam;
+                    ctx.Klanten.FirstOrDefault(u => u.KlantId == Databeheer.klant.KlantId).Voornaam = klt.Voornaam;
                         ctx.Klanten.FirstOrDefault(u => u.KlantId == Databeheer.klant.KlantId).achternaam = klt.achternaam;
                         ctx.Klanten.FirstOrDefault(u => u.KlantId == Databeheer.klant.KlantId).Geboortdatum = klt.Geboortdatum;
                         ctx.Klanten.FirstOrDefault(u => u.KlantId == Databeheer.klant.KlantId).Telefoon1 = klt.Telefoon1;
@@ -155,8 +151,8 @@ namespace MijnProject
                 {
                     MessageBox.Show(s);
                     s = "";
-
-                }
+                this.DialogResult = DialogResult.OK;
+            }
             }
 
         private void button1_Click(object sender, EventArgs e)

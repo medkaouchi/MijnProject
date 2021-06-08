@@ -131,7 +131,6 @@ namespace MijnProject
             {
                 using (var ctx=new ProjectContext())
                 {
-
                     pr.levrancier = ctx.Levranciers.FirstOrDefault(l => l.LevrancierID == ((Levrancier)cmbLeverancier.SelectedItem).LevrancierID);
                     ctx.Products.FirstOrDefault(p => p.ProductId == Databeheer.product.ProductId).ProductNaam = pr.ProductNaam;
                     ctx.Products.FirstOrDefault(p => p.ProductId == Databeheer.product.ProductId).UnitPrice = pr.UnitPrice;
@@ -153,7 +152,8 @@ namespace MijnProject
                 {
                     MessageBox.Show(s);
                     s = "";
-                }
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

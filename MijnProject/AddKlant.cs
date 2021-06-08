@@ -113,14 +113,12 @@ namespace MijnProject
                     using (var ctx = new ProjectContext())
                     {
                         if (newAd)
-                            ctx.Adressen.Add(ad);
+                            klt.adress = ad;
                         ctx.SaveChanges();
                         Adresses = ctx.Adressen.ToList();
                         cmbAdress.DataSource = Adresses;
-                    if (newAd)
-                            klt.adress = ad;
-                        else
-                            klt.adress = (Adress)cmbAdress.SelectedItem;
+                        if (!newAd)
+                        klt.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
 
                     klt.IngevoegdDoor =ctx.Users.FirstOrDefault(u=>u.UserId==Login.user.UserId) ;
                     ctx.Klanten.Add(klt);
@@ -154,8 +152,8 @@ namespace MijnProject
                 {
                     MessageBox.Show(s);
                     s = "";
-
-                }
+                    this.DialogResult = DialogResult.OK;
+            }
             }
 
         private void button1_Click(object sender, EventArgs e)

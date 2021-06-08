@@ -102,12 +102,9 @@ namespace MijnProject
                 using (var ctx = new ProjectContext())
                 {
                     if(newAd)
-                    ctx.Adressen.Add(ad);
-                    ctx.SaveChanges();
-                    if (newAd)
                         us.adress = ad;
                     else
-                        us.adress = (Adress)cmbAdress.SelectedItem;
+                        us.adress =ctx.Adressen.FirstOrDefault(a=>a.AdressId==((Adress)cmbAdress.SelectedItem).AdressId);
                     ctx.Users.Add(us);
                     ctx.SaveChanges();
                     Databeheer.Users = ctx.Users.Include("Adress").ToList();
@@ -136,7 +133,7 @@ namespace MijnProject
             { 
                 MessageBox.Show(s);
                 s = "";
-                
+                this.DialogResult = DialogResult.OK;
             }
         }
 
