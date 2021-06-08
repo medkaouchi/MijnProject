@@ -13,6 +13,19 @@ namespace MijnProject
 {
     public partial class AddUser : Form
     {
+        //public static void zoekAdress(Form form)
+        //{
+        //    foreach (var item in form.Controls)
+        //    {
+        //        if (((Control)item).Name == "cmbAdress")
+        //        {
+        //            ((ComboBox)item).KeyPress += cmb_KeyPress;
+        //        }
+        //    }
+        //}
+
+       public static List<Adress> Adresses = new List<Adress>();
+        
         protected override bool ProcessDialogKey(Keys keyData)
         {
             if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
@@ -26,7 +39,6 @@ namespace MijnProject
         {
             InitializeComponent();
             Global.ModifyForm(this);
-            List<Adress> Adresses = new List<Adress>();
             cmbRoles.DataSource = Enum.GetValues(typeof(RoleUser));
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
@@ -101,10 +113,12 @@ namespace MijnProject
             {
                 using (var ctx = new ProjectContext())
                 {
-                    if(newAd)
+                    if (newAd && (ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) == null))
                         us.adress = ad;
-                    else
-                        us.adress =ctx.Adressen.FirstOrDefault(a=>a.AdressId==((Adress)cmbAdress.SelectedItem).AdressId);
+                    else if (newAd && ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) != null)
+                        us.adress = ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land);
+                    else if (!newAd)
+                        us.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
                     ctx.Users.Add(us);
                     ctx.SaveChanges();
                     Databeheer.Users = ctx.Users.Include("Adress").ToList();
@@ -154,6 +168,32 @@ namespace MijnProject
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbAdress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != '\r') return;
+
+            if (this.ActiveControl != null)
+            {
+                this.SelectNextControl(this.ActiveControl, true, true, true, true);
+            }
+            e.Handled = true;
+        }
+
+        private void cmbAdress_TextUpdate(object sender, EventArgs e)
+        {
+            string c = cmbAdress.Text;
+            using (var ctx = new ProjectContext())
+                Adresses = ctx.Adressen.Where(a => (a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land).StartsWith(c)).ToList();
+            cmbAdress.DataSource = null;
+            cmbAdress.DataSource = Adresses;
+            cmbAdress.DroppedDown = true;
+            Cursor.Current = Cursors.Default;
+            cmbAdress.SelectedIndex = -1;
+            cmbAdress.Text = c;
+            cmbAdress.Select(cmbAdress.Text.Length, 0);
+
         }
     }
 }

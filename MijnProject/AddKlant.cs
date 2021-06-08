@@ -112,14 +112,17 @@ namespace MijnProject
                 {
                     using (var ctx = new ProjectContext())
                     {
-                        if (newAd)
-                            klt.adress = ad;
+                    if (newAd && (ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) == null))
+                    { 
+                        klt.adress = ad;
                         ctx.SaveChanges();
                         Adresses = ctx.Adressen.ToList();
                         cmbAdress.DataSource = Adresses;
-                        if (!newAd)
+                    }
+                    else if (newAd && ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) != null)
+                        klt.adress = ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land);
+                    else if (!newAd)
                         klt.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
-
                     klt.IngevoegdDoor =ctx.Users.FirstOrDefault(u=>u.UserId==Login.user.UserId) ;
                     ctx.Klanten.Add(klt);
                         ctx.SaveChanges();

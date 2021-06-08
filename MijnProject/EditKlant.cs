@@ -124,11 +124,12 @@ namespace MijnProject
                 {
                     using (var ctx = new ProjectContext())
                     {
-                        if (newAd)
-                            klt.adress = ad;
-                        else
-                            klt.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
-                        ctx.SaveChanges();
+                    if (newAd && (ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) == null))
+                        klt.adress = ad;
+                    else if (newAd && ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) != null)
+                        klt.adress = ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land);
+                    else if (!newAd)
+                        klt.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
 
                     ctx.Klanten.FirstOrDefault(u => u.KlantId == Databeheer.klant.KlantId).Voornaam = klt.Voornaam;
                         ctx.Klanten.FirstOrDefault(u => u.KlantId == Databeheer.klant.KlantId).achternaam = klt.achternaam;

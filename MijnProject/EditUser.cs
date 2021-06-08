@@ -121,9 +121,11 @@ namespace MijnProject
             {
                 using (var ctx = new ProjectContext())
                 {
-                    if (newAd)
+                    if (newAd && (ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) == null))
                         us.adress = ad;
-                    else
+                    else if (newAd && ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) != null)
+                        us.adress = ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land);
+                    else if (!newAd)
                         us.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
                     ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Voornaam = us.Voornaam;
                     ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Achternaam = us.Achternaam;

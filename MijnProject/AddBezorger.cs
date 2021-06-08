@@ -93,12 +93,14 @@ namespace MijnProject
             }
             if (s == "")
             {
-                if (newAd)
-                    lev.adress = ad;
-                else
-                    lev.adress = (Adress)cmbAdress.SelectedItem;
                 using (var ctx = new ProjectContext())
                 {
+                    if (newAd && (ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) == null))
+                        lev.adress = ad;
+                    else if (newAd && ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land) != null)
+                        lev.adress = ctx.Adressen.FirstOrDefault(a => a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land == ad.Straat + " " + ad.Huisnummer + " " + ad.Gemeente + " " + ad.Postcode + " " + ad.Land);
+                    else if (!newAd)
+                        lev.adress = ctx.Adressen.FirstOrDefault(a => a.AdressId == ((Adress)cmbAdress.SelectedItem).AdressId);
                     ctx.Bezorgers.Add(lev);
                     ctx.SaveChanges();
                     Databeheer.Deliverers = ctx.Bezorgers.Include("adress").ToList();
@@ -110,7 +112,8 @@ namespace MijnProject
             else
             {
                 MessageBox.Show(s);
-                btnToevoegen.DialogResult = DialogResult.None;
+                s = "";
+                btnToevoegen.DialogResult = DialogResult.OK;
             }
         }
 

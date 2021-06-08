@@ -404,6 +404,8 @@ namespace MijnProject
             this.cmbAdress.Name = "cmbAdress";
             this.cmbAdress.Size = new System.Drawing.Size(278, 24);
             this.cmbAdress.TabIndex = 35;
+            this.cmbAdress.TextUpdate += new System.EventHandler(this.cmbAdress_TextUpdate);
+            this.cmbAdress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbAdress_KeyPress);
             // 
             // button2
             // 
