@@ -38,7 +38,9 @@ namespace MijnProject
 
         private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            //MessageBox.Show(e.RowIndex.ToString()+e.ColumnIndex.ToString());
             if (e.RowIndex > -1)
+            { 
                 if (e.ColumnIndex == deleteindex)
                 {
                     using (var ctx = new ProjectContext())
@@ -57,7 +59,8 @@ namespace MijnProject
                         EditOrder editorder = new EditOrder();
                     editorder.ShowDialog();
                 }
-            loaddgvOrders();
+                loaddgvOrders();
+            }
         }
 
         private void Bestellingen_FormClosed(object sender, FormClosedEventArgs e)
@@ -85,9 +88,17 @@ namespace MijnProject
             DeleteButtonColumn.UseColumnTextForButtonValue = true;
             dgv_Orders.Columns.Insert(dgv_Orders.Columns.Count, EditButtonColumn);
             dgv_Orders.Columns.Insert(dgv_Orders.Columns.Count, DeleteButtonColumn);
-            dgv_Orders.Columns["Verwijderen"].DisplayIndex = 11;
             dgv_Orders.Columns["Bewerken"].DisplayIndex = 10;
-            deleteindex = dgv_Orders.Columns["Verwijderen"].Index;
+            dgv_Orders.Columns["Verwijderen"].DisplayIndex = 11;
+
+            for (int i = 1; i < dgv_Orders.Rows.Count; i++)
+            {
+                if (dgv_Orders.Rows[i].Cells[0].Value.ToString() == dgv_Orders.Rows[i - 1].Cells[0].Value.ToString())
+                {
+                    dgv_Orders.Rows[i].Cells[10].Value=null ;
+                }
+            }
+                    deleteindex = dgv_Orders.Columns["Verwijderen"].Index;
             editindex = dgv_Orders.Columns["Bewerken"].Index;
             dgv_Orders.Height = dgv_Orders.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Orders.ColumnHeadersHeight + 2;
             
@@ -99,16 +110,22 @@ namespace MijnProject
             int colidx = dgv_Orders.Columns[field].Index;
             dgv_Orders.Columns.Remove(field);
             dgv_Orders.Columns.Insert(colidx, col);
-            Color rowkleur = Color.White;
 
-            for (int i = 0; i <dgv_Orders.Rows.Count; i++)
+
+            Color rowkleur = Color.White;
+            for (int i = 1; i <dgv_Orders.Rows.Count; i++)
             {
-                if (dgv_Orders.Rows[i].Cells[0].Value != null)
+                if (dgv_Orders.Rows[i].Cells[0].Value.ToString() != dgv_Orders.Rows[i-1].Cells[0].Value.ToString())
                     if (rowkleur == Color.White)
-                        rowkleur = Color.AliceBlue;
+                        rowkleur = Color.LightSkyBlue;
                     else
                         rowkleur = Color.White;
-                    dgv_Orders.Rows[i].DefaultCellStyle.BackColor = rowkleur;
+
+                foreach (DataGridViewCell item in dgv_Orders.Rows[i].Cells)
+                {
+                    item.Style.BackColor = rowkleur;
+                }
+                    
             }
         }
         protected override bool ProcessDialogKey(Keys keyData)
@@ -122,17 +139,11 @@ namespace MijnProject
         }
         
 
-        private void dgvOrders_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        
+
+        private void Bestellingen_Load(object sender, EventArgs e)
         {
-        //    e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-        //    if (e.RowIndex < 1 || e.ColumnIndex < 0) return; 
-        //    if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex)) 
-        //    { e.AdvancedBorderStyle.Top = DataGridViewAdvancedCellBorderStyle.None; }
-        //    else 
-        //    { e.AdvancedBorderStyle.Top = dgvOrders.AdvancedCellBorderStyle.Top; }
-        //    if (e.RowIndex == 0) return;
-        //    if (IsTheSameCellValue(e.ColumnIndex, e.RowIndex)) 
-        //    { e.Value = ""; e.FormattingApplied = true; }
+            loaddgvOrders();
         }
     }
 }

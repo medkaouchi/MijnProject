@@ -427,7 +427,6 @@ namespace MijnProject
             SaveFileDialog sfd = new SaveFileDialog();
             WebClient wc = new WebClient();
             string source = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9) + "Resources\\Levrancier formolaire.docx";
-            MessageBox.Show(source);
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 wc.DownloadFile(new Uri(source), sfd.FileName);

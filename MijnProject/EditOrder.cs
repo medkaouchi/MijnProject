@@ -247,7 +247,21 @@ namespace MijnProject
                 ctx.SaveChanges();
                 Bestellingen.OrderLines = ctx.Orders.Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new OrderLine() { orderid = o.OrderId, klant = o.klant, user = o.user, orderdate = o.OrderDatum, status = o.status, bezorgddoor = o.BezorgdDoor, adress = o.BezorgdAdress, orderdetailid = od.ID, product = od.product, aantal = od.Aantal }).ToList();
                 Bestellingen.loaddgvOrders();
-            }
+                    DialogResult dr = MessageBox.Show("FActuur afdrukken?", "", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        printPreviewDialog1.WindowState = FormWindowState.Maximized;
+
+                        if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            printDocument1.Print();
+                        }
+                    }
+                    else if (dr == DialogResult.No)
+                    {
+                        //do something else
+                    }
+                }
             else
             {
                 MessageBox.Show(s);
@@ -311,6 +325,97 @@ namespace MijnProject
                 return true;
             }
             return base.ProcessDialogKey(keyData);
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.HasMorePages = false;
+            float x = 10;
+            float y = 10;
+            int imgWidth = 200;
+            int imgHeight = 200;
+            string ordID = "Order id : " + "00100";
+            string klant = "Klant : " + cmbKlanten.SelectedItem.ToString();
+            string date = "Datum : " + DateTime.UtcNow.ToString();
+            //Pen
+            Pen p = new Pen(Color.Black, 1);
+            //Font text
+            Font f = new Font("Arial", 20, FontStyle.Bold);
+            //Size of text
+            SizeF strSizeInvNum = e.Graphics.MeasureString(ordID, f);
+            SizeF strSizeDate = e.Graphics.MeasureString(date, f);
+            SizeF strSizeName = e.Graphics.MeasureString(klant, f);
+            //Draw Image 
+            e.Graphics.DrawImage(Image.FromFile(Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9) + "Resources\\download.jpg"), x, y, imgWidth, imgHeight);
+            //Draw Invoice Number
+            e.Graphics.DrawString(ordID, f, Brushes.Red, (e.PageBounds.Width - strSizeInvNum.Width) / 2, y);
+            //Draw Invoice Date
+            e.Graphics.DrawString(date, f, Brushes.Blue, imgWidth + x, y + imgHeight / 2);
+            //Draw Invoice Name
+            e.Graphics.DrawString(klant, f, Brushes.Green, imgWidth + x, y + strSizeInvNum.Height + strSizeDate.Height * 4);
+            //Draw Rectangle
+            float preHeight = strSizeInvNum.Height + strSizeDate.Height + strSizeName.Height + imgHeight + y;
+            e.Graphics.DrawRectangle(p, x, imgHeight + y * 2, e.PageBounds.Width - x * 2, e.PageBounds.Height - preHeight);
+            //Column Height
+            float colHeight = 60;
+            //Column Width
+            float col1Width = 450;
+            float col2Width = 125 + col1Width;
+            float col3Width = 125 + col2Width;
+            float col4Width = 125 + col3Width;
+            float col5Width = 125 + col4Width;
+            float col6Width = 125 + col5Width;
+            //Draw Line
+            e.Graphics.DrawLine(p, x, preHeight, e.PageBounds.Width - x, preHeight);
+
+            e.Graphics.DrawString("Product", f, Brushes.Black, x * 2, preHeight - colHeight);
+            e.Graphics.DrawLine(p, x * 2 + col1Width, imgHeight + y * 2, x * 2 + col1Width, e.PageBounds.Height - colHeight - y * 4);
+            e.Graphics.DrawString("Omschrijving", f, Brushes.Black, x * 2 + col1Width, preHeight - colHeight);
+            e.Graphics.DrawLine(p, x * 2 + col2Width, imgHeight + y * 2, x * 2 + col2Width, e.PageBounds.Height - colHeight - y * 4);
+            e.Graphics.DrawString("Prijs zonder btw", f, Brushes.Black, x * 2 + col2Width, preHeight - colHeight);
+            e.Graphics.DrawLine(p, x * 2 + col3Width, imgHeight + y * 2, x * 2 + col3Width, e.PageBounds.Height - colHeight - y * 4);
+            e.Graphics.DrawString("Prijs inclusief btw", f, Brushes.Black, x * 2 + col3Width, preHeight - colHeight);
+            e.Graphics.DrawLine(p, x * 2 + col4Width, imgHeight + y * 2, x * 2 + col4Width, e.PageBounds.Height - colHeight - y * 4);
+            e.Graphics.DrawString("Aantal", f, Brushes.Black, x * 2 + col4Width, preHeight - colHeight);
+            e.Graphics.DrawLine(p, x * 2 + col5Width, imgHeight + y * 2, x * 2 + col5Width, e.PageBounds.Height - colHeight - y * 4);
+            e.Graphics.DrawString("Total zonder btw", f, Brushes.Black, x * 2 + col5Width, preHeight - colHeight);
+            e.Graphics.DrawLine(p, x * 2 + col6Width, imgHeight + y * 2, x * 2 + col6Width, e.PageBounds.Height - colHeight - y * 4);
+            e.Graphics.DrawString("Total inclusief btw", f, Brushes.Black, x * 2 + col6Width, preHeight - colHeight);
+            e.Graphics.DrawLine(p, x * 2 + col6Width, imgHeight + y * 2, x * 2 + col6Width, e.PageBounds.Height - colHeight - y * 4);
+            //Invoice Content
+            float rowHeight = 60;
+            double totaal = 0;
+            for (int i=0; i < dgvOrderProducten.Rows.Count; i++)
+            {
+                totaal += (Convert.ToDouble(dgvOrderProducten.Rows[i].Cells[3].Value) * Convert.ToDouble(dgvOrderProducten.Rows[i].Cells[5].Value));
+            }
+            for (int i = 1; i < dgvOrderProducten.Rows.Count; i++)
+            {
+                if (rowHeight >= e.PageBounds.Height - preHeight - colHeight)
+                {
+                    e.HasMorePages = true;
+                    break;
+                }
+
+                e.Graphics.DrawString(dgvOrderProducten.Rows[i].Cells[1].Value.ToString(), f, Brushes.Black, x * 2, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString(dgvOrderProducten.Rows[i].Cells[4].Value.ToString(), f, Brushes.Black, x * 2 + col1Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString(dgvOrderProducten.Rows[i].Cells[3].Value.ToString(), f, Brushes.Black, x * 2 + col2Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString((Convert.ToDouble(dgvOrderProducten.Rows[i].Cells[3].Value) * 1.21).ToString(), f, Brushes.Black, x * 2 + col3Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString(dgvOrderProducten.Rows[i].Cells[5].Value.ToString(), f, Brushes.Black, x * 2 + col4Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString((Convert.ToDouble(dgvOrderProducten.Rows[i].Cells[3].Value) * Convert.ToDouble(dgvOrderProducten.Rows[i].Cells[5].Value)).ToString(), f, Brushes.Black, x * 2 + col5Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString((Convert.ToDouble(dgvOrderProducten.Rows[i].Cells[3].Value) * Convert.ToDouble(dgvOrderProducten.Rows[i].Cells[5].Value) * 1.21).ToString(), f, Brushes.Black, x * 2 + col6Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawLine(p, x, preHeight + rowHeight, e.PageBounds.Width - x,
+                    preHeight + rowHeight);
+
+                rowHeight += 60;
+            }
+            if (rowHeight < e.PageBounds.Height - preHeight - colHeight)
+            {
+                e.Graphics.DrawString("Totaal zonder btw : ", f, Brushes.Red, x * 2 + col2Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString(totaal.ToString(), f, Brushes.Green, x * 2 + col3Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString("Totaal inclusief btw : ", f, Brushes.Red, x * 2 + col2Width, preHeight + rowHeight - colHeight);
+                e.Graphics.DrawString((totaal * 1.21).ToString(), f, Brushes.Green, x * 2 + col3Width, preHeight + rowHeight - colHeight);
+            }
         }
     }
 }

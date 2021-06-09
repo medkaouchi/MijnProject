@@ -50,7 +50,6 @@ namespace MijnProject
             this.dgvOrders.Size = new System.Drawing.Size(802, 389);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellClick);
-            this.dgvOrders.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgvOrders_CellPainting);
             // 
             // llblAddOrder
             // 
@@ -85,6 +84,7 @@ namespace MijnProject
             this.Name = "Bestellingen";
             this.Text = "Bestellingen";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Bestellingen_FormClosed);
+            this.Load += new System.EventHandler(this.Bestellingen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
