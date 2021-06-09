@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,20 +15,28 @@ namespace MijnProject
 {
     public partial class Databeheer : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
+        public static List<User> Users = new List<User>();
+        public static List<Klant> Klanten = new List<Klant>();
+        public static List<Product> Producten = new List<Product>();
+        public static DataGridView dgv_users ;
+        public static DataGridView dgv_klanten;
+        public static DataGridView dgv_producten;
+        public static User user = new User();
+        public static Klant klant = new Klant();
+        public static Product product = new Product();
+        public static int deleteindex;
+        public static int editindex;
+        public static int deleteindexproduct;
+        public static int editindexproduct;
+        public static List<Bezorger> Deliverers = new List<Bezorger>();
+        public static DataGridView dgv_Deliverer = new DataGridView();
+        public static int deleteindexBez;
+        public static int editindexBez;
+        public static Bezorger bezorger;
         public Databeheer()
         {
             InitializeComponent();
             Global.ModifyForm(this);
-            //Main.ActiveForm.Close();
             if(Login.user.Role==RoleUser.Admin)
             {
                 userToolStripMenuItem.Enabled = true;
@@ -50,24 +59,6 @@ namespace MijnProject
                 bezorgersToolStripMenuItem.Enabled = false;
             }
         }
-        public static List<User> Users = new List<User>();
-        public static List<Klant> Klanten = new List<Klant>();
-        public static List<Product> Producten = new List<Product>();
-        public static DataGridView dgv_users ;
-        public static DataGridView dgv_klanten;
-        public static DataGridView dgv_producten;
-        public static User user = new User();
-        public static Klant klant = new Klant();
-        public static Product product = new Product();
-        public static int deleteindex;
-        public static int editindex;
-        public static int deleteindexproduct;
-        public static int editindexproduct;
-        public static List<Bezorger> Deliverers = new List<Bezorger>();
-        public static DataGridView dgv_Deliverer = new DataGridView();
-        public static int deleteindexBez;
-        public static int editindexBez;
-        public static Bezorger bezorger;
 
         private void dgvUsers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -111,69 +102,6 @@ namespace MijnProject
             dgv_users = dgvUsers;
             dgv_producten = dgvProducten;
             dgv_Deliverer = dgvDeliverer;
-        }
-        public static void loaddgvusers()
-        {
-            dgv_users.DataSource = null;
-            dgv_users.Columns.Clear();
-            dgv_users.DataSource = Users;
-            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
-            EditButtonColumn.Name = "Bewerken";
-            EditButtonColumn.Text = "Bewerk";
-            EditButtonColumn.UseColumnTextForButtonValue = true;
-            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
-            DeleteButtonColumn.Name = "Verwijderen";
-            DeleteButtonColumn.Text = "Verwijder";
-            DeleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgv_users.Columns.Insert(dgv_users.Columns.Count, EditButtonColumn);
-            dgv_users.Columns.Insert(dgv_users.Columns.Count, DeleteButtonColumn);
-            for (int i = 0; i < dgv_users.Rows.Count; i++)
-            {
-                dgv_users.Rows[i].Cells["Wachtwoord"].Value = dgv_users.Rows[i].Cells["Wachtwoord"].Value.ToString().Aggregate("", (c, a) => c + (char)(a - 2));
-            }
-            dgv_users.Height = dgv_users.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_users.ColumnHeadersHeight + 2;
-        }
-        public static void loaddgvklants()
-        {
-            dgv_klanten.DataSource = null;
-            dgv_klanten.Columns.Clear();
-            dgv_klanten.DataSource = Klanten;
-            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
-            EditButtonColumn.Name = "Bewerken";
-            EditButtonColumn.Text = "Bewerk";
-            EditButtonColumn.UseColumnTextForButtonValue = true;
-            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
-            DeleteButtonColumn.Name = "Verwijderen";
-            DeleteButtonColumn.Text = "Verwijder";
-            DeleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgv_klanten.Columns.Insert(dgv_klanten.Columns.Count, EditButtonColumn);
-            dgv_klanten.Columns.Insert(dgv_klanten.Columns.Count, DeleteButtonColumn);
-            dgv_klanten.Columns["Verwijderen"].DisplayIndex = 14;
-            dgv_klanten.Columns["Bewerken"].DisplayIndex = 13;
-            deleteindex = dgv_klanten.Columns["Verwijderen"].Index;
-            editindex = dgv_klanten.Columns["Bewerken"].Index;
-            dgv_klanten.Height = dgv_klanten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_klanten.ColumnHeadersHeight + 2;
-        }
-        public static void loaddgvprodut()
-        {
-            dgv_producten.DataSource = null;
-            dgv_producten.Columns.Clear();
-            dgv_producten.DataSource = Producten;
-            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
-            EditButtonColumn.Name = "Bewerken";
-            EditButtonColumn.Text = "Bewerk";
-            EditButtonColumn.UseColumnTextForButtonValue = true;
-            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
-            DeleteButtonColumn.Name = "Verwijderen";
-            DeleteButtonColumn.Text = "Verwijder";
-            DeleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgv_producten.Columns.Insert(dgv_producten.Columns.Count, EditButtonColumn);
-            dgv_producten.Columns.Insert(dgv_producten.Columns.Count, DeleteButtonColumn);
-            dgv_producten.Columns["Verwijderen"].DisplayIndex = 13;
-            dgv_producten.Columns["Bewerken"].DisplayIndex = 12;
-            deleteindexproduct = dgv_producten.Columns["Verwijderen"].Index;
-            editindexproduct = dgv_producten.Columns["Bewerken"].Index;
-            dgv_producten.Height = dgv_producten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_producten.ColumnHeadersHeight + 2;
         }
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -362,20 +290,6 @@ namespace MijnProject
             }
             loaddgvDeliverer();
         }
-        public static void loaddgvDeliverer()
-        {
-            dgv_Deliverer.DataSource = null;
-            dgv_Deliverer.Columns.Clear();
-            dgv_Deliverer.DataSource = Deliverers;
-            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
-            DeleteButtonColumn.Name = "Verwijderen";
-            DeleteButtonColumn.Text = "Verwijder";
-            DeleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgv_Deliverer.Columns.Insert(dgv_Deliverer.Columns.Count, DeleteButtonColumn);
-            dgv_Deliverer.Columns["Verwijderen"].DisplayIndex = 7;
-            deleteindexBez = dgv_Deliverer.Columns["Verwijderen"].Index;
-            dgv_Deliverer.Height = dgv_Deliverer.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Deliverer.ColumnHeadersHeight + 2;
-        }
 
         private void dgvDeliverer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -421,10 +335,103 @@ namespace MijnProject
         {
             this.Close();
         }
-
-        private void pnlBezorgers_Paint(object sender, PaintEventArgs e)
+        public static void loaddgvusers()
         {
+            dgv_users.DataSource = null;
+            dgv_users.Columns.Clear();
+            dgv_users.DataSource = Users;
+            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
+            EditButtonColumn.Name = "Bewerken";
+            EditButtonColumn.Text = "Bewerk";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgv_users.Columns.Insert(dgv_users.Columns.Count, EditButtonColumn);
+            dgv_users.Columns.Insert(dgv_users.Columns.Count, DeleteButtonColumn);
+            for (int i = 0; i < dgv_users.Rows.Count; i++)
+            {
+                dgv_users.Rows[i].Cells["Wachtwoord"].Value = dgv_users.Rows[i].Cells["Wachtwoord"].Value.ToString().Aggregate("", (c, a) => c + (char)(a - 2));
+            }
+            dgv_users.Height = dgv_users.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_users.ColumnHeadersHeight + 2;
+        }
+        public static void loaddgvklants()
+        {
+            dgv_klanten.DataSource = null;
+            dgv_klanten.Columns.Clear();
+            dgv_klanten.DataSource = Klanten;
+            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
+            EditButtonColumn.Name = "Bewerken";
+            EditButtonColumn.Text = "Bewerk";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgv_klanten.Columns.Insert(dgv_klanten.Columns.Count, EditButtonColumn);
+            dgv_klanten.Columns.Insert(dgv_klanten.Columns.Count, DeleteButtonColumn);
+            dgv_klanten.Columns["Verwijderen"].DisplayIndex = 14;
+            dgv_klanten.Columns["Bewerken"].DisplayIndex = 13;
+            deleteindex = dgv_klanten.Columns["Verwijderen"].Index;
+            editindex = dgv_klanten.Columns["Bewerken"].Index;
+            dgv_klanten.Height = dgv_klanten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_klanten.ColumnHeadersHeight + 2;
+        }
+        public static void loaddgvprodut()
+        {
+            dgv_producten.DataSource = null;
+            dgv_producten.Columns.Clear();
+            dgv_producten.DataSource = Producten;
+            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
+            EditButtonColumn.Name = "Bewerken";
+            EditButtonColumn.Text = "Bewerk";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgv_producten.Columns.Insert(dgv_producten.Columns.Count, EditButtonColumn);
+            dgv_producten.Columns.Insert(dgv_producten.Columns.Count, DeleteButtonColumn);
+            dgv_producten.Columns["Verwijderen"].DisplayIndex = 13;
+            dgv_producten.Columns["Bewerken"].DisplayIndex = 12;
+            deleteindexproduct = dgv_producten.Columns["Verwijderen"].Index;
+            editindexproduct = dgv_producten.Columns["Bewerken"].Index;
+            dgv_producten.Height = dgv_producten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_producten.ColumnHeadersHeight + 2;
+        }
+        public static void loaddgvDeliverer()
+        {
+            dgv_Deliverer.DataSource = null;
+            dgv_Deliverer.Columns.Clear();
+            dgv_Deliverer.DataSource = Deliverers;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgv_Deliverer.Columns.Insert(dgv_Deliverer.Columns.Count, DeleteButtonColumn);
+            dgv_Deliverer.Columns["Verwijderen"].DisplayIndex = 7;
+            deleteindexBez = dgv_Deliverer.Columns["Verwijderen"].Index;
+            dgv_Deliverer.Height = dgv_Deliverer.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Deliverer.ColumnHeadersHeight + 2;
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
 
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            WebClient wc = new WebClient();
+            string source = Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9) + "Resources\\Levrancier formolaire.docx";
+            MessageBox.Show(source);
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                wc.DownloadFile(new Uri(source), sfd.FileName);
+            }
         }
     }
 }

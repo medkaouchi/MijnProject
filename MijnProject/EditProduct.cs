@@ -13,15 +13,6 @@ namespace MijnProject
 {
     public partial class EditProduct : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
         public static ComboBox cmb_Leveranciere = new ComboBox();
         public static List<Levrancier> Leveranciers = new List<Levrancier>();
         Regex re = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
@@ -54,15 +45,6 @@ namespace MijnProject
             cmb_Leveranciere = cmbLeverancier;
         }
 
-        public bool IsDouble(string text)
-        {
-            double num = 0;
-            bool isDouble = false;
-            if (string.IsNullOrEmpty(text))
-                return false;
-            isDouble = double.TryParse(text, out num);
-            return isDouble;
-        }
 
         private void llblNewLeverancier_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -147,18 +129,36 @@ namespace MijnProject
                     Databeheer.Producten = ctx.Products.ToList();
                 }
                 Databeheer.loaddgvprodut();
+                this.DialogResult = DialogResult.OK;
             }
             else
                 {
                     MessageBox.Show(s);
                     s = "";
-                this.DialogResult = DialogResult.OK;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public bool IsDouble(string text)
+        {
+            double num = 0;
+            bool isDouble = false;
+            if (string.IsNullOrEmpty(text))
+                return false;
+            isDouble = double.TryParse(text, out num);
+            return isDouble;
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

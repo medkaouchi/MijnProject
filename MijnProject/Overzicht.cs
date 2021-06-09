@@ -12,15 +12,6 @@ namespace MijnProject
 {
     public partial class Overzicht : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
         public Overzicht()
         {
             InitializeComponent();
@@ -185,6 +176,15 @@ namespace MijnProject
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

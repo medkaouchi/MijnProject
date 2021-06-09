@@ -13,28 +13,19 @@ namespace MijnProject
 {
     public partial class AddLeverancier : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
+        List<Adress> Adresses = new List<Adress>();
+        bool newAd = false;
+        Regex re = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+
         public AddLeverancier()
         {
             InitializeComponent();
             Global.ModifyForm(this);
-            List<Adress> Adresses = new List<Adress>();
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
         }
         
-        bool newAd = false;
-        Regex re = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-
         private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pnlAdress.Visible = true;
@@ -119,13 +110,33 @@ namespace MijnProject
             {
                 MessageBox.Show(s);
                 s = "";
-                this.DialogResult = DialogResult.OK;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbAdress_TextUpdate(object sender, EventArgs e)
+        {
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_TextUpdate(sender, e);
+        }
+
+        private void cmbAdress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_KeyPress(sender, e);
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

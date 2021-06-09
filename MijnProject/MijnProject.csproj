@@ -111,6 +111,7 @@
     <Compile Include="Databeheer.Designer.cs">
       <DependentUpon>Databeheer.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridViewMergedTextBoxColumn.cs" />
     <Compile Include="EditAantal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +240,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Levrancier formolaire.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -271,9 +275,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ebd258-seo-optimized-ecommerce.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

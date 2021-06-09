@@ -11,17 +11,7 @@ using System.Windows.Forms;
 namespace MijnProject
 {
     public partial class EditOrder : Form
-
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
         List<Bezorger> Bezorgers = new List<Bezorger>();
         bool newAd = false;
         public static int aantal;
@@ -112,29 +102,6 @@ namespace MijnProject
             pnlAdress.Visible = false;
             lblKlantAdress.Visible = true;
             newAd = false;
-        }
-        public void NewProductOrdered(ProductOrdered pror)
-        {
-            if (ProductsOrdered.FirstOrDefault(p => p.ProductId == pror.ProductId) == null)
-                ProductsOrdered.Add(pror);
-            else
-                ProductsOrdered.FirstOrDefault(p => p.ProductId == pror.ProductId).aantal += 1;
-            dgvOrderProducten.DataSource = null;
-            dgvOrderProducten.Columns.Clear();
-            dgvOrderProducten.DataSource = ProductsOrdered;
-            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
-            EditButtonColumn.Name = "Aantal Bewerken";
-            EditButtonColumn.Text = "Bewerk Aantal";
-            EditButtonColumn.UseColumnTextForButtonValue = true;
-            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
-            DeleteButtonColumn.Name = "Verwijderen";
-            DeleteButtonColumn.Text = "Verwijder";
-            DeleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, EditButtonColumn);
-            dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, DeleteButtonColumn);
-            dgvOrderProducten.Columns["Verwijderen"].DisplayIndex = 7;
-            dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
-            dgvOrderProducten.Height = dgvOrderProducten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgvOrderProducten.ColumnHeadersHeight + 2;
         }
 
         private void txtPrNummer_KeyPress(object sender, KeyPressEventArgs e)
@@ -283,8 +250,8 @@ namespace MijnProject
             }
             else
             {
-                this.DialogResult = DialogResult.None;
                 MessageBox.Show(s);
+                s = "";
             }
         }
 
@@ -312,6 +279,38 @@ namespace MijnProject
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        public void NewProductOrdered(ProductOrdered pror)
+        {
+            if (ProductsOrdered.FirstOrDefault(p => p.ProductId == pror.ProductId) == null)
+                ProductsOrdered.Add(pror);
+            else
+                ProductsOrdered.FirstOrDefault(p => p.ProductId == pror.ProductId).aantal += 1;
+            dgvOrderProducten.DataSource = null;
+            dgvOrderProducten.Columns.Clear();
+            dgvOrderProducten.DataSource = ProductsOrdered;
+            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
+            EditButtonColumn.Name = "Aantal Bewerken";
+            EditButtonColumn.Text = "Bewerk Aantal";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn DeleteButtonColumn = new DataGridViewButtonColumn();
+            DeleteButtonColumn.Name = "Verwijderen";
+            DeleteButtonColumn.Text = "Verwijder";
+            DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, EditButtonColumn);
+            dgvOrderProducten.Columns.Insert(dgvOrderProducten.Columns.Count, DeleteButtonColumn);
+            dgvOrderProducten.Columns["Verwijderen"].DisplayIndex = 7;
+            dgvOrderProducten.Columns["Aantal Bewerken"].DisplayIndex = 6;
+            dgvOrderProducten.Height = dgvOrderProducten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgvOrderProducten.ColumnHeadersHeight + 2;
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

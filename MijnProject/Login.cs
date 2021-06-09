@@ -12,15 +12,7 @@ namespace MijnProject
 {
     public partial class Login : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                Application.Exit();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
+        public static User user=new User();
         public Login()
         {
             InitializeComponent();
@@ -28,7 +20,6 @@ namespace MijnProject
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.WindowState = FormWindowState.Maximized;
         }
-        public static User user=new User();
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             using (var ctx=new ProjectContext())
@@ -65,6 +56,15 @@ namespace MijnProject
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                Application.Exit();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

@@ -334,7 +334,6 @@ namespace MijnProject
             // btnAddOrder
             // 
             this.btnAddOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddOrder.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnAddOrder.Location = new System.Drawing.Point(415, 665);
             this.btnAddOrder.Name = "btnAddOrder";
             this.btnAddOrder.Size = new System.Drawing.Size(151, 51);

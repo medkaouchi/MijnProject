@@ -13,16 +13,8 @@ namespace MijnProject
 {
     public partial class AddKlant : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
         List<Adress> Adresses = new List<Adress>();
+        bool newAd = false;
         public AddKlant()
         {
             InitializeComponent();
@@ -31,7 +23,6 @@ namespace MijnProject
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
         }
-        bool newAd = false;
 
         private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -132,36 +123,57 @@ namespace MijnProject
                 AddOrder.cmb_Klanten.DataSource = null;
                 AddOrder.cmb_Klanten.DataSource = AddOrder.Klanten;
                     Databeheer.loaddgvklants();
-                    txtVnaam.Text = "";
-                    txtAnaam.Text = "";
-                    dtpGD.Value = DateTime.Now;
-                    txtTel1.Text = "";
-                    txtTel2.Text = "";
-                    txtEmail.Text = "";
-                    txtStraat.Text = "";
-                    txtHuisNr.Text = "";
-                    txttGem.Text = "";
-                    txtPC.Text = "";
-                    txtLand.Text = "";
-                    cbBedrijf.Checked = false;
-                    txtBTW.Text = "";
-                    rtbComentaar.Text = "";
-                    cmbAdress.SelectedIndex = 0;
-                    pnlAdress.Visible = false;
-                    cmbAdress.Enabled = true;
-                    newAd = false;
+                    //txtVnaam.Text = "";
+                    //txtAnaam.Text = "";
+                    //dtpGD.Value = DateTime.Now;
+                    //txtTel1.Text = "";
+                    //txtTel2.Text = "";
+                    //txtEmail.Text = "";
+                    //txtStraat.Text = "";
+                    //txtHuisNr.Text = "";
+                    //txttGem.Text = "";
+                    //txtPC.Text = "";
+                    //txtLand.Text = "";
+                    //cbBedrijf.Checked = false;
+                    //txtBTW.Text = "";
+                    //rtbComentaar.Text = "";
+                    //cmbAdress.SelectedIndex = 0;
+                    //pnlAdress.Visible = false;
+                    //cmbAdress.Enabled = true;
+                    //newAd = false;
+                    this.DialogResult = DialogResult.OK;
                 }
                 else
                 {
                     MessageBox.Show(s);
                     s = "";
-                    this.DialogResult = DialogResult.OK;
             }
             }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbAdress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_KeyPress(sender, e);
+        }
+
+        private void cmbAdress_TextUpdate(object sender, EventArgs e)
+        {
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_TextUpdate(sender, e);
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

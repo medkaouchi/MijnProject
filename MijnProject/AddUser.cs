@@ -13,28 +13,8 @@ namespace MijnProject
 {
     public partial class AddUser : Form
     {
-        //public static void zoekAdress(Form form)
-        //{
-        //    foreach (var item in form.Controls)
-        //    {
-        //        if (((Control)item).Name == "cmbAdress")
-        //        {
-        //            ((ComboBox)item).KeyPress += cmb_KeyPress;
-        //        }
-        //    }
-        //}
-
-       public static List<Adress> Adresses = new List<Adress>();
-        
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
+        List<Adress> Adresses = new List<Adress>();
+        bool newAd = false;
         public AddUser()
         {
             InitializeComponent();
@@ -44,7 +24,6 @@ namespace MijnProject
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
         }
-        bool newAd = false;
         private void button1_Click(object sender, EventArgs e)
         {
             User us = new User();
@@ -172,28 +151,23 @@ namespace MijnProject
 
         private void cmbAdress_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar != '\r') return;
-
-            if (this.ActiveControl != null)
-            {
-                this.SelectNextControl(this.ActiveControl, true, true, true, true);
-            }
-            e.Handled = true;
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_KeyPress(sender, e);
         }
 
         private void cmbAdress_TextUpdate(object sender, EventArgs e)
         {
-            string c = cmbAdress.Text;
-            using (var ctx = new ProjectContext())
-                Adresses = ctx.Adressen.Where(a => (a.Straat + " " + a.Huisnummer + " " + a.Gemeente + " " + a.Postcode + " " + a.Land).StartsWith(c)).ToList();
-            cmbAdress.DataSource = null;
-            cmbAdress.DataSource = Adresses;
-            cmbAdress.DroppedDown = true;
-            Cursor.Current = Cursors.Default;
-            cmbAdress.SelectedIndex = -1;
-            cmbAdress.Text = c;
-            cmbAdress.Select(cmbAdress.Text.Length, 0);
-
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_TextUpdate(sender, e);
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

@@ -67,7 +67,6 @@ namespace MijnProject
             // btnOpslaan
             // 
             this.btnOpslaan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnOpslaan.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOpslaan.Location = new System.Drawing.Point(454, 670);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(151, 51);

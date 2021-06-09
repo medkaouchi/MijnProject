@@ -13,22 +13,13 @@ namespace MijnProject
 {
     public partial class EditUser : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
         bool newAd;
+        List<Adress> Adresses = new List<Adress>();
         public EditUser()
         {
             InitializeComponent();
             Global.ModifyForm(this);
             newAd = false;
-            List<Adress> Adresses = new List<Adress>();
             cmbRoles.DataSource = Enum.GetValues(typeof(RoleUser));
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
@@ -140,20 +131,39 @@ namespace MijnProject
                     Databeheer.Users = ctx.Users.Include("Adress").ToList();
                 }
                 Databeheer.loaddgvusers();
-                newAd = false;
-                this.Close();
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
                 MessageBox.Show(s);
                 s = "";
-                this.DialogResult = DialogResult.OK;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbAdress_TextUpdate(object sender, EventArgs e)
+        {
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_TextUpdate(sender, e);
+        }
+
+        private void cmbAdress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Global.Adresses = this.Adresses;
+            Global.cmbAdress_KeyPress(sender, e);
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

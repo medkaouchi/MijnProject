@@ -12,18 +12,6 @@ namespace MijnProject
 {
     public partial class Main : Form
     {
-        protected override bool ProcessDialogKey(Keys keyData)
-        {
-            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
-            {
-                this.Hide();
-                Login login = new Login();
-                login.Show();
-                this.Close();
-                return true;
-            }
-            return base.ProcessDialogKey(keyData);
-        }
         public Main()
         {
             InitializeComponent();
@@ -81,6 +69,18 @@ namespace MijnProject
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (Form.ModifierKeys == Keys.None && keyData == Keys.Escape)
+            {
+                this.Hide();
+                Login login = new Login();
+                login.Show();
+                this.Close();
+                return true;
+            }
+            return base.ProcessDialogKey(keyData);
         }
     }
 }

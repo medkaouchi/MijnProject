@@ -85,6 +85,8 @@ namespace MijnProject
             this.cmbAdress.Name = "cmbAdress";
             this.cmbAdress.Size = new System.Drawing.Size(236, 24);
             this.cmbAdress.TabIndex = 111;
+            this.cmbAdress.TextUpdate += new System.EventHandler(this.cmbAdress_TextUpdate);
+            this.cmbAdress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbAdress_KeyPress);
             // 
             // llblAddAdress
             // 
