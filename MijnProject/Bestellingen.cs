@@ -38,7 +38,6 @@ namespace MijnProject
 
         private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //MessageBox.Show(e.RowIndex.ToString()+e.ColumnIndex.ToString());
             if (e.RowIndex > -1)
             { 
                 if (e.ColumnIndex == deleteindex)
@@ -86,20 +85,24 @@ namespace MijnProject
             DeleteButtonColumn.Name = "Verwijderen";
             DeleteButtonColumn.Text = "Verwijder";
             DeleteButtonColumn.UseColumnTextForButtonValue = true;
-            dgv_Orders.Columns.Insert(dgv_Orders.Columns.Count, EditButtonColumn);
-            dgv_Orders.Columns.Insert(dgv_Orders.Columns.Count, DeleteButtonColumn);
-            dgv_Orders.Columns["Bewerken"].DisplayIndex = 10;
-            dgv_Orders.Columns["Verwijderen"].DisplayIndex = 11;
+            if (Login.user.Role == RoleUser.Admin)
+            {
+                dgv_Orders.Columns.Insert(dgv_Orders.Columns.Count, EditButtonColumn);
+                dgv_Orders.Columns.Insert(dgv_Orders.Columns.Count, DeleteButtonColumn);
+                dgv_Orders.Columns["Bewerken"].DisplayIndex = 10;
+                dgv_Orders.Columns["Verwijderen"].DisplayIndex = 11;
+                deleteindex = dgv_Orders.Columns["Verwijderen"].Index;
+                editindex = dgv_Orders.Columns["Bewerken"].Index;
+            }
 
             for (int i = 1; i < dgv_Orders.Rows.Count; i++)
             {
                 if (dgv_Orders.Rows[i].Cells[0].Value.ToString() == dgv_Orders.Rows[i - 1].Cells[0].Value.ToString())
                 {
-                    dgv_Orders.Rows[i].Cells[10].Value=null ;
+                    dgv_Orders.Rows[i].Cells[0].Value=null ;
                 }
             }
-                    deleteindex = dgv_Orders.Columns["Verwijderen"].Index;
-            editindex = dgv_Orders.Columns["Bewerken"].Index;
+                    
             if(dgv_Orders.Height<600)
             dgv_Orders.Height = dgv_Orders.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Orders.ColumnHeadersHeight + 2;
             

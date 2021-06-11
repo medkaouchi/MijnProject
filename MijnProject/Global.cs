@@ -28,6 +28,10 @@ namespace MijnProject
                     {
                         ((Control)it).BackColor = Color.White;
                     }
+                if (((Control)item).Name.StartsWith("button"))
+                    ((Button)item).Text = "Terug";
+                if (form.Name.StartsWith("Add")&&((Control)item).Name.StartsWith("cm"))
+                    ((ComboBox)item).SelectedIndex = -1;
             }
 
         }

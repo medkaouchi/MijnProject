@@ -19,11 +19,11 @@ namespace MijnProject
         public AddUser()
         {
             InitializeComponent();
-            Global.ModifyForm(this);
             cmbRoles.DataSource = Enum.GetValues(typeof(RoleUser));
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
+            Global.ModifyForm(this);
         }
         private void button1_Click(object sender, EventArgs e)
         {

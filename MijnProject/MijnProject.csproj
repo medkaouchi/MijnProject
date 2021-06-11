@@ -109,11 +109,6 @@
       <DependentUpon>Bestellingen.cs</DependentUpon>
     </Compile>
     <Compile Include="Bezorger.cs" />
-    <Compile Include="CrystalReport1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
-    </Compile>
     <Compile Include="Databeheer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,10 +203,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Bestellingen.resx">
       <DependentUpon>Bestellingen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CrystalReport1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Databeheer.resx">
       <DependentUpon>Databeheer.cs</DependentUpon>

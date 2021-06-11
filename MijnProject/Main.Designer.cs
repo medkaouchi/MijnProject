@@ -35,6 +35,9 @@ namespace MijnProject
             this.lblUser = new System.Windows.Forms.Label();
             this.llblLogOut = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDatabeheer
@@ -46,7 +49,7 @@ namespace MijnProject
             this.btnDatabeheer.Name = "btnDatabeheer";
             this.btnDatabeheer.Size = new System.Drawing.Size(310, 326);
             this.btnDatabeheer.TabIndex = 0;
-            this.btnDatabeheer.Text = "Databeheer";
+            this.btnDatabeheer.Text = "&Databeheer";
             this.btnDatabeheer.UseVisualStyleBackColor = true;
             this.btnDatabeheer.Click += new System.EventHandler(this.btnDatabeheer_Click);
             // 
@@ -58,8 +61,8 @@ namespace MijnProject
             this.btnOverzicht.Location = new System.Drawing.Point(839, 201);
             this.btnOverzicht.Name = "btnOverzicht";
             this.btnOverzicht.Size = new System.Drawing.Size(310, 326);
-            this.btnOverzicht.TabIndex = 1;
-            this.btnOverzicht.Text = "Overzicht";
+            this.btnOverzicht.TabIndex = 2;
+            this.btnOverzicht.Text = "&Overzicht";
             this.btnOverzicht.UseVisualStyleBackColor = true;
             this.btnOverzicht.Click += new System.EventHandler(this.btnOverzicht_Click);
             // 
@@ -71,18 +74,17 @@ namespace MijnProject
             this.btnBestelling.Location = new System.Drawing.Point(512, 201);
             this.btnBestelling.Name = "btnBestelling";
             this.btnBestelling.Size = new System.Drawing.Size(310, 326);
-            this.btnBestelling.TabIndex = 2;
-            this.btnBestelling.Text = "Bestellingen ";
+            this.btnBestelling.TabIndex = 1;
+            this.btnBestelling.Text = "&Bestellingen ";
             this.btnBestelling.UseVisualStyleBackColor = true;
             this.btnBestelling.Click += new System.EventHandler(this.btnBestelling_Click);
             // 
             // lblUser
             // 
-            this.lblUser.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.DarkGreen;
-            this.lblUser.Location = new System.Drawing.Point(172, 121);
+            this.lblUser.Location = new System.Drawing.Point(370, 119);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(83, 40);
             this.lblUser.TabIndex = 3;
@@ -90,9 +92,8 @@ namespace MijnProject
             // 
             // llblLogOut
             // 
-            this.llblLogOut.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.llblLogOut.AutoSize = true;
-            this.llblLogOut.Location = new System.Drawing.Point(176, 161);
+            this.llblLogOut.Location = new System.Drawing.Point(374, 159);
             this.llblLogOut.Name = "llblLogOut";
             this.llblLogOut.Size = new System.Drawing.Size(56, 17);
             this.llblLogOut.TabIndex = 4;
@@ -108,16 +109,38 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(1160, 683);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 115;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MijnProject.Properties.Resources.download;
+            this.pictureBox1.Location = new System.Drawing.Point(179, 34);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(177, 161);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 116;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(369, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(181, 47);
+            this.label1.TabIndex = 117;
+            this.label1.Text = "IT bedrijf";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1300, 744);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.llblLogOut);
             this.Controls.Add(this.lblUser);
@@ -128,6 +151,7 @@ namespace MijnProject
             this.Text = "Main";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Main_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -141,5 +165,7 @@ namespace MijnProject
         private System.Windows.Forms.Label lblUser;
         private System.Windows.Forms.LinkLabel llblLogOut;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

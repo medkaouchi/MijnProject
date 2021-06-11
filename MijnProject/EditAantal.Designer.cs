@@ -50,7 +50,7 @@ namespace MijnProject
             this.nudAantal.Location = new System.Drawing.Point(137, 38);
             this.nudAantal.Name = "nudAantal";
             this.nudAantal.Size = new System.Drawing.Size(120, 22);
-            this.nudAantal.TabIndex = 1;
+            this.nudAantal.TabIndex = 0;
             // 
             // btnOpslaan
             // 
@@ -58,7 +58,7 @@ namespace MijnProject
             this.btnOpslaan.Location = new System.Drawing.Point(53, 80);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(131, 35);
-            this.btnOpslaan.TabIndex = 2;
+            this.btnOpslaan.TabIndex = 1;
             this.btnOpslaan.Text = "Opslaan";
             this.btnOpslaan.UseVisualStyleBackColor = true;
             this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
@@ -68,7 +68,7 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(267, 78);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 115;
+            this.button1.TabIndex = 2;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

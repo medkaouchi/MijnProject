@@ -23,6 +23,7 @@ namespace MijnProject
         }
         private void btnLogIn_Click(object sender, EventArgs e)
         {
+            user = null;
             using (var ctx=new ProjectContext())
             {
                 string t = null;

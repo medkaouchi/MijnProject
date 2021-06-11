@@ -82,7 +82,7 @@ namespace MijnProject
             this.rtbComentaar.Location = new System.Drawing.Point(539, 533);
             this.rtbComentaar.Name = "rtbComentaar";
             this.rtbComentaar.Size = new System.Drawing.Size(278, 79);
-            this.rtbComentaar.TabIndex = 96;
+            this.rtbComentaar.TabIndex = 10;
             this.rtbComentaar.Text = "";
             // 
             // txtBTW
@@ -91,7 +91,7 @@ namespace MijnProject
             this.txtBTW.Location = new System.Drawing.Point(538, 493);
             this.txtBTW.Name = "txtBTW";
             this.txtBTW.Size = new System.Drawing.Size(278, 22);
-            this.txtBTW.TabIndex = 95;
+            this.txtBTW.TabIndex = 9;
             // 
             // label10
             // 
@@ -110,7 +110,7 @@ namespace MijnProject
             this.cbBedrijf.Location = new System.Drawing.Point(542, 457);
             this.cbBedrijf.Name = "cbBedrijf";
             this.cbBedrijf.Size = new System.Drawing.Size(111, 21);
-            this.cbBedrijf.TabIndex = 93;
+            this.cbBedrijf.TabIndex = 8;
             this.cbBedrijf.Text = "Is een bedrijf";
             this.cbBedrijf.UseVisualStyleBackColor = true;
             // 
@@ -120,7 +120,7 @@ namespace MijnProject
             this.txtTel2.Location = new System.Drawing.Point(539, 192);
             this.txtTel2.Name = "txtTel2";
             this.txtTel2.Size = new System.Drawing.Size(278, 22);
-            this.txtTel2.TabIndex = 88;
+            this.txtTel2.TabIndex = 4;
             // 
             // label11
             // 
@@ -139,7 +139,7 @@ namespace MijnProject
             this.cmbAdress.Location = new System.Drawing.Point(539, 268);
             this.cmbAdress.Name = "cmbAdress";
             this.cmbAdress.Size = new System.Drawing.Size(279, 24);
-            this.cmbAdress.TabIndex = 86;
+            this.cmbAdress.TabIndex = 6;
             this.cmbAdress.TextUpdate += new System.EventHandler(this.cmbAdress_TextUpdate);
             this.cmbAdress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbAdress_KeyPress);
             // 
@@ -150,7 +150,7 @@ namespace MijnProject
             this.llblAddAdress.Location = new System.Drawing.Point(539, 294);
             this.llblAddAdress.Name = "llblAddAdress";
             this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
-            this.llblAddAdress.TabIndex = 85;
+            this.llblAddAdress.TabIndex = 7;
             this.llblAddAdress.TabStop = true;
             this.llblAddAdress.Text = "Nieuw adress";
             this.llblAddAdress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddAdress_LinkClicked);
@@ -282,7 +282,7 @@ namespace MijnProject
             this.txtEmail.Location = new System.Drawing.Point(539, 231);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(278, 22);
-            this.txtEmail.TabIndex = 82;
+            this.txtEmail.TabIndex = 5;
             // 
             // label4
             // 
@@ -300,7 +300,7 @@ namespace MijnProject
             this.txtTel1.Location = new System.Drawing.Point(539, 153);
             this.txtTel1.Name = "txtTel1";
             this.txtTel1.Size = new System.Drawing.Size(278, 22);
-            this.txtTel1.TabIndex = 80;
+            this.txtTel1.TabIndex = 3;
             // 
             // label5
             // 
@@ -328,7 +328,7 @@ namespace MijnProject
             this.dtpGD.Location = new System.Drawing.Point(539, 114);
             this.dtpGD.Name = "dtpGD";
             this.dtpGD.Size = new System.Drawing.Size(279, 22);
-            this.dtpGD.TabIndex = 77;
+            this.dtpGD.TabIndex = 2;
             // 
             // txtAnaam
             // 
@@ -336,7 +336,7 @@ namespace MijnProject
             this.txtAnaam.Location = new System.Drawing.Point(539, 75);
             this.txtAnaam.Name = "txtAnaam";
             this.txtAnaam.Size = new System.Drawing.Size(278, 22);
-            this.txtAnaam.TabIndex = 76;
+            this.txtAnaam.TabIndex = 1;
             // 
             // label2
             // 
@@ -354,7 +354,7 @@ namespace MijnProject
             this.txtVnaam.Location = new System.Drawing.Point(539, 36);
             this.txtVnaam.Name = "txtVnaam";
             this.txtVnaam.Size = new System.Drawing.Size(278, 22);
-            this.txtVnaam.TabIndex = 74;
+            this.txtVnaam.TabIndex = 0;
             // 
             // btnOpslaan
             // 
@@ -362,7 +362,7 @@ namespace MijnProject
             this.btnOpslaan.Location = new System.Drawing.Point(497, 653);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(238, 40);
-            this.btnOpslaan.TabIndex = 73;
+            this.btnOpslaan.TabIndex = 11;
             this.btnOpslaan.Text = "Opslaan";
             this.btnOpslaan.UseVisualStyleBackColor = true;
             this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
@@ -383,7 +383,7 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(1081, 710);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 115;
+            this.button1.TabIndex = 12;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

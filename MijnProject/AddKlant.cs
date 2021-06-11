@@ -18,10 +18,10 @@ namespace MijnProject
         public AddKlant()
         {
             InitializeComponent();
-            Global.ModifyForm(this);
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
+            Global.ModifyForm(this);
         }
 
         private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -119,28 +119,21 @@ namespace MijnProject
                         ctx.SaveChanges();
                         Databeheer.Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
                     AddOrder.Klanten = ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
+                    EditOrder.Klanten= ctx.Klanten.Include("Adress").Include("IngevoegdDoor").ToList();
                 }
-                AddOrder.cmb_Klanten.DataSource = null;
-                AddOrder.cmb_Klanten.DataSource = AddOrder.Klanten;
+                if (AddOrder.cmb_Klanten != null)
+                {
+                    AddOrder.cmb_Klanten.DataSource = null;
+                    AddOrder.cmb_Klanten.DataSource = AddOrder.Klanten;
+                }
+                if (EditOrder.cmb_Klanten != null)
+                {
+                    EditOrder.cmb_Klanten.DataSource = EditOrder.Klanten;
+                    EditOrder.cmb_Klanten.Text = klt.ToString();
+                }
+                if(Databeheer.dgv_klanten!=null)
                     Databeheer.loaddgvklants();
-                    //txtVnaam.Text = "";
-                    //txtAnaam.Text = "";
-                    //dtpGD.Value = DateTime.Now;
-                    //txtTel1.Text = "";
-                    //txtTel2.Text = "";
-                    //txtEmail.Text = "";
-                    //txtStraat.Text = "";
-                    //txtHuisNr.Text = "";
-                    //txttGem.Text = "";
-                    //txtPC.Text = "";
-                    //txtLand.Text = "";
-                    //cbBedrijf.Checked = false;
-                    //txtBTW.Text = "";
-                    //rtbComentaar.Text = "";
-                    //cmbAdress.SelectedIndex = 0;
-                    //pnlAdress.Visible = false;
-                    //cmbAdress.Enabled = true;
-                    //newAd = false;
+                    
                     this.DialogResult = DialogResult.OK;
                 }
                 else

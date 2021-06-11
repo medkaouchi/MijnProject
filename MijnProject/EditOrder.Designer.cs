@@ -74,7 +74,7 @@ namespace MijnProject
             this.btnOpslaan.Location = new System.Drawing.Point(696, 853);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(151, 51);
-            this.btnOpslaan.TabIndex = 116;
+            this.btnOpslaan.TabIndex = 8;
             this.btnOpslaan.Text = "Opslaan";
             this.btnOpslaan.UseVisualStyleBackColor = true;
             this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
@@ -86,9 +86,10 @@ namespace MijnProject
             this.llblNewKlant.Location = new System.Drawing.Point(657, 167);
             this.llblNewKlant.Name = "llblNewKlant";
             this.llblNewKlant.Size = new System.Drawing.Size(82, 17);
-            this.llblNewKlant.TabIndex = 115;
+            this.llblNewKlant.TabIndex = 1;
             this.llblNewKlant.TabStop = true;
             this.llblNewKlant.Text = "Nieuw Klant";
+            this.llblNewKlant.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewKlant_LinkClicked_1);
             // 
             // cmbProducten
             // 
@@ -97,7 +98,7 @@ namespace MijnProject
             this.cmbProducten.Location = new System.Drawing.Point(1090, 343);
             this.cmbProducten.Name = "cmbProducten";
             this.cmbProducten.Size = new System.Drawing.Size(167, 24);
-            this.cmbProducten.TabIndex = 114;
+            this.cmbProducten.TabIndex = 5;
             this.cmbProducten.SelectedIndexChanged += new System.EventHandler(this.cmbProducten_SelectedIndexChanged);
             // 
             // label7
@@ -116,7 +117,7 @@ namespace MijnProject
             this.txtPrNummer.Location = new System.Drawing.Point(824, 347);
             this.txtPrNummer.Name = "txtPrNummer";
             this.txtPrNummer.Size = new System.Drawing.Size(132, 22);
-            this.txtPrNummer.TabIndex = 112;
+            this.txtPrNummer.TabIndex = 4;
             this.txtPrNummer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrNummer_KeyPress);
             // 
             // label6
@@ -135,7 +136,7 @@ namespace MijnProject
             this.txtBarcode.Location = new System.Drawing.Point(457, 348);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(195, 22);
-            this.txtBarcode.TabIndex = 109;
+            this.txtBarcode.TabIndex = 3;
             this.txtBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarcode_KeyPress);
             // 
             // label5
@@ -155,7 +156,7 @@ namespace MijnProject
             this.llblAddAdress.Location = new System.Drawing.Point(655, 224);
             this.llblAddAdress.Name = "llblAddAdress";
             this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
-            this.llblAddAdress.TabIndex = 106;
+            this.llblAddAdress.TabIndex = 2;
             this.llblAddAdress.TabStop = true;
             this.llblAddAdress.Text = "Nieuw adress";
             this.llblAddAdress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddAdress_LinkClicked);
@@ -298,7 +299,7 @@ namespace MijnProject
             this.cmbStatus.Location = new System.Drawing.Point(686, 749);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(270, 24);
-            this.cmbStatus.TabIndex = 102;
+            this.cmbStatus.TabIndex = 6;
             // 
             // label1
             // 
@@ -317,7 +318,7 @@ namespace MijnProject
             this.cmbKlanten.Location = new System.Drawing.Point(658, 140);
             this.cmbKlanten.Name = "cmbKlanten";
             this.cmbKlanten.Size = new System.Drawing.Size(270, 24);
-            this.cmbKlanten.TabIndex = 100;
+            this.cmbKlanten.TabIndex = 0;
             // 
             // dgvOrderProducten
             // 
@@ -361,7 +362,7 @@ namespace MijnProject
             this.cmbBezorgers.Location = new System.Drawing.Point(686, 793);
             this.cmbBezorgers.Name = "cmbBezorgers";
             this.cmbBezorgers.Size = new System.Drawing.Size(270, 24);
-            this.cmbBezorgers.TabIndex = 117;
+            this.cmbBezorgers.TabIndex = 7;
             // 
             // button1
             // 
@@ -369,7 +370,7 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(1464, 939);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 119;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

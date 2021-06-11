@@ -59,7 +59,7 @@ namespace MijnProject
             this.llblAddOrder.Size = new System.Drawing.Size(182, 17);
             this.llblAddOrder.TabIndex = 1;
             this.llblAddOrder.TabStop = true;
-            this.llblAddOrder.Text = "Nieuw Bestelling toevoegen";
+            this.llblAddOrder.Text = "&Nieuw Bestelling toevoegen";
             this.llblAddOrder.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddOrder_LinkClicked);
             // 
             // button1

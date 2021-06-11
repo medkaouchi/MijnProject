@@ -104,7 +104,7 @@ namespace MijnProject
             this.cmbStatus.Location = new System.Drawing.Point(351, 620);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(270, 24);
-            this.cmbStatus.TabIndex = 4;
+            this.cmbStatus.TabIndex = 6;
             // 
             // llblAddAdress
             // 
@@ -113,7 +113,7 @@ namespace MijnProject
             this.llblAddAdress.Location = new System.Drawing.Point(216, 109);
             this.llblAddAdress.Name = "llblAddAdress";
             this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
-            this.llblAddAdress.TabIndex = 89;
+            this.llblAddAdress.TabIndex = 2;
             this.llblAddAdress.TabStop = true;
             this.llblAddAdress.Text = "Nieuw adress";
             this.llblAddAdress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddAdress_LinkClicked);
@@ -265,7 +265,7 @@ namespace MijnProject
             this.txtBarcode.Location = new System.Drawing.Point(194, 228);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(195, 22);
-            this.txtBarcode.TabIndex = 92;
+            this.txtBarcode.TabIndex = 3;
             this.txtBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBarcode_KeyPress);
             // 
             // dgvOrderProducten
@@ -289,7 +289,7 @@ namespace MijnProject
             this.txtPrNummer.Location = new System.Drawing.Point(523, 228);
             this.txtPrNummer.Name = "txtPrNummer";
             this.txtPrNummer.Size = new System.Drawing.Size(132, 22);
-            this.txtPrNummer.TabIndex = 95;
+            this.txtPrNummer.TabIndex = 4;
             this.txtPrNummer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrNummer_KeyPress);
             // 
             // label6
@@ -319,7 +319,7 @@ namespace MijnProject
             this.cmbProducten.Location = new System.Drawing.Point(750, 228);
             this.cmbProducten.Name = "cmbProducten";
             this.cmbProducten.Size = new System.Drawing.Size(167, 24);
-            this.cmbProducten.TabIndex = 97;
+            this.cmbProducten.TabIndex = 5;
             this.cmbProducten.SelectedIndexChanged += new System.EventHandler(this.cmbProducten_SelectedIndexChanged);
             // 
             // llblNewKlant
@@ -329,7 +329,7 @@ namespace MijnProject
             this.llblNewKlant.Location = new System.Drawing.Point(218, 52);
             this.llblNewKlant.Name = "llblNewKlant";
             this.llblNewKlant.Size = new System.Drawing.Size(82, 17);
-            this.llblNewKlant.TabIndex = 98;
+            this.llblNewKlant.TabIndex = 1;
             this.llblNewKlant.TabStop = true;
             this.llblNewKlant.Text = "Nieuw Klant";
             this.llblNewKlant.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewKlant_LinkClicked);
@@ -340,7 +340,7 @@ namespace MijnProject
             this.btnAddOrder.Location = new System.Drawing.Point(547, 717);
             this.btnAddOrder.Name = "btnAddOrder";
             this.btnAddOrder.Size = new System.Drawing.Size(151, 51);
-            this.btnAddOrder.TabIndex = 99;
+            this.btnAddOrder.TabIndex = 8;
             this.btnAddOrder.Text = "Toevoegen";
             this.btnAddOrder.UseVisualStyleBackColor = true;
             this.btnAddOrder.Click += new System.EventHandler(this.btnAddOrder_Click);
@@ -362,7 +362,7 @@ namespace MijnProject
             this.cmbBezorgers.Location = new System.Drawing.Point(351, 663);
             this.cmbBezorgers.Name = "cmbBezorgers";
             this.cmbBezorgers.Size = new System.Drawing.Size(270, 24);
-            this.cmbBezorgers.TabIndex = 100;
+            this.cmbBezorgers.TabIndex = 7;
             // 
             // button1
             // 
@@ -370,7 +370,7 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(862, 740);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 115;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

@@ -16,7 +16,7 @@ namespace MijnProject
         {
             InitializeComponent();
             Global.ModifyForm(this);
-            lblUser.Text ="Welkom "+ Program.user.Voornaam + " " + Program.user.Achternaam;
+            lblUser.Text = Program.user.Voornaam + " " + Program.user.Achternaam;
             if (Login.user.Role != RoleUser.Admin)
             {
                 if(Login.user.Role != RoleUser.Verkoper)

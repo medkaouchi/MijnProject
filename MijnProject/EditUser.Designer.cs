@@ -69,7 +69,7 @@ namespace MijnProject
             this.cmbAdress.Location = new System.Drawing.Point(542, 250);
             this.cmbAdress.Name = "cmbAdress";
             this.cmbAdress.Size = new System.Drawing.Size(271, 24);
-            this.cmbAdress.TabIndex = 60;
+            this.cmbAdress.TabIndex = 5;
             this.cmbAdress.TextUpdate += new System.EventHandler(this.cmbAdress_TextUpdate);
             this.cmbAdress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbAdress_KeyPress);
             // 
@@ -80,7 +80,7 @@ namespace MijnProject
             this.llblAddAdress.Location = new System.Drawing.Point(544, 276);
             this.llblAddAdress.Name = "llblAddAdress";
             this.llblAddAdress.Size = new System.Drawing.Size(93, 17);
-            this.llblAddAdress.TabIndex = 59;
+            this.llblAddAdress.TabIndex = 6;
             this.llblAddAdress.TabStop = true;
             this.llblAddAdress.Text = "Nieuw adress";
             this.llblAddAdress.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblAddAdress_LinkClicked);
@@ -233,7 +233,7 @@ namespace MijnProject
             this.cmbRoles.Location = new System.Drawing.Point(543, 461);
             this.cmbRoles.Name = "cmbRoles";
             this.cmbRoles.Size = new System.Drawing.Size(270, 24);
-            this.cmbRoles.TabIndex = 53;
+            this.cmbRoles.TabIndex = 7;
             // 
             // txtEmail
             // 
@@ -241,7 +241,7 @@ namespace MijnProject
             this.txtEmail.Location = new System.Drawing.Point(542, 213);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(270, 22);
-            this.txtEmail.TabIndex = 46;
+            this.txtEmail.TabIndex = 4;
             // 
             // label4
             // 
@@ -259,7 +259,7 @@ namespace MijnProject
             this.txtTel.Location = new System.Drawing.Point(542, 174);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(270, 22);
-            this.txtTel.TabIndex = 44;
+            this.txtTel.TabIndex = 3;
             // 
             // label5
             // 
@@ -287,7 +287,7 @@ namespace MijnProject
             this.dtpGD.Location = new System.Drawing.Point(542, 135);
             this.dtpGD.Name = "dtpGD";
             this.dtpGD.Size = new System.Drawing.Size(271, 22);
-            this.dtpGD.TabIndex = 41;
+            this.dtpGD.TabIndex = 2;
             // 
             // txtAnaam
             // 
@@ -295,7 +295,7 @@ namespace MijnProject
             this.txtAnaam.Location = new System.Drawing.Point(542, 96);
             this.txtAnaam.Name = "txtAnaam";
             this.txtAnaam.Size = new System.Drawing.Size(270, 22);
-            this.txtAnaam.TabIndex = 40;
+            this.txtAnaam.TabIndex = 1;
             // 
             // label2
             // 
@@ -313,7 +313,7 @@ namespace MijnProject
             this.txtVnaam.Location = new System.Drawing.Point(542, 57);
             this.txtVnaam.Name = "txtVnaam";
             this.txtVnaam.Size = new System.Drawing.Size(270, 22);
-            this.txtVnaam.TabIndex = 38;
+            this.txtVnaam.TabIndex = 0;
             // 
             // button1
             // 
@@ -321,7 +321,7 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(534, 559);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 40);
-            this.button1.TabIndex = 37;
+            this.button1.TabIndex = 8;
             this.button1.Text = "Opslaan";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -342,7 +342,7 @@ namespace MijnProject
             this.button2.Location = new System.Drawing.Point(1056, 709);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(118, 37);
-            this.button2.TabIndex = 115;
+            this.button2.TabIndex = 9;
             this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);

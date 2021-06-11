@@ -72,7 +72,7 @@ namespace MijnProject
             this.txtNaam.Location = new System.Drawing.Point(549, 63);
             this.txtNaam.Name = "txtNaam";
             this.txtNaam.Size = new System.Drawing.Size(271, 22);
-            this.txtNaam.TabIndex = 1;
+            this.txtNaam.TabIndex = 0;
             // 
             // txtUnitprice
             // 
@@ -80,7 +80,7 @@ namespace MijnProject
             this.txtUnitprice.Location = new System.Drawing.Point(549, 101);
             this.txtUnitprice.Name = "txtUnitprice";
             this.txtUnitprice.Size = new System.Drawing.Size(271, 22);
-            this.txtUnitprice.TabIndex = 3;
+            this.txtUnitprice.TabIndex = 1;
             // 
             // label2
             // 
@@ -98,7 +98,7 @@ namespace MijnProject
             this.txtUnitsOnStock.Location = new System.Drawing.Point(549, 138);
             this.txtUnitsOnStock.Name = "txtUnitsOnStock";
             this.txtUnitsOnStock.Size = new System.Drawing.Size(271, 22);
-            this.txtUnitsOnStock.TabIndex = 5;
+            this.txtUnitsOnStock.TabIndex = 2;
             // 
             // label3
             // 
@@ -116,7 +116,7 @@ namespace MijnProject
             this.txtProductNummer.Location = new System.Drawing.Point(549, 178);
             this.txtProductNummer.Name = "txtProductNummer";
             this.txtProductNummer.Size = new System.Drawing.Size(271, 22);
-            this.txtProductNummer.TabIndex = 7;
+            this.txtProductNummer.TabIndex = 3;
             // 
             // label4
             // 
@@ -134,7 +134,7 @@ namespace MijnProject
             this.txtBarcode.Location = new System.Drawing.Point(549, 218);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(271, 22);
-            this.txtBarcode.TabIndex = 9;
+            this.txtBarcode.TabIndex = 4;
             // 
             // label5
             // 
@@ -152,7 +152,7 @@ namespace MijnProject
             this.txtGewicht.Location = new System.Drawing.Point(549, 258);
             this.txtGewicht.Name = "txtGewicht";
             this.txtGewicht.Size = new System.Drawing.Size(271, 22);
-            this.txtGewicht.TabIndex = 11;
+            this.txtGewicht.TabIndex = 5;
             // 
             // label6
             // 
@@ -170,7 +170,7 @@ namespace MijnProject
             this.txtBreedte.Location = new System.Drawing.Point(549, 296);
             this.txtBreedte.Name = "txtBreedte";
             this.txtBreedte.Size = new System.Drawing.Size(271, 22);
-            this.txtBreedte.TabIndex = 13;
+            this.txtBreedte.TabIndex = 6;
             // 
             // label7
             // 
@@ -188,7 +188,7 @@ namespace MijnProject
             this.txtLengte.Location = new System.Drawing.Point(549, 334);
             this.txtLengte.Name = "txtLengte";
             this.txtLengte.Size = new System.Drawing.Size(271, 22);
-            this.txtLengte.TabIndex = 15;
+            this.txtLengte.TabIndex = 7;
             // 
             // label8
             // 
@@ -206,7 +206,7 @@ namespace MijnProject
             this.txtHoogte.Location = new System.Drawing.Point(549, 374);
             this.txtHoogte.Name = "txtHoogte";
             this.txtHoogte.Size = new System.Drawing.Size(271, 22);
-            this.txtHoogte.TabIndex = 17;
+            this.txtHoogte.TabIndex = 8;
             // 
             // label9
             // 
@@ -235,7 +235,7 @@ namespace MijnProject
             this.cmbLeverancier.Location = new System.Drawing.Point(549, 415);
             this.cmbLeverancier.Name = "cmbLeverancier";
             this.cmbLeverancier.Size = new System.Drawing.Size(271, 24);
-            this.cmbLeverancier.TabIndex = 22;
+            this.cmbLeverancier.TabIndex = 9;
             // 
             // label13
             // 
@@ -253,7 +253,7 @@ namespace MijnProject
             this.rtbOmschrijving.Location = new System.Drawing.Point(549, 480);
             this.rtbOmschrijving.Name = "rtbOmschrijving";
             this.rtbOmschrijving.Size = new System.Drawing.Size(271, 106);
-            this.rtbOmschrijving.TabIndex = 25;
+            this.rtbOmschrijving.TabIndex = 11;
             this.rtbOmschrijving.Text = "";
             // 
             // btnOpslaan
@@ -262,7 +262,7 @@ namespace MijnProject
             this.btnOpslaan.Location = new System.Drawing.Point(493, 631);
             this.btnOpslaan.Name = "btnOpslaan";
             this.btnOpslaan.Size = new System.Drawing.Size(217, 43);
-            this.btnOpslaan.TabIndex = 26;
+            this.btnOpslaan.TabIndex = 12;
             this.btnOpslaan.Text = "Opslaan";
             this.btnOpslaan.UseVisualStyleBackColor = true;
             this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
@@ -274,7 +274,7 @@ namespace MijnProject
             this.llblNewLeverancier.Location = new System.Drawing.Point(546, 442);
             this.llblNewLeverancier.Name = "llblNewLeverancier";
             this.llblNewLeverancier.Size = new System.Drawing.Size(147, 17);
-            this.llblNewLeverancier.TabIndex = 28;
+            this.llblNewLeverancier.TabIndex = 10;
             this.llblNewLeverancier.TabStop = true;
             this.llblNewLeverancier.Text = "Add nieuw leverencier";
             this.llblNewLeverancier.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewLeverancier_LinkClicked);
@@ -285,7 +285,7 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(1075, 705);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 115;
+            this.button1.TabIndex = 13;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);

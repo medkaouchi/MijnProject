@@ -20,7 +20,6 @@ namespace MijnProject
         public AddProduct()
         {
             InitializeComponent();
-            Global.ModifyForm(this);
             using (var ctx = new ProjectContext())
             {
                 Leveranciers = ctx.Levranciers.ToList();
@@ -28,6 +27,7 @@ namespace MijnProject
             cmbLeverancier.DataSource = Leveranciers;
             cmb_Leveranciere = cmbLeverancier;
             cmbLeverancier.SelectedIndex = -1;
+            Global.ModifyForm(this);
         }
         private void btnOpslaan_Click(object sender, EventArgs e)
         {

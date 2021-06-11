@@ -26,7 +26,6 @@ namespace MijnProject
         public AddOrder()
         {
             InitializeComponent();
-            Global.ModifyForm(this);
             using (var ctx=new ProjectContext())
             {
                 Klanten = ctx.Klanten.Include("adress").ToList();
@@ -42,6 +41,7 @@ namespace MijnProject
             cmbProducten.DataSource = Producten;
             cmbProducten.SelectedIndexChanged += new System.EventHandler(cmbProducten_SelectedIndexChanged);
             cmbStatus.DataSource = Enum.GetValues(typeof(OrderStatus));
+            Global.ModifyForm(this);
             if(dgvOrderProducten.Height<250)
             dgvOrderProducten.Height = dgvOrderProducten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgvOrderProducten.ColumnHeadersHeight + 2;
         }
@@ -200,7 +200,7 @@ namespace MijnProject
                             ctx.OrderDetails.Add(orddt);
                             ctx.SaveChanges();
                     }
-                    Bestellingen.OrderLines = ctx.Orders.Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new OrderLine() { orderid = o.OrderId, klant = o.klant, user = o.user, orderdate = o.OrderDatum, status = o.status, bezorgddoor = o.BezorgdDoor, adress = o.BezorgdAdress, orderdetailid = od.ID, product = od.product, aantal = od.Aantal }).ToList();
+                    Bestellingen.OrderLines = ctx.Orders.Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new OrderLine() { orderid = o.OrderId, klant = o.klant, user = o.user, orderdate = o.OrderDatum, status = o.status, bezorgddoor = o.BezorgdDoor, adress = o.BezorgdAdress, orderdetailid = od.ID, product = od.product, aantal = od.Aantal }).OrderByDescending(o => o.orderdate).ToList();
                     Bestellingen.loaddgvOrders();
                     DialogResult dr = MessageBox.Show("FActuur afdrukken?", "", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
@@ -287,37 +287,26 @@ namespace MijnProject
             string ordID = "Order id : " + Bestellingen.orderline.orderid.ToString();
             string klant = "Klant : " + cmbKlanten.SelectedItem.ToString();
             string date = "Datum : " + DateTime.UtcNow.ToString();
-            //Pen
             Pen p = new Pen(Color.Black, 1);
-            //Font text
             Font f = new Font("Arial", 16, FontStyle.Bold);
             Font f1 = new Font("Arial", 14, FontStyle.Bold);
             Font f2 = new Font("Arial", 12, FontStyle.Bold);
-            //Size of text
             SizeF strSizeInvNum = e.Graphics.MeasureString(ordID, f);
             SizeF strSizeDate = e.Graphics.MeasureString(date, f);
             SizeF strSizeName = e.Graphics.MeasureString(klant, f);
-            //Draw Image 
             e.Graphics.DrawImage(Image.FromFile(Environment.CurrentDirectory.Substring(0, Environment.CurrentDirectory.Length - 9) + "Resources\\download.jpg"), x, y, imgWidth, imgHeight);
-            //Draw Invoice Number
             e.Graphics.DrawString(ordID, f, Brushes.DarkBlue, imgWidth + x, y);
-            //Draw Invoice Date
             e.Graphics.DrawString(date, f, Brushes.DarkBlue, imgWidth + x, y + imgHeight / 2);
-            //Draw Invoice Name
             e.Graphics.DrawString(klant, f, Brushes.DarkBlue, imgWidth + x, y + strSizeInvNum.Height + strSizeDate.Height * 4);
-            //Draw Rectangle
             float preHeight = strSizeInvNum.Height + strSizeDate.Height + strSizeName.Height + imgHeight + y;
             e.Graphics.DrawRectangle(p, x, imgHeight + y * 2, e.PageBounds.Width - x * 2, e.PageBounds.Height - preHeight);
-            //Column Height
             float colHeight = 60;
-            //Column Width
             float col1Width = 180;
             float col2Width = 200 + col1Width;
             float col3Width = 75 + col2Width;
             float col4Width = 80 + col3Width;
             float col5Width = 60 + col4Width;
             float col6Width = 80 + col5Width;
-            //Draw Line
             e.Graphics.DrawLine(p, x, preHeight, e.PageBounds.Width - x, preHeight);
 
             e.Graphics.DrawString("Product", f, Brushes.DarkBlue, x * 2, preHeight - colHeight);

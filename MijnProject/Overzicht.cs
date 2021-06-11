@@ -18,6 +18,7 @@ namespace MijnProject
             Global.ModifyForm(this);
             Main.ActiveForm.Close();
             nudTop.Value = 10;
+            crtTopverkocht.ChartAreas["ChartArea1"].AxisX.Interval = 1;
         }
 
         private void cmbOverzicht_SelectedIndexChanged(object sender, EventArgs e)
@@ -36,6 +37,7 @@ namespace MijnProject
             DateTime date2 = dtpEind.Value;
             using (var ctx = new ProjectContext())
             {
+                crtTopverkocht.Visible = true;
                 switch (cmbOverzicht.SelectedIndex)
                 {
                     case 0:

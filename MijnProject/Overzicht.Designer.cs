@@ -29,9 +29,9 @@ namespace MijnProject
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpBegin = new System.Windows.Forms.DateTimePicker();
             this.dtpEind = new System.Windows.Forms.DateTimePicker();
@@ -65,7 +65,7 @@ namespace MijnProject
             this.dtpBegin.Location = new System.Drawing.Point(477, 93);
             this.dtpBegin.Name = "dtpBegin";
             this.dtpBegin.Size = new System.Drawing.Size(232, 22);
-            this.dtpBegin.TabIndex = 1;
+            this.dtpBegin.TabIndex = 2;
             // 
             // dtpEind
             // 
@@ -105,7 +105,7 @@ namespace MijnProject
             this.cmbOverzicht.Location = new System.Drawing.Point(477, 53);
             this.cmbOverzicht.Name = "cmbOverzicht";
             this.cmbOverzicht.Size = new System.Drawing.Size(232, 24);
-            this.cmbOverzicht.TabIndex = 4;
+            this.cmbOverzicht.TabIndex = 0;
             this.cmbOverzicht.SelectedIndexChanged += new System.EventHandler(this.cmbOverzicht_SelectedIndexChanged);
             // 
             // label3
@@ -128,46 +128,47 @@ namespace MijnProject
             this.crtTopverkocht.BorderlineWidth = 0;
             this.crtTopverkocht.BorderSkin.BackColor = System.Drawing.Color.White;
             this.crtTopverkocht.BorderSkin.BorderColor = System.Drawing.Color.Transparent;
-            chartArea5.Area3DStyle.Enable3D = true;
-            chartArea5.Area3DStyle.Inclination = 10;
-            chartArea5.Area3DStyle.PointDepth = 80;
-            chartArea5.Area3DStyle.PointGapDepth = 50;
-            chartArea5.Area3DStyle.Rotation = 10;
-            chartArea5.Area3DStyle.WallWidth = 1;
-            chartArea5.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DarkBlue;
-            chartArea5.AxisX.MajorGrid.Enabled = false;
-            chartArea5.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.DarkBlue;
-            chartArea5.AxisX.ScaleBreakStyle.Spacing = 0.5D;
-            chartArea5.AxisX.TitleFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea5.AxisX.TitleForeColor = System.Drawing.Color.DarkBlue;
-            chartArea5.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DarkBlue;
-            chartArea5.AxisY.MajorGrid.Enabled = false;
-            chartArea5.BackColor = System.Drawing.Color.White;
-            chartArea5.BackSecondaryColor = System.Drawing.Color.White;
-            chartArea5.BorderColor = System.Drawing.Color.Transparent;
-            chartArea5.BorderWidth = 0;
-            chartArea5.Name = "ChartArea1";
-            chartArea5.ShadowColor = System.Drawing.Color.Transparent;
-            this.crtTopverkocht.ChartAreas.Add(chartArea5);
-            legend5.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            legend5.BorderWidth = 0;
-            legend5.DockedToChartArea = "ChartArea1";
-            legend5.ForeColor = System.Drawing.Color.DarkBlue;
-            legend5.Name = "Legend1";
-            legend5.ShadowColor = System.Drawing.Color.Transparent;
-            legend5.TitleFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            legend5.TitleForeColor = System.Drawing.Color.DarkBlue;
-            this.crtTopverkocht.Legends.Add(legend5);
+            chartArea1.Area3DStyle.Enable3D = true;
+            chartArea1.Area3DStyle.Inclination = 10;
+            chartArea1.Area3DStyle.PointDepth = 80;
+            chartArea1.Area3DStyle.PointGapDepth = 50;
+            chartArea1.Area3DStyle.Rotation = 10;
+            chartArea1.Area3DStyle.WallWidth = 1;
+            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DarkBlue;
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.DarkBlue;
+            chartArea1.AxisX.ScaleBreakStyle.Spacing = 0.5D;
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.DarkBlue;
+            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DarkBlue;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.BackColor = System.Drawing.Color.White;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.White;
+            chartArea1.BorderColor = System.Drawing.Color.Transparent;
+            chartArea1.BorderWidth = 0;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.Transparent;
+            this.crtTopverkocht.ChartAreas.Add(chartArea1);
+            legend1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            legend1.BorderWidth = 0;
+            legend1.DockedToChartArea = "ChartArea1";
+            legend1.ForeColor = System.Drawing.Color.DarkBlue;
+            legend1.Name = "Legend1";
+            legend1.ShadowColor = System.Drawing.Color.Transparent;
+            legend1.TitleFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            legend1.TitleForeColor = System.Drawing.Color.DarkBlue;
+            this.crtTopverkocht.Legends.Add(legend1);
             this.crtTopverkocht.Location = new System.Drawing.Point(15, 213);
             this.crtTopverkocht.Name = "crtTopverkocht";
             this.crtTopverkocht.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "product";
-            this.crtTopverkocht.Series.Add(series5);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "product";
+            this.crtTopverkocht.Series.Add(series1);
             this.crtTopverkocht.Size = new System.Drawing.Size(1227, 497);
             this.crtTopverkocht.TabIndex = 6;
             this.crtTopverkocht.Text = "chart1";
+            this.crtTopverkocht.Visible = false;
             // 
             // btnToon
             // 
@@ -175,7 +176,7 @@ namespace MijnProject
             this.btnToon.Location = new System.Drawing.Point(477, 168);
             this.btnToon.Name = "btnToon";
             this.btnToon.Size = new System.Drawing.Size(232, 39);
-            this.btnToon.TabIndex = 7;
+            this.btnToon.TabIndex = 4;
             this.btnToon.Text = "Toon";
             this.btnToon.UseVisualStyleBackColor = true;
             this.btnToon.Click += new System.EventHandler(this.btnToon_Click);
@@ -186,7 +187,7 @@ namespace MijnProject
             this.button1.Location = new System.Drawing.Point(1124, 716);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
-            this.button1.TabIndex = 115;
+            this.button1.TabIndex = 5;
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -201,7 +202,7 @@ namespace MijnProject
             0});
             this.nudTop.Name = "nudTop";
             this.nudTop.Size = new System.Drawing.Size(92, 22);
-            this.nudTop.TabIndex = 116;
+            this.nudTop.TabIndex = 1;
             this.nudTop.Value = new decimal(new int[] {
             1,
             0,

@@ -20,10 +20,10 @@ namespace MijnProject
         public AddLeverancier()
         {
             InitializeComponent();
-            Global.ModifyForm(this);
             using (var ctx = new ProjectContext())
                 Adresses = ctx.Adressen.ToList();
             cmbAdress.DataSource = Adresses;
+            Global.ModifyForm(this);
         }
         
         private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

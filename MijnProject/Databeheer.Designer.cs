@@ -38,6 +38,7 @@ namespace MijnProject
             this.llblNewUser = new System.Windows.Forms.LinkLabel();
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.pnlProducten = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.llblNewProduct = new System.Windows.Forms.LinkLabel();
             this.btnupload = new System.Windows.Forms.Button();
             this.dgvProducten = new System.Windows.Forms.DataGridView();
@@ -48,7 +49,6 @@ namespace MijnProject
             this.llblNewKlant = new System.Windows.Forms.LinkLabel();
             this.dgvKlanten = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.pnlUsers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
@@ -70,7 +70,7 @@ namespace MijnProject
             this.bezorgersToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1494, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1494, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -78,31 +78,35 @@ namespace MijnProject
             // 
             this.userToolStripMenuItem.Enabled = false;
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.userToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
-            this.userToolStripMenuItem.Text = "Users";
+            this.userToolStripMenuItem.Text = "&Users";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // klantToolStripMenuItem
             // 
             this.klantToolStripMenuItem.Enabled = false;
             this.klantToolStripMenuItem.Name = "klantToolStripMenuItem";
+            this.klantToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
             this.klantToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
-            this.klantToolStripMenuItem.Text = "Klanten";
+            this.klantToolStripMenuItem.Text = "&Klanten";
             this.klantToolStripMenuItem.Click += new System.EventHandler(this.klantToolStripMenuItem_Click);
             // 
             // productToolStripMenuItem
             // 
             this.productToolStripMenuItem.Enabled = false;
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
+            this.productToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.productToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
-            this.productToolStripMenuItem.Text = "Producten";
+            this.productToolStripMenuItem.Text = "&Producten";
             this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // bezorgersToolStripMenuItem
             // 
             this.bezorgersToolStripMenuItem.Name = "bezorgersToolStripMenuItem";
+            this.bezorgersToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.bezorgersToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
-            this.bezorgersToolStripMenuItem.Text = "Bezorgers";
+            this.bezorgersToolStripMenuItem.Text = "&Bezorgers";
             this.bezorgersToolStripMenuItem.Click += new System.EventHandler(this.bezorgersToolStripMenuItem_Click);
             // 
             // pnlUsers
@@ -111,7 +115,7 @@ namespace MijnProject
             this.pnlUsers.Controls.Add(this.llblNewUser);
             this.pnlUsers.Controls.Add(this.dgvUsers);
             this.pnlUsers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlUsers.Location = new System.Drawing.Point(0, 28);
+            this.pnlUsers.Location = new System.Drawing.Point(0, 30);
             this.pnlUsers.Name = "pnlUsers";
             this.pnlUsers.Size = new System.Drawing.Size(1494, 600);
             this.pnlUsers.TabIndex = 1;
@@ -125,7 +129,7 @@ namespace MijnProject
             this.llblNewUser.Size = new System.Drawing.Size(151, 17);
             this.llblNewUser.TabIndex = 1;
             this.llblNewUser.TabStop = true;
-            this.llblNewUser.Text = "Nieuw User toevoegen";
+            this.llblNewUser.Text = "&Nieuw User toevoegen";
             this.llblNewUser.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewUser_LinkClicked);
             // 
             // dgvUsers
@@ -156,11 +160,22 @@ namespace MijnProject
             this.pnlProducten.Controls.Add(this.btnupload);
             this.pnlProducten.Controls.Add(this.dgvProducten);
             this.pnlProducten.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlProducten.Location = new System.Drawing.Point(0, 628);
+            this.pnlProducten.Location = new System.Drawing.Point(0, 630);
             this.pnlProducten.Name = "pnlProducten";
             this.pnlProducten.Size = new System.Drawing.Size(1494, 600);
             this.pnlProducten.TabIndex = 121;
             this.pnlProducten.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(889, 4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(260, 23);
+            this.button2.TabIndex = 118;
+            this.button2.Text = "Leverancier formulier downloaden ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // llblNewProduct
             // 
@@ -170,7 +185,7 @@ namespace MijnProject
             this.llblNewProduct.Size = new System.Drawing.Size(170, 17);
             this.llblNewProduct.TabIndex = 117;
             this.llblNewProduct.TabStop = true;
-            this.llblNewProduct.Text = "Nieuw Product toevoegen";
+            this.llblNewProduct.Text = "&Nieuw Product toevoegen";
             this.llblNewProduct.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewProduct_LinkClicked);
             // 
             // btnupload
@@ -205,7 +220,7 @@ namespace MijnProject
             this.pnlBezorgers.Controls.Add(this.llblNewDeliverer);
             this.pnlBezorgers.Controls.Add(this.dgvDeliverer);
             this.pnlBezorgers.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlBezorgers.Location = new System.Drawing.Point(0, 1228);
+            this.pnlBezorgers.Location = new System.Drawing.Point(0, 1230);
             this.pnlBezorgers.Name = "pnlBezorgers";
             this.pnlBezorgers.Size = new System.Drawing.Size(1494, 600);
             this.pnlBezorgers.TabIndex = 124;
@@ -219,7 +234,7 @@ namespace MijnProject
             this.llblNewDeliverer.Size = new System.Drawing.Size(178, 17);
             this.llblNewDeliverer.TabIndex = 7;
             this.llblNewDeliverer.TabStop = true;
-            this.llblNewDeliverer.Text = "Nieuw bezorger toevoegen";
+            this.llblNewDeliverer.Text = "&Nieuw bezorger toevoegen";
             this.llblNewDeliverer.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewDeliverer_LinkClicked);
             // 
             // dgvDeliverer
@@ -243,7 +258,7 @@ namespace MijnProject
             this.pnlKlanten.Controls.Add(this.llblNewKlant);
             this.pnlKlanten.Controls.Add(this.dgvKlanten);
             this.pnlKlanten.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlKlanten.Location = new System.Drawing.Point(0, 1828);
+            this.pnlKlanten.Location = new System.Drawing.Point(0, 1830);
             this.pnlKlanten.Name = "pnlKlanten";
             this.pnlKlanten.Size = new System.Drawing.Size(1494, 600);
             this.pnlKlanten.TabIndex = 125;
@@ -257,7 +272,7 @@ namespace MijnProject
             this.llblNewKlant.Size = new System.Drawing.Size(151, 17);
             this.llblNewKlant.TabIndex = 1;
             this.llblNewKlant.TabStop = true;
-            this.llblNewKlant.Text = "Nieuw klant toevoegen";
+            this.llblNewKlant.Text = "&Nieuw klant toevoegen";
             this.llblNewKlant.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llblNewKlant_LinkClicked);
             // 
             // dgvKlanten
@@ -285,17 +300,6 @@ namespace MijnProject
             this.button1.Text = "Exit";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(889, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(260, 23);
-            this.button2.TabIndex = 118;
-            this.button2.Text = "Leverancier formulier downloaden ";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // Databeheer
             // 
