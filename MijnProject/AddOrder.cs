@@ -55,6 +55,7 @@ namespace MijnProject
         private void cmbKlanten_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbKlanten.Items.Count > 0)
+                if(cmbKlanten.SelectedItem!=null)
                 lblKlantAdress.Text = ((Klant)(cmbKlanten.SelectedItem)).adress.ToString();
         }
 
@@ -77,13 +78,16 @@ namespace MijnProject
             ComboBox cmb = (ComboBox)sender;
             Product p = cmb.SelectedItem as Product;
             ProductOrdered po = new ProductOrdered();
-            po.ProductId = p.ProductId;
-            po.ProductNaam = p.ProductNaam;
-            po.levrancier = p.levrancier;
-            po.UnitPrice = p.UnitPrice;
-            po.Omschrijving = p.Omschrijving;
-            po.aantal = 1;
-            NewProductOrdered(po);
+            if (p != null)
+            {
+                po.ProductId = p.ProductId;
+                po.ProductNaam = p.ProductNaam;
+                po.levrancier = p.levrancier;
+                po.UnitPrice = p.UnitPrice;
+                po.Omschrijving = p.Omschrijving;
+                po.aantal = 1;
+                NewProductOrdered(po);
+            }
         }
 
         private void txtPrNummer_KeyPress(object sender, KeyPressEventArgs e)

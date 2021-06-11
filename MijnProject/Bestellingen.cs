@@ -99,7 +99,7 @@ namespace MijnProject
             {
                 if (dgv_Orders.Rows[i].Cells[0].Value.ToString() == dgv_Orders.Rows[i - 1].Cells[0].Value.ToString())
                 {
-                    dgv_Orders.Rows[i].Cells[0].Value=null ;
+                    dgv_Orders.Rows[i].Cells[10].Value=null ;
                 }
             }
                     

@@ -56,7 +56,7 @@ namespace MijnProject
             this.txtAnaam = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtVnaam = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnOpslaan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.pnlAdress.SuspendLayout();
@@ -220,7 +220,7 @@ namespace MijnProject
             // 
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(390, 464);
+            this.label10.Location = new System.Drawing.Point(389, 444);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 17);
             this.label10.TabIndex = 54;
@@ -230,7 +230,7 @@ namespace MijnProject
             // 
             this.cmbRoles.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(543, 461);
+            this.cmbRoles.Location = new System.Drawing.Point(542, 441);
             this.cmbRoles.Name = "cmbRoles";
             this.cmbRoles.Size = new System.Drawing.Size(270, 24);
             this.cmbRoles.TabIndex = 7;
@@ -315,16 +315,16 @@ namespace MijnProject
             this.txtVnaam.Size = new System.Drawing.Size(270, 22);
             this.txtVnaam.TabIndex = 0;
             // 
-            // button1
+            // btnOpslaan
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(534, 559);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 40);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Opslaan";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnOpslaan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnOpslaan.Location = new System.Drawing.Point(534, 612);
+            this.btnOpslaan.Name = "btnOpslaan";
+            this.btnOpslaan.Size = new System.Drawing.Size(195, 40);
+            this.btnOpslaan.TabIndex = 8;
+            this.btnOpslaan.Text = "Opslaan";
+            this.btnOpslaan.UseVisualStyleBackColor = true;
+            this.btnOpslaan.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -369,7 +369,7 @@ namespace MijnProject
             this.Controls.Add(this.txtAnaam);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtVnaam);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnOpslaan);
             this.Controls.Add(this.label1);
             this.Name = "EditUser";
             this.Text = "EditUser";
@@ -409,7 +409,7 @@ namespace MijnProject
         private System.Windows.Forms.TextBox txtAnaam;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtVnaam;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnOpslaan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
     }
