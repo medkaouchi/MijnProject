@@ -14,6 +14,7 @@ namespace MijnProject
     public partial class AddUser : Form
     {
         List<Adress> Adresses = new List<Adress>();
+        HachCode hc = new HachCode();
         bool newAd = false;
         public AddUser()
         {
@@ -84,7 +85,7 @@ namespace MijnProject
             else
                 s += "Usernaam ? ";
             if (re1.IsMatch(txtWachtwoord1.Text) && txtWachtwoord1.Text == txtWachtwoord2.Text)
-                us.Wachtwoord = txtWachtwoord1.Text.Aggregate("", (c, a) => c + (char)(a + 2));
+                us.Wachtwoord =hc.PassHash( txtWachtwoord1.Text);
             else
                 s += "Wachtwoord ? ";
             us.Role =(RoleUser) cmbRoles.SelectedItem;

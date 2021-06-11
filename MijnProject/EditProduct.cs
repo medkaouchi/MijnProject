@@ -40,7 +40,7 @@ namespace MijnProject
             txtBreedte.Text = Databeheer.product.Breedte.ToString();
             txtLengte.Text = Databeheer.product.Lengte.ToString();
             txtHoogte.Text = Databeheer.product.Hoogte.ToString();
-            cmbLeverancier.SelectedItem = Databeheer.product.levrancier;
+            cmbLeverancier.Text = Databeheer.product.levrancier.ToString();
             rtbOmschrijving.Text = Databeheer.product.Omschrijving;
             cmb_Leveranciere = cmbLeverancier;
         }

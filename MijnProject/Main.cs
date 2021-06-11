@@ -19,8 +19,14 @@ namespace MijnProject
             lblUser.Text ="Welkom "+ Program.user.Voornaam + " " + Program.user.Achternaam;
             if (Login.user.Role != RoleUser.Admin)
             {
-                btnBestelling.Enabled = false;
-                btnOverzicht.Enabled = false;
+                if(Login.user.Role != RoleUser.Verkoper)
+                { 
+                    btnBestelling.Enabled = false;
+                    btnOverzicht.Enabled = false;
+                }
+                else
+                    btnOverzicht.Enabled = false;
+
             }
         }
 

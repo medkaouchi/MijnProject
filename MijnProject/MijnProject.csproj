@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -49,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -105,6 +109,11 @@
       <DependentUpon>Bestellingen.cs</DependentUpon>
     </Compile>
     <Compile Include="Bezorger.cs" />
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+    </Compile>
     <Compile Include="Databeheer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +126,12 @@
     </Compile>
     <Compile Include="EditAantal.Designer.cs">
       <DependentUpon>EditAantal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditBezorger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBezorger.Designer.cs">
+      <DependentUpon>EditBezorger.cs</DependentUpon>
     </Compile>
     <Compile Include="EditKlant.cs">
       <SubType>Form</SubType>
@@ -143,6 +158,7 @@
       <DependentUpon>EditUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Global.cs" />
+    <Compile Include="HachCode.cs" />
     <Compile Include="Klant.cs" />
     <Compile Include="Levrancier.cs" />
     <Compile Include="Login.cs">
@@ -193,11 +209,18 @@
     <EmbeddedResource Include="Bestellingen.resx">
       <DependentUpon>Bestellingen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Databeheer.resx">
       <DependentUpon>Databeheer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditAantal.resx">
       <DependentUpon>EditAantal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditBezorger.resx">
+      <DependentUpon>EditBezorger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditKlant.resx">
       <DependentUpon>EditKlant.cs</DependentUpon>
@@ -278,6 +301,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\download.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

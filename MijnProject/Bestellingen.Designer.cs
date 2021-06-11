@@ -47,7 +47,7 @@ namespace MijnProject
             this.dgvOrders.RowHeadersVisible = false;
             this.dgvOrders.RowHeadersWidth = 51;
             this.dgvOrders.RowTemplate.Height = 24;
-            this.dgvOrders.Size = new System.Drawing.Size(802, 389);
+            this.dgvOrders.Size = new System.Drawing.Size(1555, 889);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellClick);
             // 
@@ -65,7 +65,7 @@ namespace MijnProject
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(670, 408);
+            this.button1.Location = new System.Drawing.Point(1414, 924);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(118, 37);
             this.button1.TabIndex = 115;
@@ -77,7 +77,7 @@ namespace MijnProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 454);
+            this.ClientSize = new System.Drawing.Size(1556, 981);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.llblAddOrder);
             this.Controls.Add(this.dgvOrders);

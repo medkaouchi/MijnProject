@@ -80,7 +80,7 @@ namespace MijnProject
                         crtTopverkocht.Titles.Add($"{top} minder bestelde producten");
                         break;
                     case 4:
-                        var klants = ctx.Klanten.Join(ctx.Orders.Where(od => od.OrderDatum >= date1 && od.OrderDatum <= date2).Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new { o.OrderId, o.klant.KlantId, totaal = od.Aantal * od.product.UnitPrice }), k => k.KlantId, ood => ood.KlantId, (k, ood) => new { klant = k.Voornaam + " " + k.achternaam, totaal = ood.totaal }).OrderByDescending(kood => kood.totaal).GroupBy(kood => kood.klant).Select(kood => new { klant = kood.Key, totaal = kood.Sum(koods => koods.totaal) }).ToList();
+                        var klants = ctx.Klanten.Join(ctx.Orders.Where(od => od.OrderDatum >= date1 && od.OrderDatum <= date2).Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new { o.OrderId, o.klant.KlantId, totaal = od.Aantal * od.product.UnitPrice }), k => k.KlantId, ood => ood.KlantId, (k, ood) => new { klant = k.Voornaam + " " + k.achternaam, totaal = ood.totaal }).GroupBy(kood => kood.klant).Select(kood => new { klant = kood.Key, totaal = kood.Sum(koods => koods.totaal) }).OrderByDescending(kood => kood.totaal).ToList();
                         crtTopverkocht.DataSource = klants.Take(top);
                         crtTopverkocht.Series.Clear();
                         crtTopverkocht.Series.Add("klant");
@@ -100,7 +100,7 @@ namespace MijnProject
                         crtTopverkocht.Titles.Add($"{top} best kopers (bestellingen))");
                         break;
                     case 6:
-                        var klants1 = ctx.Users.Join(ctx.Orders.Where(od => od.OrderDatum >= date1 && od.OrderDatum <= date2).Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new { o.OrderId, o.user.UserId, totaal = od.Aantal * od.product.UnitPrice }), k => k.UserId, ood => ood.UserId, (k, ood) => new { verkoper = k.Voornaam + " " + k.Achternaam, totaal = ood.totaal }).OrderByDescending(kood => kood.totaal).GroupBy(kood => kood.verkoper).Select(kood => new { verkoper = kood.Key, totaal = kood.Sum(koods => koods.totaal) }).ToList();
+                        var klants1 = ctx.Users.Join(ctx.Orders.Where(od => od.OrderDatum >= date1 && od.OrderDatum <= date2).Join(ctx.OrderDetails, o => o.OrderId, od => od.order.OrderId, (o, od) => new { o.OrderId, o.user.UserId, totaal = od.Aantal * od.product.UnitPrice }), k => k.UserId, ood => ood.UserId, (k, ood) => new { verkoper = k.Voornaam + " " + k.Achternaam, totaal = ood.totaal }).GroupBy(kood => kood.verkoper).Select(kood => new { verkoper = kood.Key, totaal = kood.Sum(koods => koods.totaal) }).OrderByDescending(kood => kood.totaal).ToList();
                         crtTopverkocht.DataSource = klants1.Take(top);
                         crtTopverkocht.Series.Clear();
                         crtTopverkocht.Series.Add("Verkoper");

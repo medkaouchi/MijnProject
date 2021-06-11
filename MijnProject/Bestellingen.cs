@@ -100,6 +100,7 @@ namespace MijnProject
             }
                     deleteindex = dgv_Orders.Columns["Verwijderen"].Index;
             editindex = dgv_Orders.Columns["Bewerken"].Index;
+            if(dgv_Orders.Height<600)
             dgv_Orders.Height = dgv_Orders.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Orders.ColumnHeadersHeight + 2;
             
             var col = new DataGridViewMergedTextBoxColumn();

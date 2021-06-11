@@ -32,6 +32,7 @@ namespace MijnProject
         public static DataGridView dgv_Deliverer = new DataGridView();
         public static int deleteindexBez;
         public static int editindexBez;
+        public static int deleteindexDel;
         public static Bezorger bezorger;
         public Databeheer()
         {
@@ -80,14 +81,15 @@ namespace MijnProject
                         
                         Users = ctx.Users.Include("Adress").ToList();
                     }
+                    loaddgvusers();
                 }
                 else
                 {
                     user = dgvUsers.Rows[e.RowIndex].DataBoundItem as User;
                     EditUser edituser = new EditUser();
                     edituser.ShowDialog();
+                    loaddgvusers();
                 }
-            loaddgvusers();
             
         }
         private void llblNewUser_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -293,7 +295,7 @@ namespace MijnProject
 
         private void dgvDeliverer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-                if (e.ColumnIndex == deleteindex && e.RowIndex > -1)
+                if (e.ColumnIndex == deleteindexDel && e.RowIndex > -1)
                 {
                     using (var ctx = new ProjectContext())
                     {
@@ -310,7 +312,12 @@ namespace MijnProject
                         Deliverers = ctx.Bezorgers.Include("adress").ToList();
                     }
                 }
-                
+                else if(e.ColumnIndex == editindexBez && e.RowIndex > -1)
+                {
+                    bezorger= (Bezorger)dgvDeliverer.Rows[e.RowIndex].DataBoundItem;
+                    EditBezorger editbezorger = new EditBezorger();
+                    editbezorger.ShowDialog();
+                }
             loaddgvDeliverer();
         }
 
@@ -335,6 +342,7 @@ namespace MijnProject
         {
             this.Close();
         }
+        static HachCode hc = new HachCode();
         public static void loaddgvusers()
         {
             dgv_users.DataSource = null;
@@ -350,10 +358,7 @@ namespace MijnProject
             DeleteButtonColumn.UseColumnTextForButtonValue = true;
             dgv_users.Columns.Insert(dgv_users.Columns.Count, EditButtonColumn);
             dgv_users.Columns.Insert(dgv_users.Columns.Count, DeleteButtonColumn);
-            for (int i = 0; i < dgv_users.Rows.Count; i++)
-            {
-                dgv_users.Rows[i].Cells["Wachtwoord"].Value = dgv_users.Rows[i].Cells["Wachtwoord"].Value.ToString().Aggregate("", (c, a) => c + (char)(a - 2));
-            }
+            if(dgv_users.Height<600)
             dgv_users.Height = dgv_users.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_users.ColumnHeadersHeight + 2;
         }
         public static void loaddgvklants()
@@ -375,7 +380,8 @@ namespace MijnProject
             dgv_klanten.Columns["Bewerken"].DisplayIndex = 13;
             deleteindex = dgv_klanten.Columns["Verwijderen"].Index;
             editindex = dgv_klanten.Columns["Bewerken"].Index;
-            dgv_klanten.Height = dgv_klanten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_klanten.ColumnHeadersHeight + 2;
+            if (dgv_klanten.Height < 600)
+                dgv_klanten.Height = dgv_klanten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_klanten.ColumnHeadersHeight + 2;
         }
         public static void loaddgvprodut()
         {
@@ -396,7 +402,8 @@ namespace MijnProject
             dgv_producten.Columns["Bewerken"].DisplayIndex = 12;
             deleteindexproduct = dgv_producten.Columns["Verwijderen"].Index;
             editindexproduct = dgv_producten.Columns["Bewerken"].Index;
-            dgv_producten.Height = dgv_producten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_producten.ColumnHeadersHeight + 2;
+            if (dgv_producten.Height < 600)
+                dgv_producten.Height = dgv_producten.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_producten.ColumnHeadersHeight + 2;
         }
         public static void loaddgvDeliverer()
         {
@@ -407,10 +414,18 @@ namespace MijnProject
             DeleteButtonColumn.Name = "Verwijderen";
             DeleteButtonColumn.Text = "Verwijder";
             DeleteButtonColumn.UseColumnTextForButtonValue = true;
+            DataGridViewButtonColumn EditButtonColumn = new DataGridViewButtonColumn();
+            EditButtonColumn.Name = "Bewerken";
+            EditButtonColumn.Text = "Bewerk";
+            EditButtonColumn.UseColumnTextForButtonValue = true;
+            dgv_Deliverer.Columns.Insert(dgv_Deliverer.Columns.Count, EditButtonColumn);
             dgv_Deliverer.Columns.Insert(dgv_Deliverer.Columns.Count, DeleteButtonColumn);
-            dgv_Deliverer.Columns["Verwijderen"].DisplayIndex = 7;
-            deleteindexBez = dgv_Deliverer.Columns["Verwijderen"].Index;
-            dgv_Deliverer.Height = dgv_Deliverer.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Deliverer.ColumnHeadersHeight + 2;
+            dgv_Deliverer.Columns["Bewerken"].DisplayIndex = 7;
+            dgv_Deliverer.Columns["Verwijderen"].DisplayIndex = 8;
+            deleteindexDel = dgv_Deliverer.Columns["Verwijderen"].Index;
+            editindexBez  = dgv_Deliverer.Columns["Bewerken"].Index;
+            if (dgv_Deliverer.Height < 600)
+                dgv_Deliverer.Height = dgv_Deliverer.Rows.GetRowsHeight(DataGridViewElementStates.None) + dgv_Deliverer.ColumnHeadersHeight + 2;
         }
         protected override bool ProcessDialogKey(Keys keyData)
         {

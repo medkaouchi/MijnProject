@@ -91,7 +91,7 @@ namespace MijnProject
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(83, 571);
+            this.label3.Location = new System.Drawing.Point(215, 623);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 5;
@@ -101,7 +101,7 @@ namespace MijnProject
             // 
             this.cmbStatus.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(219, 568);
+            this.cmbStatus.Location = new System.Drawing.Point(351, 620);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(270, 24);
             this.cmbStatus.TabIndex = 4;
@@ -274,12 +274,12 @@ namespace MijnProject
             this.dgvOrderProducten.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvOrderProducten.BackgroundColor = System.Drawing.Color.White;
             this.dgvOrderProducten.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderProducten.Location = new System.Drawing.Point(86, 278);
+            this.dgvOrderProducten.Location = new System.Drawing.Point(50, 268);
             this.dgvOrderProducten.Name = "dgvOrderProducten";
             this.dgvOrderProducten.RowHeadersVisible = false;
             this.dgvOrderProducten.RowHeadersWidth = 51;
             this.dgvOrderProducten.RowTemplate.Height = 24;
-            this.dgvOrderProducten.Size = new System.Drawing.Size(832, 266);
+            this.dgvOrderProducten.Size = new System.Drawing.Size(908, 298);
             this.dgvOrderProducten.TabIndex = 93;
             this.dgvOrderProducten.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrderProducten_CellClick);
             // 
@@ -337,7 +337,7 @@ namespace MijnProject
             // btnAddOrder
             // 
             this.btnAddOrder.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddOrder.Location = new System.Drawing.Point(415, 665);
+            this.btnAddOrder.Location = new System.Drawing.Point(547, 717);
             this.btnAddOrder.Name = "btnAddOrder";
             this.btnAddOrder.Size = new System.Drawing.Size(151, 51);
             this.btnAddOrder.TabIndex = 99;
@@ -349,7 +349,7 @@ namespace MijnProject
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(83, 614);
+            this.label2.Location = new System.Drawing.Point(215, 666);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 101;
@@ -359,7 +359,7 @@ namespace MijnProject
             // 
             this.cmbBezorgers.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cmbBezorgers.FormattingEnabled = true;
-            this.cmbBezorgers.Location = new System.Drawing.Point(219, 611);
+            this.cmbBezorgers.Location = new System.Drawing.Point(351, 663);
             this.cmbBezorgers.Name = "cmbBezorgers";
             this.cmbBezorgers.Size = new System.Drawing.Size(270, 24);
             this.cmbBezorgers.TabIndex = 100;

@@ -15,6 +15,8 @@ namespace MijnProject
     {
         bool newAd;
         List<Adress> Adresses = new List<Adress>();
+        HachCode hc = new HachCode();
+
         public EditUser()
         {
             InitializeComponent();
@@ -30,9 +32,6 @@ namespace MijnProject
             txtTel.Text = Databeheer.user.Telefoon;
             txtEmail.Text = Databeheer.user.Email;
             cmbAdress.SelectedItem = Databeheer.user.adress;
-            txtUsername.Text = Databeheer.user.Username;
-            txtWachtwoord1.Text = Databeheer.user.Wachtwoord;
-            txtWachtwoord2.Text = Databeheer.user.Wachtwoord;
             cmbRoles.SelectedItem = Databeheer.user.Role;
         }
         private void llblAddAdress_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -99,14 +98,6 @@ namespace MijnProject
                 else
                     s += "Adress: Land ? ";
             }
-            if (txtUsername.Text != "" && txtUsername.Text.ToCharArray().All(c => char.IsLetter(c)))
-                us.Username = txtUsername.Text;
-            else
-                s += "Usernaam ? ";
-            if (re1.IsMatch(txtWachtwoord1.Text) && txtWachtwoord1.Text == txtWachtwoord2.Text)
-                us.Wachtwoord = txtWachtwoord1.Text.Aggregate("", (c, a) => c + (char)(a + 2));
-            else
-                s += "Wachtwoord ? ";
             us.Role = (RoleUser)cmbRoles.SelectedItem;
             if (s == "")
             {
@@ -124,8 +115,6 @@ namespace MijnProject
                     ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Telefoon = us.Telefoon;
                     ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Email = us.Email;
                     ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).adress = us.adress;
-                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Username = us.Username;
-                    ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Wachtwoord = us.Wachtwoord;
                     ctx.Users.FirstOrDefault(u => u.UserId == Databeheer.user.UserId).Role = us.Role;
                     ctx.SaveChanges();
                     Databeheer.Users = ctx.Users.Include("Adress").ToList();

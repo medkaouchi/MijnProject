@@ -13,6 +13,7 @@ namespace MijnProject
     public partial class Login : Form
     {
         public static User user=new User();
+        HachCode hc = new HachCode();
         public Login()
         {
             InitializeComponent();
@@ -25,15 +26,15 @@ namespace MijnProject
             using (var ctx=new ProjectContext())
             {
                 string t = null;
-                if (ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text)!=null)
-                t = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text).Wachtwoord.Aggregate("", (c, a) => c + (char)(a - 2));
+                string pss = hc.PassHash(txtWachtwoord.Text);
+                if (ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text).Wachtwoord == hc.PassHash(txtWachtwoord.Text)) 
+                    user= ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text && u.Wachtwoord == pss);
                 else
                 {
                     MessageBox.Show("Username of Wachtwoord bestaat niet!");
                     txtUsername.Text = "";
                     txtWachtwoord.Text = "";
                 }
-                user = ctx.Users.FirstOrDefault(u => u.Username == txtUsername.Text && t == txtWachtwoord.Text);
             }
             if(user!=null)
             {
